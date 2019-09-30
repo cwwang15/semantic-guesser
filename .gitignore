@@ -28,4 +28,19 @@ root/db_credentials.conf
 
 *.pickle
 *.sql
-env
+venv
+cmp_log.txt
+compare
+divide
+log.txt
+myspace.txt
+picture.py
+pswd_list.txt
+random
+result.txt
+*.sh
+test.txt
+train.txt
+models
+guessing/guessmaker
+.project

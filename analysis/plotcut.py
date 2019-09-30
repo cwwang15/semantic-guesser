@@ -17,11 +17,11 @@ def options():
     parser = ArgumentParser()
     parser.add_argument('grammars', nargs='+', help="the path(s) to the grammar(s)")
     parser.add_argument('--aggregate', action='store_true',
-        help="plot mean depth curve and a band representing min/max")
+                        help="plot mean depth curve and a band representing min/max")
     return parser.parse_args()
 
 
-def smooth(x,window_len=11,window='hanning'):
+def smooth(x, window_len=11, window='hanning'):
     """
     Smooth the data using a window with requested size.
     see http://scipy-cookbook.readthedocs.io/items/SignalSmooth.html
@@ -40,14 +40,14 @@ def smooth(x,window_len=11,window='hanning'):
         raise ValueError("Window is on of 'flat', 'hanning', 'hamming', \
         'bartlett', 'blackman'")
 
-    s=np.r_[x[window_len-1:0:-1],x,x[-2:-window_len-1:-1]]
+    s = np.r_[x[window_len - 1:0:-1], x, x[-2:-window_len - 1:-1]]
 
-    if window == 'flat': #moving average
-        w=np.ones(window_len,'d')
+    if window == 'flat':  # moving average
+        w = np.ones(window_len, 'd')
     else:
-        w=eval('np.'+window+'(window_len)')
+        w = eval('np.' + window + '(window_len)')
 
-    y=np.convolve(w/w.sum(),s,mode='valid')
+    y = np.convolve(w / w.sum(), s, mode='valid')
     return y
 
 
@@ -68,8 +68,7 @@ def depth_curve(treecut):
 
 
 def plot_many(treecuts, fig=None, ax=None, show=False,
-    linecolor='#087dd1', fillcolor='#75b7e6'):
-
+              linecolor='#087dd1', fillcolor='#75b7e6'):
     depths = []
 
     leaves = treecuts[0].tree.leaves()
@@ -79,15 +78,15 @@ def plot_many(treecuts, fig=None, ax=None, show=False,
         depths.append(depth)
 
     depths = np.array(depths).transpose()
-    max_depth  = smooth(np.amax(depths, 1), 1000)
-    min_depth  = smooth(np.amin(depths, 1), 1000)
-    #mean_depth = smooth(np.mean(depths, 1), 1000)
+    max_depth = smooth(np.amax(depths, 1), 1000)
+    min_depth = smooth(np.amin(depths, 1), 1000)
+    # mean_depth = smooth(np.mean(depths, 1), 1000)
 
     if not ax:
         fig, ax = plt.subplots()
         plt.gca().invert_yaxis()
 
-    #ax.plot(mean_depth, '-', lw=1)
+    # ax.plot(mean_depth, '-', lw=1)
     ax.plot(max_depth, '-', lw=1, color=linecolor)
     ax.plot(min_depth, '-', lw=1, color=linecolor)
     ax.fill_between(range(len(max_depth)), min_depth, max_depth, facecolor=fillcolor)
@@ -139,9 +138,9 @@ if __name__ == '__main__':
     else:
         treecut = TreeCutModel.from_pickle(
             os.path.join(opts.grammars[0], 'noun_treecut.pickle')).treecut
-        fig, ax = plot(treecut, show=n==1)
+        fig, ax = plot(treecut, show=n == 1)
 
         for i in range(1, n):
             treecut = TreeCutModel.from_pickle(
                 os.join(opts.grammars[0], 'noun_treecut.pickle')).treecut
-            fig, ax = plot(treecut, fig, ax, show=i==n-1)
+            fig, ax = plot(treecut, fig, ax, show=i == n - 1)

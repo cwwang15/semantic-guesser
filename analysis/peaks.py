@@ -7,9 +7,9 @@ __author__ = "Marcos Duarte, https://github.com/demotu/BMC"
 __version__ = "1.0.4"
 __license__ = "MIT"
 
+
 def detect_peaks(x, mph=None, mpd=1, threshold=0, edge='rising',
                  kpsh=False, valley=False, show=False, ax=None):
-
     """Detect peaks in data based on their amplitude and other features.
 
     Parameters
@@ -108,18 +108,18 @@ def detect_peaks(x, mph=None, mpd=1, threshold=0, edge='rising',
     # handle NaN's
     if ind.size and indnan.size:
         # NaN's and values close to NaN's cannot be peaks
-        ind = ind[np.in1d(ind, np.unique(np.hstack((indnan, indnan-1, indnan+1))), invert=True)]
+        ind = ind[np.in1d(ind, np.unique(np.hstack((indnan, indnan - 1, indnan + 1))), invert=True)]
     # first and last values of x cannot be peaks
     if ind.size and ind[0] == 0:
         ind = ind[1:]
-    if ind.size and ind[-1] == x.size-1:
+    if ind.size and ind[-1] == x.size - 1:
         ind = ind[:-1]
     # remove peaks < minimum peak height
     if ind.size and mph is not None:
         ind = ind[x[ind] >= mph]
     # remove peaks - neighbors < threshold
     if ind.size and threshold > 0:
-        dx = np.min(np.vstack([x[ind]-x[ind-1], x[ind]-x[ind+1]]), axis=0)
+        dx = np.min(np.vstack([x[ind] - x[ind - 1], x[ind] - x[ind + 1]]), axis=0)
         ind = np.delete(ind, np.where(dx < threshold)[0])
     # detect small peaks closer than minimum peak distance
     if ind.size and mpd > 1:
@@ -129,7 +129,7 @@ def detect_peaks(x, mph=None, mpd=1, threshold=0, edge='rising',
             if not idel[i]:
                 # keep peaks with the same height if kpsh is True
                 idel = idel | (ind >= ind[i] - mpd) & (ind <= ind[i] + mpd) \
-                    & (x[ind[i]] > x[ind] if kpsh else True)
+                       & (x[ind[i]] > x[ind] if kpsh else True)
                 idel[i] = 0  # Keep current peak
         # remove the small peaks and sort back the indexes by their occurrence
         ind = np.sort(ind[~idel])
@@ -142,6 +142,7 @@ def detect_peaks(x, mph=None, mpd=1, threshold=0, edge='rising',
         _plot(x, mph, mpd, threshold, edge, valley, ax, ind)
 
     return ind
+
 
 def _plot(x, mph, mpd, threshold, edge, valley, ax, ind):
     """Plot results of the detect_peaks function, see its help."""
@@ -160,10 +161,10 @@ def _plot(x, mph, mpd, threshold, edge, valley, ax, ind):
             ax.plot(ind, x[ind], '+', mfc=None, mec='r', mew=2, ms=8,
                     label='%d %s' % (ind.size, label))
             ax.legend(loc='best', framealpha=.5, numpoints=1)
-        ax.set_xlim(-.02*x.size, x.size*1.02-1)
+        ax.set_xlim(-.02 * x.size, x.size * 1.02 - 1)
         ymin, ymax = x[np.isfinite(x)].min(), x[np.isfinite(x)].max()
         yrange = ymax - ymin if ymax > ymin else 1
-        ax.set_ylim(ymin - 0.1*yrange, ymax + 0.1*yrange)
+        ax.set_ylim(ymin - 0.1 * yrange, ymax + 0.1 * yrange)
         ax.set_xlabel('Data #', fontsize=14)
         ax.set_ylabel('Amplitude', fontsize=14)
         mode = 'Valley detection' if valley else 'Peak detection'

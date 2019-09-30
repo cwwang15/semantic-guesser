@@ -35,5 +35,4 @@ def test_tagging():
     assert g._tag_pos(*chunk) == 'number6'
 
 
-
 test_tagging()

@@ -6,11 +6,12 @@ import os
 from nltk.corpus import wordnet
 
 from nltk.tag.sequential import DefaultTagger, \
-                                BigramTagger,  \
-                                UnigramTagger,  \
-                                TrigramTagger, \
-                                SequentialBackoffTagger
+    BigramTagger, \
+    UnigramTagger, \
+    TrigramTagger, \
+    SequentialBackoffTagger
 from nltk.probability import FreqDist
+
 
 class ExhaustiveTagger():
     """
@@ -18,16 +19,16 @@ class ExhaustiveTagger():
     numbers.
     """
     pickle_path = os.path.join(os.path.dirname(__file__),
-        '../data/exhaustive_tagger.pickle')
+                               '../data/exhaustive_tagger.pickle')
 
     def __init__(self):
         tagged_brown_path = os.path.join(os.path.dirname(__file__),
-            '../data/brown_clawstags.pickle')
+                                         '../data/brown_clawstags.pickle')
         train_sents = pickle.load(open(tagged_brown_path, 'rb'))
 
         # make sure all tuples are in the required format: (TAG, word)
         train_sents = [[t for t in sentence
-            if len(t) == 2] for sentence in train_sents]
+                        if len(t) == 2] for sentence in train_sents]
 
         self.taggers = [
             WordNetTagger(),
@@ -44,7 +45,7 @@ class ExhaustiveTagger():
 
     def tag_one(self, tokens, index, history):
         token = tokens[index]
-        if token.isdigit(): return [(token,None)]
+        if token.isdigit(): return [(token, None)]
 
         tags = set()
 
@@ -71,9 +72,8 @@ class ExhaustiveTagger():
 
 
 class BackoffTagger(SequentialBackoffTagger):
-
     pickle_path = os.path.join(os.path.dirname(__file__),
-        '../data/backoff_tagger.pickle')
+                               '../data/backoff_tagger.pickle')
 
     def __init__(self, *args, **kwargs):
         SequentialBackoffTagger.__init__(self, *args, **kwargs)
@@ -81,18 +81,18 @@ class BackoffTagger(SequentialBackoffTagger):
         self.dist = FreqDist()
 
         tagged_brown_path = os.path.join(os.path.dirname(__file__),
-            '../data/brown_clawstags.pickle')
+                                         '../data/brown_clawstags.pickle')
         train_sents = pickle.load(open(tagged_brown_path, 'rb'))
 
         # make sure all tuples are in the required format: (TAG, word)
         train_sents = [[t for t in sentence
-            if len(t) == 2] for sentence in train_sents]
+                        if len(t) == 2] for sentence in train_sents]
 
         # default_tagger = DefaultTagger('nn')
-        wn_tagger      = WordNetTagger()
-        names_tagger   = NamesTagger(wn_tagger)
-        coca_tagger    = COCATagger(names_tagger)
-        bigram_tagger  = BigramTagger(train_sents, backoff=coca_tagger)
+        wn_tagger = WordNetTagger()
+        names_tagger = NamesTagger(wn_tagger)
+        coca_tagger = COCATagger(names_tagger)
+        bigram_tagger = BigramTagger(train_sents, backoff=coca_tagger)
         trigram_tagger = TrigramTagger(train_sents, backoff=bigram_tagger)
 
         # doesn't include self cause it's a dumb tagger (would always return None)
@@ -153,6 +153,7 @@ class WordNetTagger(SequentialBackoffTagger):
     >>> wt.tag(['food', 'is', 'great'])
     [('food', 'nn'), ('is', 'vv0'), ('great', 'jj')]
     '''
+
     def __init__(self, *args, **kwargs):
         SequentialBackoffTagger.__init__(self, *args, **kwargs)
 
@@ -169,7 +170,7 @@ class WordNetTagger(SequentialBackoffTagger):
 
     def get_tags(self, token):
         synsets = self.wordnet.synsets(token)
-        tagset  = set()
+        tagset = set()
         taglist = []
         for syn in synsets:
             pos = self.wordnet_tag_map[syn.pos()]
@@ -210,9 +211,11 @@ class WordNetTagger(SequentialBackoffTagger):
         """
         self.wordnet = wordnet
 
+
 def _datafile(name):
-    return open(os.path.join(os.path.dirname(__file__), '../data/'+name),
-        encoding='utf-8')
+    return open(os.path.join(os.path.dirname(__file__), '../data/' + name),
+                encoding='utf-8')
+
 
 class NamesTagger(SequentialBackoffTagger):
     """
@@ -221,12 +224,12 @@ class NamesTagger(SequentialBackoffTagger):
         [('Jacob', 'np')]
     """
 
-    MaleNames   = set([name.strip() for name in _datafile('mnames.txt')])
+    MaleNames = set([name.strip() for name in _datafile('mnames.txt')])
     FemaleNames = set([name.strip() for name in _datafile('fnames.txt')])
-    Countries   = set([country.strip() for country in _datafile('countries.txt')])
+    Countries = set([country.strip() for country in _datafile('countries.txt')])
     # Months      = set([month.strip() for month in _datafile('months.txt')])
-    Surnames    = set([surname.strip() for surname in _datafile('surnames.txt')])
-    Cities      = set([city.strip() for city in _datafile('cities.txt')])
+    Surnames = set([surname.strip() for surname in _datafile('surnames.txt')])
+    Cities = set([city.strip() for city in _datafile('cities.txt')])
 
     def __init__(self, *args, **kwargs):
         SequentialBackoffTagger.__init__(self, *args, **kwargs)
@@ -247,8 +250,10 @@ class NamesTagger(SequentialBackoffTagger):
             return None
 
     def get_tags(self, token):
-        if self.is_propername(token): return ['np']
-        else: return []
+        if self.is_propername(token):
+            return ['np']
+        else:
+            return []
 
     def is_propername(self, string):
         return string in NamesTagger.MaleNames or \
@@ -261,13 +266,13 @@ class NamesTagger(SequentialBackoffTagger):
 class COCATagger(SequentialBackoffTagger):
     def __init__(self, *args, **kwargs):
         SequentialBackoffTagger.__init__(self, *args, **kwargs)
-        coca_path = os.path.join(os.path.dirname(__file__),'../data/coca_500k.csv')
+        coca_path = os.path.join(os.path.dirname(__file__), '../data/coca_500k.csv')
         coca_list = csv.reader(open(coca_path), delimiter='\t')
         self.tag_map = dict()
         for row in coca_list:
             freq = int(row[0])
             word = row[1].strip()
-            pos  = row[2].strip()
+            pos = row[2].strip()
             self.insertPair(word, pos, freq)
 
     def insertPair(self, word, pos, freq):
@@ -278,15 +283,15 @@ class COCATagger(SequentialBackoffTagger):
         if (word not in map_):
             map_[word] = [(pos, freq)]
         else:
-            map_[word].append((pos,freq))
+            map_[word].append((pos, freq))
 
     def choose_tag(self, tokens, index, history):
         word = tokens[index]
         if word in self.tag_map:
             pos, freq = self.tag_map[word][0]
-            #return self.tag_converter.claws7ToBrown(posfreq[0])
-            
-            if (pos == 'np1' or pos == 'nn1') and len(word) < 3: # notably noisy classes
+            # return self.tag_converter.claws7ToBrown(posfreq[0])
+
+            if (pos == 'np1' or pos == 'nn1') and len(word) < 3:  # notably noisy classes
                 pos = None
             elif (pos == 'np1' or pos == 'nn1') and len(word) == 3 and freq < 10000:
                 pos = None
@@ -309,7 +314,7 @@ class COCATagger(SequentialBackoffTagger):
 class SpacyTagger():
     def __init__(self):
         self.nlp = spacy.load('en_core_web_sm', disable=["parser", "ner"])
-        coca_path = os.path.join(os.path.dirname(__file__),'../data/coca_500k.csv')
+        coca_path = os.path.join(os.path.dirname(__file__), '../data/coca_500k.csv')
         with open(coca_path) as f:
             self.coca = dict()
             for line in f:
@@ -323,7 +328,7 @@ class SpacyTagger():
         tags = []
         for token in doc:
             if token in coca and coca[token] > 1000:
-                tags.append([token.text, token.tag_ ])
+                tags.append([token.text, token.tag_])
             else:
                 tags.append([token.text, None])
         return tags

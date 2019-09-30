@@ -56,14 +56,14 @@ def new_wordnet_instance():
 def tally(password_file, lowercase=True):
     """Return a Counter for passwords."""
     pwditer = (line.rstrip('\n').lower() for line in password_file
-        if not re.fullmatch('\s+', line))
+               if not re.fullmatch('\s+', line))
 
     return Counter(pwditer)
 
 
 def getchunks(password):
     # split into character/digit/symbols chunks
-    temp = re.findall('([\W_]+|[a-zA-Z]+|[0-9]+)', password)
+    temp = re.findall(r'([\W_]+|[a-zA-Z]+|[0-9]+)', password)
 
     # split character chunks into word chunks
     chunks = []
@@ -118,10 +118,10 @@ class POSBlacklist():
         self.coca = COCATagger()
 
     def is_bad(self, word):
-        return ((len(word)==1 and word not in 'ai') or
-            (word not in self.coca.tag_map) or
-            (len(word) < 4 and word in self.coca.tag_map and
-                self.coca.tag_map[word][0][1] < 1000))
+        return ((len(word) == 1 and word not in 'ai') or
+                (word not in self.coca.tag_map) or
+                (len(word) < 4 and word in self.coca.tag_map and
+                 self.coca.tag_map[word][0][1] < 1000))
 
 
 def pos_tag(tokens, tagger, blacklist):
@@ -156,15 +156,15 @@ def pos_tag(tokens, tagger, blacklist):
         # if we find a token that isn't alpha, then tag whatever is
         # accumulated in the buffer
         if not isalpha or \
-         blacklist and blacklist.is_bad(tokens[i]):
+                blacklist and blacklist.is_bad(tokens[i]):
             if len(buffer) > 0:
                 tags.extend(tagger.tag(buffer))
                 buffer = []
 
             tags.append((tokens[i], None))
         # if this alpha token has an adjacent alpha token, it should be tagged
-        elif len(alpha_mask) > i+1 and alpha_mask[i+1] or \
-             i > 0 and alpha_mask[i-1]:
+        elif len(alpha_mask) > i + 1 and alpha_mask[i + 1] or \
+                i > 0 and alpha_mask[i - 1]:
             buffer.append(tokens[i])
         elif len(tokens[i]) > 2:
             buffer.append(tokens[i])
@@ -191,13 +191,13 @@ def noun_vocab(tcm=None, postagger=None, min_length=0):
     if not postagger:
         postagger = BackoffTagger()
 
-    getpostag = lambda word : postagger.tag([word])[0][1]
+    getpostag = lambda word: postagger.tag([word])[0][1]
     singular_n_pos = getpostag("house")
-    plural_n_pos   = getpostag("houses")
+    plural_n_pos = getpostag("houses")
 
     nouns = set()
 
-    for lemma in wn.all_lemma_names(pos = 'n'):
+    for lemma in wn.all_lemma_names(pos='n'):
         if len(lemma) < min_length:
             continue
         if '_' in lemma:
@@ -221,23 +221,23 @@ def noun_vocab(tcm=None, postagger=None, min_length=0):
     return nouns
 
 
-def verb_vocab(tcm = None, postagger = None, min_length=0):
+def verb_vocab(tcm=None, postagger=None, min_length=0):
     """
     Return all verbs found in wordnet in various inflected forms.
     """
     if not postagger:
         postagger = BackoffTagger.from_pickle()
 
-    getpostag = lambda word : postagger.tag([word])[0][1]
+    getpostag = lambda word: postagger.tag([word])[0][1]
 
     # Most of the time lexeme() returns 4 or 5 words, inflected as declared below
     # To avoid assumptions on the tagset used, we query the tags using easy examples
     # (verb give). These POS tags are then bound to lexeme's results.
     infinitive_pos = getpostag("give")
-    present_pos    = getpostag("gives")
-    pres_prog_pos  = getpostag("giving")
-    past_pos       = getpostag("gave")
-    past_prog_pos  = getpostag("given")
+    present_pos = getpostag("gives")
+    pres_prog_pos = getpostag("giving")
+    past_pos = getpostag("gave")
+    past_prog_pos = getpostag("given")
 
     # three possibilities for return of function tenses
     # depending on how many variations a verb has
@@ -247,13 +247,13 @@ def verb_vocab(tcm = None, postagger = None, min_length=0):
 
     verbs = set()
 
-    for lemma in wn.all_lemma_names(pos = 'v'):
+    for lemma in wn.all_lemma_names(pos='v'):
         if len(lemma) < min_length:
             continue
         if '_' in lemma:
             continue
 
-        forms = lexeme(lemma) # all possible conjugations of this verb (lemma)
+        forms = lexeme(lemma)  # all possible conjugations of this verb (lemma)
 
         if len(forms) == 3:
             forms = zip(forms, tenses3)
@@ -280,7 +280,7 @@ def verb_vocab(tcm = None, postagger = None, min_length=0):
                 if not postag:
                     log.warning("{} has POS==None".format(form))
                     continue
-                if postag[0] == 'n': # dirty hack to avoid inconsistency introduced by postagger
+                if postag[0] == 'n':  # dirty hack to avoid inconsistency introduced by postagger
                     continue
                 verbs.add((form, postag, classy))
                 if "'" in form:  # remove ' (couldn't -> couldnt)
@@ -308,7 +308,7 @@ def tally_chunk_tag(path, num_workers):
         i = 0
         while True:
             batch = in_queue.get()
-            if len(batch) == 0: # exit signal
+            if len(batch) == 0:  # exit signal
                 return
 
             result_buffer = []
@@ -327,7 +327,7 @@ def tally_chunk_tag(path, num_workers):
                 if i % 100000 == 0:
                     process_id = multiprocessing.current_process()._identity[0]
                     log.info("Process {} has worked on {} passwords..."
-                        .format(process_id, i))
+                             .format(process_id, i))
 
             out_list.extend(result_buffer)
 
@@ -343,7 +343,6 @@ def tally_chunk_tag(path, num_workers):
         p.start()
         pool.append(p)
 
-
     passwords = tally(path).items()
     buff = []
     for password, count in passwords:
@@ -353,7 +352,7 @@ def tally_chunk_tag(path, num_workers):
             buff = []
 
     if len(buff): work.put(buff)
-    for i in range(num_workers): work.put([]) # send exit signal
+    for i in range(num_workers): work.put([])  # send exit signal
 
     for p in pool:
         p.join()
@@ -386,7 +385,6 @@ def increment_synset_count(tree, synset, count=1):
 
 
 def fit_tree_cut_models(passwords, estimator, specificity, num_workers):
-
     def do_work(passwords, noun_results, verb_results):
         wn = new_wordnet_instance()
 
@@ -411,9 +409,9 @@ def fit_tree_cut_models(passwords, estimator, specificity, num_workers):
     verb_results = manager.list()
     pool = []
 
-    share = math.ceil(len(passwords)/num_workers)
+    share = math.ceil(len(passwords) / num_workers)
     for i in range(num_workers):
-        work = passwords[i*share:i*share+share]
+        work = passwords[i * share:i * share + share]
         p = Process(target=do_work, args=(work, noun_results, verb_results))
         p.start()
         pool.append(p)
@@ -448,7 +446,6 @@ class MyManager(BaseManager): pass
 
 
 def fit_grammar(passwords, tagtype, estimator, tcm_n, tcm_v, num_workers):
-
     def do_work(passwords, tcm_n, tcm_v, out_list):
         # a fresh instance of wordnet
         wordnet = new_wordnet_instance()
@@ -457,11 +454,11 @@ def fit_grammar(passwords, tagtype, estimator, tcm_n, tcm_v, num_workers):
 
         for chunks, count in passwords:
             X = []  # list of list of tuples. X[0] holds one tuple for
-                    # every different synset of chunks[0]
+            # every different synset of chunks[0]
 
             for string, pos in chunks:
                 syn = synset(string, pos, wordnet, tag_converter)
-                synlist = [None] # in case synset is None
+                synlist = [None]  # in case synset is None
 
                 if syn is not None:  # abstract (generalize) synset
                     if syn.pos() == 'n':
@@ -469,15 +466,15 @@ def fit_grammar(passwords, tagtype, estimator, tcm_n, tcm_v, num_workers):
                     elif syn.pos() == 'v':
                         synlist = tcm_v.predict(syn)
 
-                chunkset = [] # all semantic variations of this chunk
+                chunkset = []  # all semantic variations of this chunk
                 for syn in set(synlist):
                     chunkset.append((string, pos, syn))
                 X.append(chunkset)
 
             # navigate the cross-product of the chunksets
             if len(X) > 1:
-                n_variations = reduce(lambda x,y: x * len(y), X, 1)
-                count_ = count/n_variations
+                n_variations = reduce(lambda x, y: x * len(y), X, 1)
+                count_ = count / n_variations
                 for x in reduce(product, X):
                     results.append((x, count_))
             elif len(X) == 1:
@@ -500,20 +497,20 @@ def fit_grammar(passwords, tagtype, estimator, tcm_n, tcm_v, num_workers):
     if tagtype != 'pos':
         manager = Manager()
         results = manager.list()
-        pool    = []
+        pool = []
 
-        share = math.ceil(len(passwords)/num_workers)
+        share = math.ceil(len(passwords) / num_workers)
         for i in range(num_workers):
             # progressively empty passwords to free memory
-            #work = [passwords.pop() for i in range(min(share, len(passwords)))]
-            work = passwords[i*share:i*share+share]
+            # work = [passwords.pop() for i in range(min(share, len(passwords)))]
+            work = passwords[i * share:i * share + share]
             p = Process(target=do_work, args=(work, tcm_n, tcm_v, results))
             p.start()
             pool.append(p)
 
         log.info("Pool has {} workers".format(len(pool)))
 
-        del passwords[:] # this atrocity is really necessary to free memory
+        del passwords[:]  # this atrocity is really necessary to free memory
 
         for p in pool:
             p.join()
@@ -532,7 +529,7 @@ def fit_grammar(passwords, tagtype, estimator, tcm_n, tcm_v, num_workers):
 
 
 def train_grammar(password_file, outfolder, tagtype='backoff',
-    estimator='laplace', specificity=None, num_workers=2):
+                  estimator='laplace', specificity=None, num_workers=2):
     """Train a semantic password model"""
 
     # Chunking and Part-of-Speech tagging
@@ -549,7 +546,7 @@ def train_grammar(password_file, outfolder, tagtype='backoff',
     with Timer("training tree cut models", log):
         if tagtype != 'pos':
             tcm_n, tcm_v = fit_tree_cut_models(passwords, estimator,
-                specificity, num_workers)
+                                               specificity, num_workers)
         else:
             tcm_n = None
             tcm_v = None
@@ -571,37 +568,19 @@ def train_grammar(password_file, outfolder, tagtype='backoff',
     return grammar
 
 
-
 def options():
     parser = argparse.ArgumentParser()
     parser.add_argument('passwords', nargs='?', default=sys.stdin,
-        type=argparse.FileType('r'), help='a password list')
+                        type=argparse.FileType('r'), help='a password list')
     parser.add_argument('output_folder', help='a folder to store the grammar model')
     parser.add_argument('--estimator', default='mle', choices=['mle', 'laplace'])
     parser.add_argument('-a', '--abstraction', type=int, default=None,
-        help='Detail level of the grammar. An integer > 0 proportional to \
+                        help='Detail level of the grammar. An integer > 0 proportional to \
         the desired specificity.')
-    parser.add_argument('-v', action = 'append_const', const = 1, help="""
+    parser.add_argument('-v', action='append_const', const=1, help="""
         verbose level (e.g., -vvv) """)
     parser.add_argument('--tagtype', default='backoff',
-        choices=['pos_semantic', 'pos', 'backoff', 'word'])
+                        choices=['pos_semantic', 'pos', 'backoff', 'word'])
     parser.add_argument('-w', '--num_workers', type=int, default=2,
-        help="number of cores available for parallel work")
+                        help="number of cores available for parallel work")
     return parser.parse_args()
-
-
-if __name__ == '__main__':
-    opts = options()
-    password_file = opts.passwords
-
-    verbose_levels = [logging.ERROR, logging.WARNING, logging.INFO, logging.DEBUG]
-    verbose_level = sum(opts.v) if opts.v else 0
-    logging.basicConfig(level=verbose_levels[verbose_level])
-    log.setLevel(verbose_levels[verbose_level])
-
-    train_grammar(password_file,
-                  opts.output_folder,
-                  opts.tagtype,
-                  opts.estimator,
-                  opts.abstraction,
-                  opts.num_workers)

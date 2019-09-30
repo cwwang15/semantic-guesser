@@ -1,8 +1,8 @@
-from learning.tree.wordnet      import IndexedWordNetTree
+from learning.tree.wordnet import IndexedWordNetTree
 from learning.tree.default_tree import TreeCut
-from learning.tree.cut          import wagner, li_abe
-from collections                import defaultdict, Counter
-from multiprocessing            import Process, Manager, Pool, Queue
+from learning.tree.cut import wagner, li_abe
+from collections import defaultdict, Counter
+from multiprocessing import Process, Manager, Pool, Queue
 
 from misc import util
 
@@ -16,8 +16,8 @@ import pickle
 import math
 import multiprocessing
 
-
 log = logging.getLogger(__name__)
+
 
 class TreeCutModel():
     def __init__(self, pos='n', estimator='mle', specificity=None):
@@ -25,7 +25,7 @@ class TreeCutModel():
         Args:
             pos: the part-of-speech of this tree: 'v' (verb) or 'n' (noun)
         """
-        self.pos  = pos
+        self.pos = pos
         self.tree = None
         self.treecut = None
         self.specificity = specificity
@@ -40,7 +40,7 @@ class TreeCutModel():
         Returns:
           self
         """
-        pos  = self.pos
+        pos = self.pos
         specificity = self.specificity
 
         self.tree = tree = IndexedWordNetTree(pos)
@@ -63,9 +63,8 @@ class TreeCutModel():
 
         self.treecut = TreeCut(tree, cut)
 
-
     def fit_tree(self, tree):
-        pos  = self.pos
+        pos = self.pos
         specificity = self.specificity
         self.tree = tree
 
@@ -82,7 +81,6 @@ class TreeCutModel():
             cut = li_abe.findcut(tree, estimator)
 
         self.treecut = TreeCut(tree, cut)
-
 
     def predict(self, X):
         """
@@ -161,7 +159,7 @@ class TreeCutModel():
 
     def pickle(self, outfolder):
         name = 'noun_treecut.pickle' if self.pos == 'n' else 'verb_treecut.pickle'
-        sys.setrecursionlimit(sys.getrecursionlimit()*2)
+        sys.setrecursionlimit(sys.getrecursionlimit() * 2)
         filepath = os.path.join(outfolder, name)
         pickle.dump(self, open(filepath, 'wb'))
 
@@ -194,13 +192,14 @@ class MleEstimator(Estimator):
         return self._probability(node.value, self.n)
 
     def _probability(self, f, n):
-        return float(f)/n
+        return float(f) / n
 
 
 class LaplaceEstimator(Estimator):
     """
     See https://en.wikipedia.org/wiki/Additive_smoothing
     """
+
     def __init__(self, n, k, alpha):
         """
         @params:
@@ -225,22 +224,21 @@ class LaplaceEstimator(Estimator):
         return self._probability(f, c, self.n, self.k, self.alpha)
 
     def _probability(self, f, c, n, k, alpha, *args):
-        return float(f + c*alpha)/(n + k*alpha)
+        return float(f + c * alpha) / (n + k * alpha)
 
 
 def _datafile(name):
-    return open(os.path.join(os.path.dirname(__file__), '../data/'+name),
-        encoding='utf-8')
+    return open(os.path.join(os.path.dirname(__file__), '../data/' + name),
+                encoding='utf-8')
 
 
 class GrammarTagger(object):
-
-    MaleNames   = set([name.strip() for name in _datafile('mnames.txt')])
+    MaleNames = set([name.strip() for name in _datafile('mnames.txt')])
     FemaleNames = set([name.strip() for name in _datafile('fnames.txt')])
-    Countries   = set([country.strip() for country in _datafile('countries.txt')])
+    Countries = set([country.strip() for country in _datafile('countries.txt')])
     # Months      = set([month.strip() for month in _datafile('months.txt')])
-    Surnames    = set([surname.strip() for surname in _datafile('surnames.txt')])
-    Cities      = set([city.strip() for city in _datafile('cities.txt')])
+    Surnames = set([surname.strip() for surname in _datafile('surnames.txt')])
+    Cities = set([city.strip() for city in _datafile('cities.txt')])
 
     def _get_tag(self, string, pos, synset, tagtype):
         if tagtype == 'pos':
@@ -274,7 +272,6 @@ class GrammarTagger(object):
         else:
             return pos
 
-
     def _tag_semantic_backoff_pos(self, string, pos, synset):
         """  Returns a  list of  tags  containing  EITHER  semantic  OR syntactic
         (part-of-speech) symbols. If the chunk is a proper noun, returns either
@@ -293,7 +290,7 @@ class GrammarTagger(object):
         Returns:
             list of str -- tags
         """
-        
+
         # hack to avoid synsets with / in the name, which can't be filenames
         if synset and '/' in synset: synset = None
 
@@ -332,7 +329,7 @@ class GrammarTagger(object):
         """
         # hack to avoid synsets with / in the name, which can't be filenames
         if synset and '/' in synset: synset = None
-        
+
         if not pos:
             return self.tag_nonword(string)
         else:
@@ -369,11 +366,12 @@ class GrammarTagger(object):
 
     def is_propername(self, string):
         return string in GrammarTagger.MaleNames or \
-            string in GrammarTagger.FemaleNames or \
-            string in GrammarTagger.Cities or \
-            string in GrammarTagger.Months or \
-            string in GrammarTagger.Surnames or \
-            string in GrammarTagger.Countries
+               string in GrammarTagger.FemaleNames or \
+               string in GrammarTagger.Cities or \
+               string in GrammarTagger.Months or \
+               string in GrammarTagger.Surnames or \
+               string in GrammarTagger.Countries
+
 
 class Processor(object):
 
@@ -399,7 +397,6 @@ class Processor(object):
 
             base_structures[base_structure] += count
 
-
         # log.info("Process {} has done its share. Time to rest.".format(process_id))
         return (tags, base_structures)
 
@@ -408,13 +405,13 @@ class Grammar(object):
 
     def __init__(self, tagtype='backoff', estimator='mle'):
         self.base_structures = Counter()
-        self.probabilities   = dict()
-        self.tag_dicts       = defaultdict(Counter)
+        self.probabilities = dict()
+        self.tag_dicts = defaultdict(Counter)
         # self.verb_treecut = None
         # self.noun_treecut = None
         self.estimator = estimator
         self.tagger = GrammarTagger()
-        self.counter = 0                          # record # of observations
+        self.counter = 0  # record # of observations
 
         # booleans
         self.lowres = None
@@ -433,9 +430,9 @@ class Grammar(object):
                 vocab.add(word)
         return vocab
 
-    def _get_tag_prob_estimator(self,tag):
-        samplesize          = sum(self.tag_dicts[tag].values())
-        vocabsize           = len(self.tag_dicts[tag])
+    def _get_tag_prob_estimator(self, tag):
+        samplesize = sum(self.tag_dicts[tag].values())
+        vocabsize = len(self.tag_dicts[tag])
         if self.estimator == 'laplace':
             estimator = LaplaceEstimator(samplesize, vocabsize, 1)
         else:
@@ -448,15 +445,15 @@ class Grammar(object):
         gc.collect()
         pool = Pool(num_workers, maxtasksperchild=2)
 
-        share = min(int(2e5), math.ceil(len(X)/num_workers))
+        share = min(int(2e5), math.ceil(len(X) / num_workers))
         # share = int(1e5)
         tagger = GrammarTagger()
 
-        num_parts = math.ceil(len(X)/share)
-        x_gen = (X[i*share:i*share+share] for i in range(num_parts))
+        num_parts = math.ceil(len(X) / share)
+        x_gen = (X[i * share:i * share + share] for i in range(num_parts))
 
         # delegate work to all available processes
-        i  = 0
+        i = 0
         for result in pool.imap(Processor(tagger, self.tagtype), x_gen):
             tag_results, base_struct_results = result
             for base_struct, count in base_struct_results.items():
@@ -467,7 +464,6 @@ class Grammar(object):
                     self.tag_dicts[tag][string] += count
             i += 1
             log.info("Processed {}/{} result batches...".format(i, num_parts))
-
 
         log.info("Fitting completed.")
 
@@ -502,16 +498,16 @@ class Grammar(object):
         """
         # Prepare data structures for fast-ish sampling
 
-        base_structs      = []
+        base_structs = []
         base_struct_probs = []
-        tag2words         = dict() # tag2words['jj'] = ['hot', 'cold', ...]
-        tag2probs         = dict() # tag2probs['jj'] = np.array([.1, .005, ...])
+        tag2words = dict()  # tag2words['jj'] = ['hot', 'cold', ...]
+        tag2probs = dict()  # tag2probs['jj'] = np.array([.1, .005, ...])
 
         for k, v in self.base_structures.items():
             base_structs.append(k)
             base_struct_probs.append(v)
         base_struct_probs = np.array(base_struct_probs)
-        base_struct_probs = base_struct_probs/np.sum(base_struct_probs) # calculate MLE
+        base_struct_probs = base_struct_probs / np.sum(base_struct_probs)  # calculate MLE
 
         for tag, v in self.tag_dicts.items():
             W = []
@@ -533,19 +529,18 @@ class Grammar(object):
         # outcomes = []                            # final sample outcome:
         #                                          # list of tuples (string, prob)
 
-        for i in base_struct_sample_indices:     # for each base structure,
-            base_struct  = base_structs[i]       # sample a word from each of its tags
-            outcome      = ''                    # one sampling outcome
+        for i in base_struct_sample_indices:  # for each base structure,
+            base_struct = base_structs[i]  # sample a word from each of its tags
+            outcome = ''  # one sampling outcome
             outcome_prob = base_struct_probs[i]
 
             for tag in re.findall('\(([^\(\)]+)\)', base_struct):
-                pdist          = tag2probs[tag]
-                j              = np.random.choice(len(pdist), replace=True, p=pdist)
-                outcome       += tag2words[tag][j]
-                outcome_prob  *= pdist[j]
+                pdist = tag2probs[tag]
+                j = np.random.choice(len(pdist), replace=True, p=pdist)
+                outcome += tag2words[tag][j]
+                outcome_prob *= pdist[j]
 
             yield (outcome, base_struct, outcome_prob)
-
 
     def predict(self, X):
         """
@@ -556,13 +551,13 @@ class Grammar(object):
             X - a list of lists of tuples in the form (string, pos, str(synset))
         """
 
-        tag_prob_cache = dict()         # tag_prob_cache[tag][word] = p
+        tag_prob_cache = dict()  # tag_prob_cache[tag][word] = p
 
         def prob(tag, string):
             if tag not in tag_prob_cache:
                 tag_prob_cache[tag] = dict()
-                samplesize          = sum(self.tag_dicts[tag].values())
-                vocabsize           = len(self.tag_dicts[tag].keys())
+                samplesize = sum(self.tag_dicts[tag].values())
+                vocabsize = len(self.tag_dicts[tag].keys())
 
                 if self.estimator == 'laplace':
                     estimator = LaplaceEstimator(samplesize, vocabsize, 1)
@@ -586,10 +581,9 @@ class Grammar(object):
 
                 p *= prob(tag, string)
 
-            p *= self.base_structures[base_structure]/self.counter
+            p *= self.base_structures[base_structure] / self.counter
 
             yield p
-
 
     def predict_async(self):
         """
@@ -607,13 +601,13 @@ class Grammar(object):
             x - a list of tuples in the form (string, pos, str(synset))
         """
 
-        tag_prob_cache = dict()         # tag_prob_cache[tag][word] = p
+        tag_prob_cache = dict()  # tag_prob_cache[tag][word] = p
 
         def prob(tag, string):
             if tag not in tag_prob_cache:
                 tag_prob_cache[tag] = dict()
-                samplesize          = sum(self.tag_dicts[tag].values())
-                vocabsize           = len(self.tag_dicts[tag].keys())
+                samplesize = sum(self.tag_dicts[tag].values())
+                vocabsize = len(self.tag_dicts[tag].keys())
 
                 if self.estimator == 'laplace':
                     estimator = LaplaceEstimator(samplesize, vocabsize, 1)
@@ -638,10 +632,9 @@ class Grammar(object):
 
                 p *= prob(tag, string)
 
-            p *= self.base_structures[base_structure]/self.counter
+            p *= self.base_structures[base_structure] / self.counter
 
             yield p
-
 
     def base_structure_probabilities(self):
         total = 0
@@ -649,15 +642,15 @@ class Grammar(object):
         for struct, count in rank:
             total += count
 
-        return [(struct, count/total) for struct, count in rank]
+        return [(struct, count / total) for struct, count in rank]
 
     def tag_probabilities(self):
-        tag_dicts     = self.tag_dicts
+        tag_dicts = self.tag_dicts
         probabilities = defaultdict(Counter)
 
         for tag in tag_dicts.keys():
             samplesize = sum(tag_dicts[tag].values())
-            vocabsize  = len(tag_dicts[tag].keys())
+            vocabsize = len(tag_dicts[tag].keys())
 
             if self.estimator == 'laplace':
                 est = LaplaceEstimator(samplesize, vocabsize, 1)
@@ -683,7 +676,7 @@ class Grammar(object):
         # remove previous grammar
         try:
             shutil.rmtree(path)
-        except OSError: # in case the above folder does not exist
+        except OSError:  # in case the above folder does not exist
             pass
 
         # recreate the folders empty
@@ -701,7 +694,6 @@ class Grammar(object):
 
         self_filepath = os.path.join(path, 'grammar.pickle')
         pickle.dump(self, open(self_filepath, 'wb'), -1)
-
 
     def read(self, path):
         grammar_dir = util.abspath(path)
@@ -727,9 +719,7 @@ class Grammar(object):
                         self.tag_dicts[tag][word] = float(prob)
                     except:
                         sys.stderr.write("error inserting {} in the tag dictionary {}\n"
-                                .format(fields, tag))
-
-
+                                         .format(fields, tag))
 
     @classmethod
     def from_files(cls, path):
