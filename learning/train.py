@@ -56,7 +56,7 @@ def new_wordnet_instance():
 def tally(password_file, lowercase=True):
     """Return a Counter for passwords."""
     pwditer = (line.rstrip('\n').lower() for line in password_file
-               if not re.fullmatch('\s+', line))
+               if not re.fullmatch(r'\s+', line))
 
     return Counter(pwditer)
 
@@ -538,6 +538,7 @@ def train_grammar(password_file, outfolder, tagtype='backoff',
 
     with Timer("counting, chunking and POS tagging", log):
         passwords = tally_chunk_tag(password_file, num_workers)
+    # print(passwords)
 
     # Train tree cut models
 

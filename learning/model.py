@@ -244,7 +244,7 @@ class GrammarTagger(object):
         if tagtype == 'pos':
             tag = self._tag_pos(string, pos)
         elif tagtype == 'backoff':
-            tag = self._tag_semantic_backoff_pos(string, pos, synset)
+            tag = self.tag_semantic_backoff_pos(string, pos, synset)
         elif tagtype == 'pos_semantic':
             tag = self._tag_pos_semantic(string, pos, synset)
 
@@ -272,7 +272,7 @@ class GrammarTagger(object):
         else:
             return pos
 
-    def _tag_semantic_backoff_pos(self, string, pos, synset):
+    def tag_semantic_backoff_pos(self, string, pos, synset):
         """  Returns a  list of  tags  containing  EITHER  semantic  OR syntactic
         (part-of-speech) symbols. If the chunk is a proper noun, returns either
         month, fname, mname, surname, city or country, as suitable.
@@ -690,6 +690,8 @@ class Grammar(object):
         for tag in tags.keys():
             with open(os.path.join(path, 'nonterminals', str(tag) + '.txt'), 'w+') as f:
                 for lemma, p in tags[tag].most_common():
+                    if str(tag) == "fname":
+                        print("{}\t{}\t{}".format(str(tag), lemma, p))
                     f.write("{}\t{}\n".format(lemma, p))
 
         self_filepath = os.path.join(path, 'grammar.pickle')

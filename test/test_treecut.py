@@ -1,29 +1,30 @@
 # %cd test
 from context import _li_abe, \
-    li_abe, WordNetTreeNode, WordNetTree, DefaultTree,\
+    li_abe, WordNetTreeNode, WordNetTree, DefaultTree, \
     MleEstimator, LaplaceEstimator, DepthFirstIterator
 
 import pickle
+
 
 def test_description_length():
     # --------------------------------------------------------
     # Comparing the results with Table 4 of Li & Abe (1998).
     # --------------------------------------------------------
-    cut1  = [('ANIMAL', 10, 7)]
-    cut2  = [('BIRD', 8, 4), ('INSECT', 2, 3)]
-    cut3  = [('BIRD', 8, 4), ('bug', 0, 1), ('bee', 2, 1), ('insect', 0, 1)]
-    cut4  = [('swallow', 0, 1), ('crow', 2, 1), ('eagle', 2, 1), ('bird', 4, 1), ('INSECT', 2, 3)]
-    cut5  = [('swallow', 0, 1), ('crow', 2, 1), ('eagle', 2, 1), ('bird', 4, 1),
-             ('bug', 0, 1), ('bee', 2, 1), ('insect', 0, 1)]
+    cut1 = [('ANIMAL', 10, 7)]
+    cut2 = [('BIRD', 8, 4), ('INSECT', 2, 3)]
+    cut3 = [('BIRD', 8, 4), ('bug', 0, 1), ('bee', 2, 1), ('insect', 0, 1)]
+    cut4 = [('swallow', 0, 1), ('crow', 2, 1), ('eagle', 2, 1), ('bird', 4, 1), ('INSECT', 2, 3)]
+    cut5 = [('swallow', 0, 1), ('crow', 2, 1), ('eagle', 2, 1), ('bird', 4, 1),
+            ('bug', 0, 1), ('bee', 2, 1), ('insect', 0, 1)]
 
     cuts = [cut1, cut2, cut3, cut4, cut5]
-    true_pdl = [    0,  1.66,  4.98,  6.64,  9.97]
+    true_pdl = [0, 1.66, 4.98, 6.64, 9.97]
     true_ddl = [28.07, 26.39, 23.22, 22.39, 19.22]
-    true_dl  = [pdl + ddl for pdl, ddl in zip(true_pdl, true_ddl)]
+    true_dl = [pdl + ddl for pdl, ddl in zip(true_pdl, true_ddl)]
 
     test_pdl = []
     test_ddl = []
-    test_dl  = []
+    test_dl = []
 
     for cut in cuts:
         _cut = []
@@ -74,8 +75,8 @@ def test_dl_with_nodes():
     mle = MleEstimator(ANIMAL.value)
     laplace = LaplaceEstimator(ANIMAL.value, ANIMAL.leaf_count, 1)
     assert mle.probability(eagle) == 0.2
-    assert laplace.probability(eagle) == 3/17
-    assert laplace.probability(BIRD) == 12/17
+    assert laplace.probability(eagle) == 3 / 17
+    assert laplace.probability(BIRD) == 12 / 17
 
     total_prob = 0
     for node in ANIMAL.flat():
@@ -90,12 +91,12 @@ def test_dl_with_nodes():
 
 
 def test_laplace_estimator():
-    cut1  = [('ANIMAL', 10, 7)]
-    cut2  = [('BIRD', 8, 4), ('INSECT', 2, 3)]
-    cut3  = [('BIRD', 8, 4), ('bug', 0, 1), ('bee', 2, 1), ('insect', 0, 1)]
-    cut4  = [('swallow', 0, 1), ('crow', 2, 1), ('eagle', 2, 1), ('bird', 4, 1), ('INSECT', 2, 3)]
-    cut5  = [('swallow', 0, 1), ('crow', 2, 1), ('eagle', 2, 1), ('bird', 4, 1),
-             ('bug', 0, 1), ('bee', 2, 1), ('insect', 0, 1)]
+    cut1 = [('ANIMAL', 10, 7)]
+    cut2 = [('BIRD', 8, 4), ('INSECT', 2, 3)]
+    cut3 = [('BIRD', 8, 4), ('bug', 0, 1), ('bee', 2, 1), ('insect', 0, 1)]
+    cut4 = [('swallow', 0, 1), ('crow', 2, 1), ('eagle', 2, 1), ('bird', 4, 1), ('INSECT', 2, 3)]
+    cut5 = [('swallow', 0, 1), ('crow', 2, 1), ('eagle', 2, 1), ('bird', 4, 1),
+            ('bug', 0, 1), ('bee', 2, 1), ('insect', 0, 1)]
 
     cuts = [cut1, cut2, cut3, cut4, cut5]
 
@@ -113,7 +114,6 @@ def test_laplace_estimator():
         print(_li_abe.compute_ddl(_cut, 10, laplace))
         print(_li_abe.compute_dl(_cut, 10, laplace))
         print('---------')
-
 
 # def test_tree_pickling():
 #     ANIMAL = WordNetTreeNode('ANIMAL')

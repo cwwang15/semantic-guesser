@@ -1,28 +1,22 @@
 # %cd semantic-guesser-lite/
 
-from nltk.corpus import wordnet as wn
-from learning.train import getchunks, pos_tag, synset
-from learning import model
-from learning.pos import ExhaustiveTagger, BackoffTagger
-from learning.tagset_conversion import TagsetConverter
-from functools import reduce
-from itertools import chain
-
-import pickle
-import time
-import functools
-import itertools
 import argparse
 import configparser
-
-from wordsegment import Segmenter
+import functools
+import pickle
+import re
+import sys
 from collections import deque
+from itertools import chain
 from pathlib import Path
 
-import sys
-import re
-
 import pandas as pd
+from nltk.corpus import wordnet as wn
+from wordsegment import Segmenter
+
+from learning import model
+from learning.pos import ExhaustiveTagger
+from learning.tagset_conversion import TagsetConverter
 
 segmenter = Segmenter()
 segmenter.load()
@@ -39,25 +33,25 @@ def product(list_a, list_b):
 
 def segment_all(word, segmenter, vocab=None):
     # an optional filter for word splits:
-    def isgood(seg):
+    def is_good(_seg):
         good = True
-        if seg[0] not in vocab: good = False
+        if _seg[0] not in vocab: good = False
         # check if it a number sequence was split
-        if seg[0][-1].isdigit() and seg[1] and seg[1][0].isdigit(): good = False
+        if _seg[0][-1].isdigit() and _seg[1] and _seg[1][0].isdigit(): good = False
 
         return good
 
     # disable filtering with identity filter
-    # isgood = lambda x: x
+    # is_good = lambda x: x
 
-    segs = deque(filter(isgood, segmenter.divide(word)))
+    segs = deque(filter(is_good, segmenter.divide(word)))
 
     results = [(word,)]
 
     while len(segs) > 0:
         seg = segs.popleft()
         tail = seg[-1]
-        newsplits = filter(isgood, segmenter.divide(tail))
+        newsplits = filter(is_good, segmenter.divide(tail))
 
         for newsplit in newsplits:
             if newsplit[1] == '':  # success!
@@ -158,7 +152,7 @@ class GrammarTable():
         records = []
 
         for i, struct in enumerate(grammar.base_structures.keys()):
-            tags = re.findall("[\w\.]+", struct)
+            tags = re.findall(r"[\w.]+", struct)
             for j, tag in enumerate(tags):
                 records.append((i, tag, j))
 
@@ -177,7 +171,7 @@ class BaseStructChecker():
         self.cache = set()
 
         for i, struct in enumerate(grammar.base_structures.keys()):
-            tags = re.findall("[\w\-\'\.]+", struct)
+            tags = re.findall(r"[\w\-\'.]+", struct)
             acc = ''
             for tag in tags:
                 acc += '(' + tag + ')'
@@ -203,7 +197,7 @@ class GrammarGraph():
         self._next_node_id = 0
 
         for struct in grammar.base_structures.keys():
-            tags = re.findall("[\w\.]+", struct)
+            tags = re.findall(r"[\w.]+", struct)
             tags.insert(0, '^')
             tags.append('$')
             for i, (tag1, tag2) in enumerate(zip(tags[:-1], tags[1:])):
@@ -365,13 +359,13 @@ def score(passwords, grammar, tc_nouns,
 # %%------------------------------------------------------------------
 
 
-def save_progress(session_name, n_processed, completed=False):
+def save_progress(_session_name, _n_processed, _completed=False):
     progress_file = configparser.ConfigParser()
     progress_file['LOG'] = {
-        'n_processed': n_processed,
-        'completed': completed
+        'n_processed': _n_processed,
+        'completed': _completed
     }
-    session_file = session_name + '.tmp'
+    session_file = _session_name + '.tmp'
     with open(session_file, 'w') as f:
         progress_file.write(f)
 
@@ -385,13 +379,14 @@ def load_progress(session_name):
 
 
 def options():
-    parser = argparse.ArgumentParser(description=('Find if passwords '
-                                                  'can be produced (guessed) by the grammar. By default, accepts only '
-                                                  'exact matches (lowercase passwords). Optionally, it can accept uppercase, '
-                                                  'camel case, and capitalized strings. These '
-                                                  'options can be used when case modification strategies are '
-                                                  'used in guess generation. '
-                                                  'This code assumes the grammar has only lowercase terminals.'))
+    parser = argparse.ArgumentParser(
+        description=('Find if passwords '
+                     'can be produced (guessed) by the grammar. By default, accepts only '
+                     'exact matches (lowercase passwords). Optionally, it can accept uppercase, '
+                     'camel case, and capitalized strings. These '
+                     'options can be used when case modification strategies are '
+                     'used in guess generation. '
+                     'This code assumes the grammar has only lowercase terminals.'))
     parser.add_argument('grammar_dir')
     parser.add_argument('passwords',
                         nargs='?',
@@ -440,6 +435,7 @@ if __name__ == '__main__':
     n_processed = skip
     completed = False
 
+    # noinspection PyBroadException
     try:
         for password, struct, split, prob in score(passwords, grammar,
                                                    tc_nouns, tc_verbs, postagger, grammar.get_vocab()):
@@ -467,7 +463,7 @@ if __name__ == '__main__':
                 save_progress(session_name, n_processed)
 
         completed = True
-    except:
+    except BaseException:
         pass
     finally:
         if session_name:

@@ -15,6 +15,8 @@ def test_backoff_tagger():
 
     for i in range(len(tags2)):
         assert tags1[i][1] == tags2[i][1]
+    print("tags1: ", tags1)
+    print("tags2: ", tags2)
 
 
 def test_tag_random_string():
@@ -53,5 +55,5 @@ def test_chunk_and_pos():
 
 
 test_backoff_tagger()
-test_tag_random_string()
-test_chunk_and_pos()
+# test_tag_random_string()
+# test_chunk_and_pos()

@@ -5,11 +5,13 @@ import argparse
 
 from learning import model
 
+
 def options():
     parser = argparse.ArgumentParser()
     parser.add_argument('N', type=int, default=1000)
     parser.add_argument('grammar_dir')
     return parser.parse_args()
+
 
 if __name__ == '__main__':
     opts = options()
