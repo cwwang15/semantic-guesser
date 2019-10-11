@@ -20,12 +20,9 @@ def generate_grammar(password_file, output_folder):
 
 
 def exec_sample(grammar_dir, sample_file, sample_size=10000):
-    grammar = model.Grammar.from_files(grammar_dir)
-    fout = open(sample_file, "w")
-    for password, base_struct, p in grammar.sample(sample_size):
-        fout.write("{}\t{}\n".format(password, p))
-    fout.flush()
-    fout.close()
+    cmd = "python -m guessing.sample %d %s > %s" % (sample_size, grammar_dir, sample_file)
+    result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+    result.communicate()
 
 
 def exec_score(path_to_grammar, sample_file, scored_sample_file):
@@ -39,7 +36,17 @@ def exec_score(path_to_grammar, sample_file, scored_sample_file):
 spliter = chr(3)
 
 
-def exec_strength(scored_sample_file, scored_test_file, monte_carlo_result_file):
+def exec_strength(sample_file, scored_password_file, monte_carlo_result_file):
+    cmd = "python -m guessing.strength %s %s > %s" \
+          % (sample_file, scored_password_file, monte_carlo_result_file)
+    result = subprocess.Popen(
+        cmd, shell=True, stdout=subprocess.PIPE
+    )
+    result.communicate()
+    pass
+
+
+def __exec_strength(scored_sample_file, scored_test_file, monte_carlo_result_file):
     fin_scored_sample = open(scored_sample_file, "r")
     sample = []
     for line in fin_scored_sample:
@@ -80,7 +87,7 @@ def generate_guess_crack(monte_carlo_result_filename, guess_crack_filename):
     for row in fin:
         try:
             row = row.strip("\r\n")
-            prob_col.append(int(float(row.split(spliter)[-1])))
+            prob_col.append(int(float(row.split("\t")[-1])))
         except ValueError:
             print("row: ", row, ", row[1]: ", row[1])
             pass
@@ -96,16 +103,19 @@ def generate_guess_crack(monte_carlo_result_filename, guess_crack_filename):
 
 
 if __name__ == "__main__":
-    _password_file = "./util/train.txt"
-    _path_to_grammar = "./models/rockyou-all"
+    _password_file = "/home/chaun/Codes/Python/semantic_guesser/models/rockyou_14_30/train.txt"
+    _path_to_grammar = "./models/rockyou-14-30"
     _sample_file = os.path.join(_path_to_grammar, "sample.txt")
     _scored_sample_file = os.path.join(_path_to_grammar, "scored_sample.txt")
-    _test_file = "./util/test.txt"
+    _test_file = "/home/chaun/Codes/Python/semantic_guesser/models/rockyou_14_30/test.txt"
     _scored_test_file = os.path.join(_path_to_grammar, "scored_test.txt")
     _result_file = os.path.join(_path_to_grammar, "result.txt")
     _guess_crack_file = os.path.join(_path_to_grammar, "guess_crack.txt")
+    _sample_no_prob_file = os.path.join(_path_to_grammar, "samples.txt")
+    _sample_scored_file = os.path.join(_path_to_grammar, "samples.scored.txt")
+    # exec_score(_path_to_grammar, _sample_no_prob_file, _sample_scored_file)
     # generate_grammar(_password_file, _path_to_grammar)
-    # exec_sample(_path_to_grammar, _sample_file)
-    # exec_score(_path_to_grammar, _test_file, _scored_test_file)
-    # exec_strength(_sample_file, _scored_test_file, _result_file)
+    # exec_sample(_path_to_grammar, _sample_file, sample_size=100000)
+    exec_score(_path_to_grammar, _test_file, _scored_test_file)
+    exec_strength(_sample_file, _scored_test_file, _result_file)
     generate_guess_crack(_result_file, _guess_crack_file)

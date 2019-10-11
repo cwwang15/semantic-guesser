@@ -138,7 +138,7 @@ def main():
 
         # find bisector (index where elements should be inserted to maintain order)
         # invert Dellamico's 3.2 instruction since our array is in ascending order
-        bisector = sample['p'].searchsorted(p, side='left')[0]  # note left
+        bisector = sample['p'].searchsorted(p, side='left')  # note left
 
         bisector = min(max(bisector + 1, 0), n - 1)  # index of the lowest prob. higher than p
 

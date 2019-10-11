@@ -460,6 +460,7 @@ class Grammar(object):
                 self.base_structures[base_struct] += count
                 self.counter += count
             for tag, terminals in tag_results.items():
+                # log.info("tag: %s" % tag)
                 for string, count in terminals.items():
                     self.tag_dicts[tag][string] += count
             i += 1
@@ -534,7 +535,7 @@ class Grammar(object):
             outcome = ''  # one sampling outcome
             outcome_prob = base_struct_probs[i]
 
-            for tag in re.findall('\(([^\(\)]+)\)', base_struct):
+            for tag in re.findall(r'\(([^()]+)\)', base_struct):
                 pdist = tag2probs[tag]
                 j = np.random.choice(len(pdist), replace=True, p=pdist)
                 outcome += tag2words[tag][j]
