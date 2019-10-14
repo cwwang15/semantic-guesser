@@ -691,8 +691,8 @@ class Grammar(object):
         for tag in tags.keys():
             with open(os.path.join(path, 'nonterminals', str(tag) + '.txt'), 'w+') as f:
                 for lemma, p in tags[tag].most_common():
-                    if str(tag) == "fname":
-                        print("{}\t{}\t{}".format(str(tag), lemma, p))
+                    # if str(tag) == "fname":
+                    #     print("{}\t{}\t{}".format(str(tag), lemma, p))
                     f.write("{}\t{}\n".format(lemma, p))
 
         self_filepath = os.path.join(path, 'grammar.pickle')
