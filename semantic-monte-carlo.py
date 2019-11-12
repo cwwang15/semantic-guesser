@@ -5,6 +5,7 @@ import math
 import os
 import subprocess
 import sys
+import argparse
 
 import numpy
 
@@ -122,24 +123,28 @@ def generate_guess_crack(monte_carlo_result_filename, guess_crack_filename):
 
 
 if __name__ == "__main__":
-    _tag = "../models/rockyou-combine-01-255/word2vec-to-semantic"
-    _abs_dir = sys.path[0]
-    _password_file = "/home/chaun/Documents/Passwords/RockYou/rockyou_new.txt"
-    _path_to_grammar = os.path.join(_abs_dir, _tag)
+    parser = argparse.ArgumentParser(description="Semantic Guesser: Monte Carlo Simulation")
+    parser.add_argument("--pwd-file", "-p", type=str)
+    parser.add_argument("--test-file", "-t", type=str)
+    parser.add_argument("--grammar-dir", "-d", type=str)
+    parser.add_argument("--use-trained-grammar", "-s", action="store_true")
+    args = parser.parse_args()
+    print(args.grammar_dir)
+    _path_to_grammar = args.grammar_dir
     _sample_file = os.path.join(_path_to_grammar, "sample.txt")
-    _test_file = "/home/cw/Documents/Passwords/RockYou/rockyou-1-255/test.txt"
     _scored_test_file = os.path.join(_path_to_grammar, "scored_test.txt")
     _strength_file = os.path.join(_path_to_grammar, "pwd_strength.txt")
     _guess_crack_file = os.path.join(_path_to_grammar, "guess_crack.txt")
     _curve_filename = os.path.join(_path_to_grammar, "guess_crack")
-    logging.info("Generating grammar...")
-    # generate_grammar(_password_file, _path_to_grammar)
-    logging.info("Generating grammar done")
+    if not args.use_trained_grammar:
+        logging.info("Generating grammar...")
+        generate_grammar(args.pwd_file, _path_to_grammar)
+        logging.info("Generating grammar done")
     logging.info("Generating samples...")
     exec_sample(_path_to_grammar, _sample_file, sample_size=100000)
     logging.info("Generating samples done")
     logging.info("Scoring test set...")
-    # exec_score(_path_to_grammar, _test_file, _scored_test_file)
+    exec_score(_path_to_grammar, args.test_file, _scored_test_file)
     logging.info("Scoring test done")
     logging.info("Evaluating strength...")
     __exec_strength(_sample_file, _scored_test_file, _strength_file)
@@ -147,6 +152,6 @@ if __name__ == "__main__":
     logging.info("Generating guess crack pair...")
     generate_guess_crack(_strength_file, _guess_crack_file)
     logger.info("Generating guess crack pair done")
-    logger.info("Drawing guess crack curve...")
+    # logger.info("Drawing guess crack curve...")
     # draw_guess_crack_curve(_guess_crack_file, _curve_filename, _tag, _test_file)
-    logger.info("Drawing guess crack curve done")
+    # logger.info("Drawing guess crack curve done")
