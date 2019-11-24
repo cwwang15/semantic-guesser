@@ -35,6 +35,8 @@ class Guess {
         std::vector<std::vector<Terminal>::iterator> terminals;
         unsigned pivot;
 };
+std::string guesses_file;
+ofstream fout;
 //testing
 std::set<std::string> gaps = {"number", "num+special", "special", "char", "all_mixed"};
 std::vector<Rule> rules;
@@ -353,12 +355,12 @@ int run_deadbeat(bool mangle, double limit, int min_length, double min_prob, boo
                 cerr << "queue size: "   << (int)queue.size() << "\n";
             }
 
-            cout << guess_string ; // output guess
+            fout << guess_string ; // output guess
             if (verbose){
-            	cout << "\t" << curr_guess_p; // output probability
-            	cout << "\t" << curr_guess.rule->str; //output rule
+            	fout << "\t" << curr_guess_p; // output probability
+            	fout << "\t" << curr_guess.rule->str; //output rule
             }
-            cout << "\n";
+            fout << std::endl;
 
 
             // exit when reach the limit of guesses
@@ -456,12 +458,12 @@ int run_next(bool mangle, double limit, int min_length, double min_prob, bool ve
                 cerr << "queue size: "   << (int)queue.size() << "\n";
             }
 
-            cout << guess_string; // output guess
+            fout << guess_string; // output guess
             if (verbose){
-            	cout << "\t" << probability(curr_guess); // output probability
-            	cout << "\t" << curr_guess.rule->str; //output rule
+            	fout << "\t" << probability(curr_guess); // output probability
+            	fout << "\t" << curr_guess.rule->str; //output rule
             }
-            cout << "\n";
+            fout << std::endl;
 
 
             // exit when reach the limit of guesses
@@ -515,6 +517,7 @@ optparse::Values options(int argc, char *argv[]){
     parser.add_option("-l", "--length").help("minimum length of the guesses").type("int")
                                 .set_default(0);
     parser.add_option("-p", "--prob").type("double").help("sets a minimum guess probability threshold").set_default(0);
+    parser.add_option("-o", "--guessesfile").help("file to store guesses").set_default("guesses.txt");
     
     parser.add_option("-g", "--grammar").set_default("").help("location of the grammar");
     parser.add_option("-v", "--verbose").action("store_true");
@@ -526,6 +529,8 @@ optparse::Values options(int argc, char *argv[]){
 int main(int argc, char *argv[]) {
     optparse::Values opts = options(argc, argv);
     std::string grammar_path = opts["grammar"];
+    guesses_file = opts["guessesfile"];
+    fout.open(guesses_file.c_str());
     if (grammar_path != ""){
         if (grammar_path.back() != '/'){
             grammar_path.append("/");
@@ -536,7 +541,6 @@ int main(int argc, char *argv[]) {
 
     load_grammar(grammar_path);
 //    double *bounds = prob_bounds();
-//    cout << bounds[0] << '\t' << bounds[1] << '\n';
 
     if (strcmp(algo, "next") == 0)
     	return run_next((bool)opts.get("mangle"), (double) opts.get("limit"), (int)opts.get("length"),

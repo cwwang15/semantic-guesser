@@ -1,3 +1,5 @@
+#!/usr/local/bin/venv4semantic/bin/python
+# coding=utf-8
 import logging
 
 import learning.train as train
