@@ -15,6 +15,7 @@ import numpy as np
 import pickle
 import math
 import multiprocessing
+from util.digits_pattern import digits, DigitsPattern
 
 log = logging.getLogger(__name__)
 
@@ -355,6 +356,11 @@ class GrammarTagger(object):
 
         if re.fullmatch('\d+', string):
             category = 'number'
+            if string in digits.digit2pattern_cache:
+                got_pattern = digits.digit2pattern_cache.get(string)
+                if got_pattern != DigitsPattern.default:
+                    category = got_pattern.name
+                    # return category
         elif re.fullmatch('[^a-zA-Z0-9]+', string):
             category = 'special'
         elif re.fullmatch('[a-zA-z]+', string):

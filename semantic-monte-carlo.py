@@ -13,17 +13,19 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 logger = logging.getLogger(__name__)
 
 
-def generate_grammar(password_file, output_folder):
-    cmd = "python semantic-train.py %s %s -vv" % (password_file, output_folder)
-    logger.info(cmd)
+def generate_grammar(password_file, output_folder, number_split=False):
+    cmd = "python semantic-train.py %s %s %s -vv" % (
+        password_file, output_folder, "--number_split" if number_split else "")
+    logger.info("generate grammar: %s" % cmd)
     """ may Out of Memory Error happen, so run this cmd in bash! """
-    # _grammar = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-    # _grammar.communicate()
+    _grammar = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+    _grammar.communicate()
     pass
 
 
 def exec_sample(grammar_dir, sample_file, sample_size=10000):
     cmd = "python -m guessing.sample %d %s > %s" % (sample_size, grammar_dir, sample_file)
+    logger.info("exec_sample: %s" % cmd)
     result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     result.communicate()
 
@@ -31,6 +33,7 @@ def exec_sample(grammar_dir, sample_file, sample_size=10000):
 def exec_score(path_to_grammar, sample_file, scored_sample_file):
     cmd = "python -m guessing.score %s %s > %s --uppercase --camelcase --capitalized" \
           % (path_to_grammar, sample_file, scored_sample_file)
+    logger.info("exec_score: %s" % cmd)
     _score = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE)
     _score.communicate()
@@ -42,7 +45,7 @@ spliter = chr(3)
 def exec_strength(sample_file, scored_password_file, monte_carlo_result_file):
     cmd = "python -m guessing.strength %s %s > %s" \
           % (sample_file, scored_password_file, monte_carlo_result_file)
-    print(cmd)
+    logger.info("exec strength: %s" % cmd)
     result = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE
     )
@@ -67,6 +70,9 @@ def draw_guess_crack_curve(monte_carlo_result_file, curve_name, dataset, test_se
 
 
 def __exec_strength(scored_sample_file, scored_test_file, monte_carlo_result_file):
+    cmd = "python -m guessing.strength %s %s > %s" \
+          % (scored_sample_file, scored_test_file, monte_carlo_result_file)
+    logger.info("exec strength: %s" % cmd)
     fin_scored_sample = open(scored_sample_file, "r")
     sample = []
     for line in fin_scored_sample:
@@ -128,6 +134,7 @@ if __name__ == "__main__":
     parser.add_argument("--test-file", "-t", type=str)
     parser.add_argument("--grammar-dir", "-d", type=str)
     parser.add_argument("--use-trained-grammar", "-s", action="store_true")
+    parser.add_argument("--number_split", '-n', action="store_true", help="only if you want to split numbers")
     args = parser.parse_args()
     print(args.grammar_dir)
     _path_to_grammar = args.grammar_dir
@@ -138,7 +145,7 @@ if __name__ == "__main__":
     _curve_filename = os.path.join(_path_to_grammar, "guess_crack")
     if not args.use_trained_grammar:
         logging.info("Generating grammar...")
-        generate_grammar(args.pwd_file, _path_to_grammar)
+        generate_grammar(args.pwd_file, _path_to_grammar, args.number_split)
         logging.info("Generating grammar done")
     logging.info("Generating samples...")
     exec_sample(_path_to_grammar, _sample_file, sample_size=100000)

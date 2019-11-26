@@ -27,8 +27,8 @@ from learning.tagset_conversion import TagsetConverter
 from learning.tree.wordnet import IndexedWordNetTree
 from learning.model import TreeCutModel, Grammar, GrammarTagger
 
-from pattern.en import pluralize, lexeme
-
+from pattern.text.en import pluralize, lexeme
+from util.digits_pattern import digits
 from misc.util import Timer
 
 # load global resources
@@ -71,6 +71,9 @@ def getchunks(password):
         if chunk[0].isalpha() and len(chunk) > 1:
             words = ws.segment(chunk)
             chunks.extend(words)
+        elif chunk[0].isdigit():
+            segments = digits.digit2chunk.get(chunk, [chunk])
+            chunks.extend(segments)
         else:
             chunks.append(chunk)
 
@@ -584,4 +587,5 @@ def options():
                         choices=['pos_semantic', 'pos', 'backoff', 'word'])
     parser.add_argument('-w', '--num_workers', type=int, default=2,
                         help="number of cores available for parallel work")
+    parser.add_argument('-n', '--number_split', action='store_true')
     return parser.parse_args()

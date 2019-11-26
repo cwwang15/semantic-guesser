@@ -3,6 +3,7 @@
 import argparse
 import configparser
 import functools
+import os
 import pickle
 import re
 import sys
@@ -17,6 +18,7 @@ from wordsegment import Segmenter
 from learning import model
 from learning.pos import ExhaustiveTagger
 from learning.tagset_conversion import TagsetConverter
+from util.digits_pattern import digits
 
 segmenter = Segmenter()
 segmenter.load()
@@ -298,13 +300,15 @@ def score(passwords, grammar, tc_nouns,
             yield last_yield
             continue
 
-        if password.isdigit():
-            base_struct = 'number' + str(len(password))
-            try:
-                yield (password, base_struct, base_struct_dist[base_struct])
-                continue
-            except:
-                pass
+        # if password.isdigit():
+        #     base_struct = 'number' + str(len(password))
+        #     # noinspection PyBroadException
+        #     try:
+        #         yield (password, base_struct, base_struct_dist[base_struct])
+        #         continue
+        #     except Exception:
+        #         print(sys.exc_info()[0:2])
+        #         pass
 
         segs = deque()
         root = PrefixTreeNode('', tag=None, p=1)
@@ -325,30 +329,35 @@ def score(passwords, grammar, tc_nouns,
                 # check if a number sequence was split
                 if newsplit[0][-1].isdigit() and \
                         newsplit[1] and newsplit[1][0].isdigit(): continue
+                if newsplit[0].isdigit():
+                    _, chunks = digits.which_pattern(newsplit[0])
+                else:
+                    chunks = [newsplit[0]]
+                    pass
+                for chunk in chunks:
+                    for tag, p in memotagger.get_tags(chunk.lower()):
+                        # if this tag never occurs after the head tag in the grammar
+                        # then ignore this split
+                        bs = head.base_struct + '(' + tag + ')'
 
-                for tag, p in memotagger.get_tags(newsplit[0].lower()):
-                    # if this tag never occurs after the head tag in the grammar
-                    # then ignore this split
-                    bs = head.base_struct + '(' + tag + ')'
+                        if not checker.exists(bs):
+                            continue
 
-                    if not checker.exists(bs):
-                        continue
+                        newhead = PrefixTreeNode(newsplit[0], tag=tag, p=p)
+                        head.append_child(newhead)
 
-                    newhead = PrefixTreeNode(newsplit[0], tag=tag, p=p)
-                    head.append_child(newhead)
-
-                    if newsplit[1] == '':  # success!
-                        if newhead.base_struct in base_struct_dist:
-                            p = newhead.sequence_p * base_struct_dist[newhead.base_struct]
-                            if p > max_p:
-                                max_p = p
-                                max_base_struct = newhead.base_struct
-                                max_segmentation = [node.word for node in newhead.prefix_path()]
-                                max_segmentation.reverse()
-                        # leaves.append(newhead)
-                    else:
-                        if newhead.sequence_p > max_p:
-                            segs.append((newhead, newsplit[1]))
+                        if newsplit[1] == '':  # success!
+                            if newhead.base_struct in base_struct_dist:
+                                p = newhead.sequence_p * base_struct_dist[newhead.base_struct]
+                                if p > max_p:
+                                    max_p = p
+                                    max_base_struct = newhead.base_struct
+                                    max_segmentation = [node.word for node in newhead.prefix_path()]
+                                    max_segmentation.reverse()
+                            # leaves.append(newhead)
+                        else:
+                            if newhead.sequence_p > max_p:
+                                segs.append((newhead, newsplit[1]))
 
         last_password = password
         last_yield = (password, max_base_struct, max_segmentation, max_p)
@@ -423,7 +432,7 @@ if __name__ == '__main__':
     tc_nouns = pickle.load(open(grammar_dir / 'noun_treecut.pickle', 'rb'))
     tc_verbs = pickle.load(open(grammar_dir / 'verb_treecut.pickle', 'rb'))
     grammar = model.Grammar.from_files(opts.grammar_dir)
-
+    digits.from_pickle(os.path.join(grammar_dir, "number_split.pickle"))
     skip = 0
     if session_name:
         progress = load_progress(session_name)
