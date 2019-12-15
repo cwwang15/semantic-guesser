@@ -1,0 +1,2 @@
+nicotine	0.8
+atropine	0.2

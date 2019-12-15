@@ -1,0 +1,4 @@
+necromancer	0.5
+sorcerer	0.2
+enchanter	0.2
+sorceress	0.1

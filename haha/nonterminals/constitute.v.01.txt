@@ -1,0 +1,5 @@
+pose	0.6875
+poses	0.125
+posing	0.0625
+composed	0.0625
+compose	0.0625

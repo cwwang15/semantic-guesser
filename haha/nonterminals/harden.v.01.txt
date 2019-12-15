@@ -1,0 +1,2 @@
+harden	0.75
+HARDEN	0.25

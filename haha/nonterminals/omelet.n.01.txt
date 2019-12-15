@@ -1,0 +1,2 @@
+omelets	0.5
+omelet	0.5

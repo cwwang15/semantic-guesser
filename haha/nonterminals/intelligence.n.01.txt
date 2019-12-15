@@ -1,0 +1,4 @@
+guile	0.5
+wits	0.3125
+intellect	0.125
+intelligence	0.0625

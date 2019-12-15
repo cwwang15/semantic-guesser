@@ -1,0 +1,2 @@
+carriage	0.6
+boxcar	0.4

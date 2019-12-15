@@ -1,0 +1,2 @@
+pinball	0.8
+charades	0.2

@@ -1,0 +1,2 @@
+dummy	0.6
+dummies	0.4

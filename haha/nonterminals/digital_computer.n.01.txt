@@ -1,0 +1,5 @@
+laptop	0.45
+pcs	0.3
+laptops	0.1
+Laptop	0.1
+supercomputer	0.05

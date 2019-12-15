@@ -1,0 +1,3 @@
+weasel	0.8125
+WEASEL	0.125
+weasels	0.0625

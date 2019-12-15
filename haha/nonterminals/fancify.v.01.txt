@@ -1,0 +1,2 @@
+bathe	0.5
+shaving	0.5

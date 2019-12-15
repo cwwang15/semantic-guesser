@@ -1,0 +1,3 @@
+peacemaker	0.5
+conciliator	0.25
+matchmaker	0.25

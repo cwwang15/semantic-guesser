@@ -1,0 +1,2 @@
+wrists	0.5
+ankle	0.5

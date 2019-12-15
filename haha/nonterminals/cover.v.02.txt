@@ -1,0 +1,3 @@
+drowning	0.7
+drowned	0.2
+drown	0.1

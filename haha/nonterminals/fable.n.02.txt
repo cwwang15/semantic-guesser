@@ -1,0 +1,2 @@
+parables	0.5
+parable	0.5

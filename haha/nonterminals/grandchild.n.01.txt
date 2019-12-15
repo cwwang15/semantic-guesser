@@ -1,0 +1,6 @@
+grandchildren	0.48
+grandson	0.2
+granddaughter	0.12
+granddaughters	0.08
+grandsons	0.08
+grandchild	0.04

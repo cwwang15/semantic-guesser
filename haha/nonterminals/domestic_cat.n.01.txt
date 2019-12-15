@@ -1,0 +1,2 @@
+tomcat	0.75
+tabbies	0.25

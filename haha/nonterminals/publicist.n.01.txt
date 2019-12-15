@@ -1,0 +1,4 @@
+publicist	0.4
+adman	0.2
+barkers	0.2
+advertiser	0.2

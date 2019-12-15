@@ -1,0 +1,8 @@
+disguise	0.36
+guise	0.16
+verisimilitude	0.12
+Guise	0.08
+GUISE	0.08
+Semblance	0.08
+DISGUISE	0.08
+semblance	0.04

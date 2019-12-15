@@ -1,0 +1,3 @@
+emergency	0.4
+Climax	0.4
+climax	0.2

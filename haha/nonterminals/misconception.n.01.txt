@@ -1,0 +1,2 @@
+astrology	0.5
+sophism	0.5

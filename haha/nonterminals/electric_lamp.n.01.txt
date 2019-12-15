@@ -1,0 +1,4 @@
+lightbulb	0.4
+flashlight	0.3
+LIGHTBULB	0.2
+lightbulbs	0.1

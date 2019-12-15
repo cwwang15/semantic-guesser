@@ -1,0 +1,2 @@
+couple	0.5
+seamed	0.5

@@ -1,0 +1,3 @@
+cancer	0.775
+CANCER	0.125
+Cancer	0.1

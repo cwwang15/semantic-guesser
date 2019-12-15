@@ -1,0 +1,2 @@
+platypus	0.75
+echidna	0.25

@@ -1,0 +1,3 @@
+diction	0.4
+accent	0.4
+Accent	0.2

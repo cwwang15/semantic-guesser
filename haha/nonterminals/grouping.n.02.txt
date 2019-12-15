@@ -1,0 +1,2 @@
+classification	0.75
+stratification	0.25

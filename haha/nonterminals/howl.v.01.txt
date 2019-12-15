@@ -1,0 +1,3 @@
+howling	0.625
+Howling	0.25
+wailing	0.125

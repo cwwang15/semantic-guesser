@@ -1,0 +1,4 @@
+tavern	0.6
+Pub	0.4
+pubs	0.2
+pub	-0.2

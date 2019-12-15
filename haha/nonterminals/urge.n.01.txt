@@ -1,0 +1,2 @@
+impulse	0.6
+urge	0.4

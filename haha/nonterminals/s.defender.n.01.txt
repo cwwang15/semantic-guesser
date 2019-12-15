@@ -1,0 +1,8 @@
+guardian	0.6375
+defender	0.125
+protector	0.1
+guardians	0.0375
+Guardian	0.0375
+GUARDIAN	0.025
+Defender	0.025
+defenders	0.0125

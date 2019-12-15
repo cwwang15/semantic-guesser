@@ -1,0 +1,2 @@
+petrel	0.5
+goonies	0.5

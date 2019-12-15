@@ -1,0 +1,2 @@
+confessions	0.625
+confession	0.375

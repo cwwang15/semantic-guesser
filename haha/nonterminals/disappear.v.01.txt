@@ -1,0 +1,3 @@
+Vanished	1.0
+disappear	0.5
+vanished	-0.5

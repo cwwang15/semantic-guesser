@@ -1,0 +1,4 @@
+ogre	0.4
+ogres	0.3
+fiends	0.2
+fiend	0.1

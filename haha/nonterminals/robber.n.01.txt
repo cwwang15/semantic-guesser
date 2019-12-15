@@ -1,0 +1,3 @@
+robber	0.4
+robbr	0.4
+robbers	0.2

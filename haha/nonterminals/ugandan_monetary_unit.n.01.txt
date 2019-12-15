@@ -1,0 +1,2 @@
+shilling	0.5
+shillings	0.5

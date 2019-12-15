@@ -1,0 +1,5 @@
+Boredom	0.5
+disappointment	0.25
+ennui	0.25
+letdown	0.25
+boredom	-0.25

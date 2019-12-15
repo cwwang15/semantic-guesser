@@ -1,0 +1,2 @@
+lamed	0.75
+lames	0.25

@@ -1,0 +1,2 @@
+seduction	0.8
+transmission	0.2

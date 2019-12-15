@@ -1,0 +1,2 @@
+liking	0.5
+enchantments	0.5

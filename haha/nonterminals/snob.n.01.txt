@@ -1,0 +1,3 @@
+snob	0.5
+prig	0.375
+snoot	0.125

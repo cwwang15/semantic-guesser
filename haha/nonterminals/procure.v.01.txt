@@ -1,0 +1,2 @@
+secured	0.8
+secures	0.2

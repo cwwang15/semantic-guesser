@@ -1,0 +1,2 @@
+ishtar	0.75
+shamash	0.25

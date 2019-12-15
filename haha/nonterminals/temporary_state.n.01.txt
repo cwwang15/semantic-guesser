@@ -1,0 +1,2 @@
+sobriety	0.5
+frazzle	0.5

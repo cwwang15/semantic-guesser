@@ -1,0 +1,2 @@
+cabanas	0.5
+cabana	0.5

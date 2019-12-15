@@ -1,0 +1,2 @@
+myelin	0.5
+medulla	0.5

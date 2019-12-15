@@ -1,0 +1,5 @@
+pelvis	0.3
+instep	0.3
+SPINE	0.2
+spine	0.1
+girdle	0.1

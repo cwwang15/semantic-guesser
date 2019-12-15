@@ -1,0 +1,2 @@
+windmill	0.8
+windmills	0.2

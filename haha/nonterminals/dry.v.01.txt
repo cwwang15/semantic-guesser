@@ -1,0 +1,5 @@
+DRIED	0.5
+dries	0.25
+parches	0.25
+drys	0.25
+dried	-0.25

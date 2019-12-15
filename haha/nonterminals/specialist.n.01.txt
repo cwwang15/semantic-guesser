@@ -1,0 +1,4 @@
+designer	0.825
+specialist	0.125
+criminologist	0.025
+weatherman	0.025

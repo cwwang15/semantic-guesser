@@ -1,0 +1,3 @@
+brow	0.84
+brows	0.08
+forehead	0.08

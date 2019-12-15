@@ -1,0 +1,2 @@
+chute	0.8
+parachute	0.2

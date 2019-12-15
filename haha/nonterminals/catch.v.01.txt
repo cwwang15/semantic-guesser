@@ -1,0 +1,5 @@
+catch	0.7
+caught	0.125
+Catch	0.075
+catching	0.05
+CATCH	0.05

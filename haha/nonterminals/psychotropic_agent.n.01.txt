@@ -1,0 +1,2 @@
+chlorpromazine	0.75
+tranquilizer	0.25

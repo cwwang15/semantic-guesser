@@ -1,0 +1,4 @@
+challenge	0.25
+challenged	0.25
+brawl	0.25
+bicker	0.25

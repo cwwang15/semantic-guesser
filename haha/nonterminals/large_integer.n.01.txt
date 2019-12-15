@@ -1,0 +1,9 @@
+million	0.375
+megs	0.2
+thousand	0.175
+hundred	0.1
+millions	0.05
+Dozen	0.05
+billion	0.025
+lakh	0.025
+dozen	0.0

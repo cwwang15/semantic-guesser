@@ -1,42 +1,133 @@
-import sys
-import math
-import re
-import logging
-import itertools
-import multiprocessing
 import argparse
-import pickle
+import logging
+import math
+import multiprocessing
 import os
-
-import wordsegment as ws
-import numpy as np
-
+import pickle
+import re
+import sys
 from collections import Counter
 from functools import reduce
 from multiprocessing import Process, Manager
 from multiprocessing.managers import BaseManager
-from importlib import reload
 
+import numpy as np
+import wordsegment as ws
 from nltk.corpus import wordnet as wn
 from nltk.corpus.reader.api import CorpusReader
-from nltk.corpus.util import LazyCorpusLoader
 from nltk.corpus.reader.wordnet import WordNetCorpusReader
+from nltk.corpus.util import LazyCorpusLoader
 
-from learning.pos import BackoffTagger, SpacyTagger, COCATagger
+from learning.model import TreeCutModel, Grammar, GrammarTagger
+from learning.pos import BackoffTagger, COCATagger
 from learning.tagset_conversion import TagsetConverter
 from learning.tree.wordnet import IndexedWordNetTree
-from learning.model import TreeCutModel, Grammar, GrammarTagger
-
-from pattern.en import pluralize, lexeme
-
 from misc.util import Timer
+from pattern.text.en import pluralize, lexeme
 
+import wordninja
+
+wordninja._SPLIT_RE = re.compile(r"([^a-zA-Z0-9'@$!]+)")
+lm = wordninja.LanguageModel(os.path.join(os.path.dirname(__file__), "pwd_words.gz"))
+mixed_grams = re.compile(r"^(?![0-9]+$)(?![a-zA-Z]+$)(?![^a-zA-Z0-9\x00-\x20\x7f]+$)[\x21-\x7e]+")
+fetch_group = re.compile(r"([a-zA-Z]+|[0-9]+|[^\x00-\x20a-zA-Z0-9\x7f]+)")
 # load global resources
 
 log = logging.getLogger(__name__)
 tag_converter = TagsetConverter()
 proper_noun_tags = set(BackoffTagger.proper_noun_tags())
 ws.load()
+
+
+def read_dicts(dict_folder, common_word_tag="wordninja_words"):
+    _grams = {}
+    for root, dirs, files in os.walk(dict_folder):
+        for file in files:
+            with open(os.path.join(root, file), "r") as fin:
+                if file == common_word_tag:
+                    for line in fin:
+                        word = line.strip("\r\n").lower()
+                        _grams[word] = word
+                else:
+                    for line in fin:
+                        word = line.strip("\r\n").lower()
+                        _grams[word] = file
+    return _grams
+
+
+def refactor_split_pwd(split_pwd: list, _grams: dict):
+    previous_tagged = True
+    _tags = []
+    new_split_pwd = []
+    acc = ""
+    for _split in split_pwd:
+        if len(_split) > 1 and _split.lower() in _grams:
+            if not previous_tagged:
+                new_split_pwd.append(acc)
+                acc = ""
+            new_split_pwd.append(_split)
+            previous_tagged = True
+        else:
+            if previous_tagged:
+                acc = ""
+            acc += _split
+            previous_tagged = False
+    if acc != "":
+        new_split_pwd.append(acc)
+    final_split = []
+    for _split in new_split_pwd:
+        if mixed_grams.fullmatch(_split):
+            groups = fetch_group.findall(_split)
+            final_split.extend(groups)
+        else:
+            final_split.append(_split)
+    return final_split
+
+
+def read_variants(filename):
+    variants_dict = {}
+    v2n = {}
+    with open(filename, "r") as fin:
+        for line in fin:
+            word_line, original, str_variants = line.strip("\r\n").split("\t")
+            _variants = eval(str_variants)
+            variants_dict[original] = {k: v for k, v in sorted(_variants.items(), key=lambda x: x[1], reverse=True)}
+            for v in _variants:
+                if len(v) >= 2:
+                    v2n[v] = original
+    return v2n
+
+
+grams = read_dicts(os.path.join(os.path.dirname(__file__), "..", "data", "grams"))
+variants = read_variants(os.path.join(os.path.dirname(__file__), "..", "data", "variants-test"))
+
+
+# changes = {}
+
+
+def personal_word_segment(pwd):
+    words = lm.split(pwd)
+    refactored = refactor_split_pwd(words, grams)
+    changed_list, variants_changes_list = variants2normal(refactored)
+    return changed_list, variants_changes_list
+
+
+def variants2normal(word_split_list):
+    changed_list = []
+    variants_changes_list = []
+    for split_word in word_split_list:
+        word = split_word.lower()
+        if word in variants:
+            original = variants[word]
+            changed_list.append(original)
+            if original == word:
+                continue
+            variants_changes_list.append((original, (word, 1)))
+        else:
+            changed_list.append(word)
+
+    return changed_list, variants_changes_list
+    pass
 
 
 def new_wordnet_instance():
@@ -58,6 +149,12 @@ def tally(password_file, lowercase=True):
     pwditer = (line.rstrip('\n').lower() for line in password_file
                if not re.fullmatch(r'\s+', line))
 
+    return Counter(pwditer)
+
+
+def tally_without_lower(password_file):
+    pwditer = (line.rstrip("\n") for line in password_file
+               if not re.fullmatch(r"\s+", line))
     return Counter(pwditer)
 
 
@@ -299,7 +396,7 @@ def product(list_a, list_b):
 
 
 def tally_chunk_tag(path, num_workers):
-    def do_work(in_queue, out_list):
+    def do_work(in_queue, out_list, variants_changes_list):
         postagger = BackoffTagger.from_pickle()
         blacklist = POSBlacklist()
         postagger.set_wordnet_instance(new_wordnet_instance())
@@ -312,16 +409,23 @@ def tally_chunk_tag(path, num_workers):
                 return
 
             result_buffer = []
+            changes_buffer = []
             for password, count in batch:
 
-                chunks = getchunks(password)
+                # chunks = getchunks(password)
+                chunks, changes = personal_word_segment(password)
                 try:
                     postagged_chunks = pos_tag(chunks, postagger, blacklist)
                 except:
                     log.error("Error: {}".format(chunks))
                     raise
-
+                # for key, val in changes.items():
+                #     if key in variants_changes_list:
+                #         variants_changes_list[key] += val
+                #     else:
+                #         variants_changes_list[key] = val
                 result_buffer.append((postagged_chunks, count))
+                changes_buffer.extend(changes)
                 i += 1
 
                 if i % 100000 == 0:
@@ -330,20 +434,28 @@ def tally_chunk_tag(path, num_workers):
                              .format(process_id, i))
 
             out_list.extend(result_buffer)
+            variants_changes_list.extend(changes_buffer)
+            # for key, val in changes_buffer.items():
+            #     if key in variants_changes_list:
+            #         variants_changes_list[key] += val
+            #     else:
+            #         variants_changes_list[key] = val
 
     manager = Manager()
 
     results = manager.list()
+    _changes = manager.list()
     work = manager.Queue(num_workers)
 
     # start for workers
     pool = []
     for i in range(num_workers):
-        p = Process(target=do_work, args=(work, results))
+        p = Process(target=do_work, args=(work, results, _changes))
         p.start()
         pool.append(p)
 
-    passwords = tally(path).items()
+    # passwords = tally(path).items()
+    passwords = tally_without_lower(path).items()
     buff = []
     for password, count in passwords:
         buff.append((password, count))
@@ -357,7 +469,7 @@ def tally_chunk_tag(path, num_workers):
     for p in pool:
         p.join()
 
-    return results
+    return results, _changes
 
 
 def increment_synset_count(tree, synset, count=1):
@@ -537,11 +649,9 @@ def train_grammar(password_file, outfolder, tagtype='backoff',
     log.info("Counting, chunking and POS tagging... ")
 
     with Timer("counting, chunking and POS tagging", log):
-        passwords = tally_chunk_tag(password_file, num_workers)
-    # print(passwords)
-
+        passwords, variants_changes = tally_chunk_tag(password_file, num_workers)
     # Train tree cut models
-
+    # print(variants_changes)
     log.info("Training tree cut models... ")
 
     with Timer("training tree cut models", log):
@@ -556,8 +666,23 @@ def train_grammar(password_file, outfolder, tagtype='backoff',
 
     with Timer("training grammar", log):
         grammar = fit_grammar(passwords, tagtype, estimator, tcm_n, tcm_v, num_workers)
-
+    final_variants_changes = {}
+    for i in range(10):
+        print(variants_changes[i])
+    for origin, tmp_variants in variants_changes:
+        try:
+            tmp_variant, count = tmp_variants
+            if origin not in final_variants_changes:
+                final_variants_changes[origin] = {}
+            if tmp_variant not in final_variants_changes.get(origin):
+                final_variants_changes[origin][tmp_variant] = 1
+            final_variants_changes[origin][tmp_variant] += 1
+        except ValueError:
+            print(origin, tmp_variants)
+            sys.exit(1)
     log.info("Persisting grammar")
+    print(len(variants_changes))
+    grammar.apply_variants(final_variants_changes)
     grammar.write_to_disk(outfolder)
     noun_filepath = os.path.join(outfolder, 'noun_treecut.pickle')
     verb_filepath = os.path.join(outfolder, 'verb_treecut.pickle')

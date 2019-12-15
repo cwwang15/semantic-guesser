@@ -1,0 +1,6 @@
+WIND	1.2
+Wind	0.8
+winding	0.4
+meander	0.2
+winds	0.2
+wind	-1.8

@@ -1,0 +1,2 @@
+chanty	0.75
+chantey	0.25

@@ -1,0 +1,2 @@
+puddle	0.7
+puddles	0.3

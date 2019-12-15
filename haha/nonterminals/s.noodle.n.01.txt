@@ -1,0 +1,3 @@
+noodle	0.484375
+noodles	0.484375
+Noodle	0.03125

@@ -1,0 +1,2 @@
+Stiff	3.0
+stiff	-2.0

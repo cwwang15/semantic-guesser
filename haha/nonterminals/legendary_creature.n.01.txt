@@ -1,0 +1,2 @@
+yeti	0.5
+doppelganger	0.5

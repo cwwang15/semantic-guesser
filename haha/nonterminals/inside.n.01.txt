@@ -1,0 +1,4 @@
+Inside	0.375
+INSIDE	0.375
+inside	0.125
+midst	0.125

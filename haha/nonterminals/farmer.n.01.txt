@@ -1,0 +1,6 @@
+rancher	0.4375
+farmer	0.375
+planter	0.0625
+farmers	0.0625
+agriculturist	0.03125
+sower	0.03125

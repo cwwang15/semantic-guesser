@@ -1,0 +1,3 @@
+fortune	0.8
+Fortune	0.15
+fortunes	0.05

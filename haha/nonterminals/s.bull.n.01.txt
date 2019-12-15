@@ -1,0 +1,4 @@
+bull	0.77
+bulls	0.16
+BULL	0.04
+Bull	0.03

@@ -1,0 +1,2 @@
+pigeon	0.875
+pigeons	0.125

@@ -1,0 +1,2 @@
+shortcake	0.9375
+shortcakes	0.0625

@@ -1,0 +1,5 @@
+TIME	6.0
+Time	6.0
+tImE	1.0
+timed	0.5
+time	-12.5

@@ -1,0 +1,2 @@
+wither	0.8
+shrink	0.2

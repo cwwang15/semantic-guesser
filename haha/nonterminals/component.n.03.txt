@@ -1,0 +1,6 @@
+ells	0.4
+rams	0.32
+roms	0.08
+pixel	0.08
+Annex	0.08
+annex	0.04

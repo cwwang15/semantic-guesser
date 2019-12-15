@@ -1,0 +1,2 @@
+property	0.85
+properties	0.15

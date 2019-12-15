@@ -1,0 +1,5 @@
+LAP	1.2
+thighs	0.4
+thigh	0.2
+laps	0.2
+lap	-1.0

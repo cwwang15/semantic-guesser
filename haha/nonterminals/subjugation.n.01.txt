@@ -1,0 +1,3 @@
+durance	0.5
+bondage	0.25
+captivity	0.25

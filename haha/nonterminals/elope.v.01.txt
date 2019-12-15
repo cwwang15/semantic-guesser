@@ -1,0 +1,2 @@
+elope	0.75
+elopes	0.25

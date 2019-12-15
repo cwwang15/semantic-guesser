@@ -1,0 +1,3 @@
+flirt	0.9
+flirting	0.05
+FLIRT	0.05

@@ -1,0 +1,2 @@
+poisoned	0.75
+debase	0.25

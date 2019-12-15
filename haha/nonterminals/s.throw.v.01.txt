@@ -1,0 +1,2 @@
+throw	0.75
+threw	0.25

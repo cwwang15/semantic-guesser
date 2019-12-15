@@ -1,0 +1,3 @@
+thirst	0.5
+hunger	0.25
+HUNGER	0.25

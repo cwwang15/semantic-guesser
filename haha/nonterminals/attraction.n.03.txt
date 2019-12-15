@@ -1,0 +1,3 @@
+lure	0.5
+lures	0.25
+allure	0.25

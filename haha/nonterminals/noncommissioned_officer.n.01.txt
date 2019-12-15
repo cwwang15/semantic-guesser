@@ -1,0 +1,2 @@
+sergeant	0.875
+bombardier	0.125

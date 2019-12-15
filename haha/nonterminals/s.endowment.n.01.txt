@@ -1,0 +1,4 @@
+talent	0.88
+Talent	0.06
+TALENT	0.04
+talents	0.02

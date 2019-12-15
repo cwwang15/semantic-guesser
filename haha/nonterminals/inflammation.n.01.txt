@@ -1,0 +1,3 @@
+founder	0.5
+pinkeye	0.25
+tendonitis	0.25

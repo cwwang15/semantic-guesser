@@ -1,0 +1,3 @@
+salamander	0.6
+newts	0.2
+salamanders	0.2

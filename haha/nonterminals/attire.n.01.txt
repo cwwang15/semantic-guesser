@@ -1,0 +1,16 @@
+mask	0.3875
+garb	0.1875
+tails	0.125
+MASK	0.05
+tuxedo	0.025
+frock	0.025
+frocks	0.025
+wigs	0.025
+Mask	0.025
+GARB	0.025
+Tuxedo	0.025
+Frock	0.025
+costumes	0.0125
+garbs	0.0125
+costume	0.0125
+getup	0.0125

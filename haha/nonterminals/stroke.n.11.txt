@@ -1,0 +1,2 @@
+backstroke	0.5
+breaststroke	0.5

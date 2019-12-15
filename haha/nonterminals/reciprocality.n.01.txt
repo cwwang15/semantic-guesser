@@ -1,0 +1,2 @@
+interdependence	0.6666666666666666
+correlation	0.3333333333333333

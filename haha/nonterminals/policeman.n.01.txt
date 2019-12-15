@@ -1,0 +1,12 @@
+detective	0.35
+dicks	0.1375
+inspector	0.1375
+cops	0.0875
+cop	0.0875
+detectives	0.0375
+tracer	0.0375
+Detective	0.0375
+bobbies	0.025
+DetectivE	0.025
+Cop	0.025
+policewoman	0.0125

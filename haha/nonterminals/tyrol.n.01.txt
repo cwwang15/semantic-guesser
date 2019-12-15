@@ -1,0 +1,2 @@
+tyrol	0.5
+tirol	0.5

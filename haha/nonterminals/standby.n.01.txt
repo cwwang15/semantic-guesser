@@ -1,0 +1,2 @@
+standby	0.6
+Standby	0.4

@@ -1,0 +1,2 @@
+swamp	0.6
+Swamp	0.4

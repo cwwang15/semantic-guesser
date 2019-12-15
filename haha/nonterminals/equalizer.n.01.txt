@@ -1,0 +1,1 @@
+equalizer	1.0

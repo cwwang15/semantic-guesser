@@ -1,0 +1,4 @@
+comedy	0.625
+Comedy	0.25
+FARCE	0.25
+farce	-0.125

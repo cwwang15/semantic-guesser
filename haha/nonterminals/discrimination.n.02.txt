@@ -1,0 +1,9 @@
+craze	0.46875
+letters	0.28125
+fads	0.0625
+Distinction	0.0625
+Craze	0.0625
+virtus	0.03125
+differentiation	0.03125
+counterculture	0.03125
+distinction	-0.03125

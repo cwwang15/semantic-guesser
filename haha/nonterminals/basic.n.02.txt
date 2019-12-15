@@ -1,0 +1,4 @@
+staples	0.5
+Staple	0.25
+STAPLE	0.25
+staple	0.0

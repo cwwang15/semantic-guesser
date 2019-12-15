@@ -1,0 +1,5 @@
+mantilla	0.5
+scarf	0.1875
+stoles	0.125
+hijab	0.125
+babushka	0.0625

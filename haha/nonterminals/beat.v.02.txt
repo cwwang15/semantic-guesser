@@ -1,0 +1,8 @@
+spank	0.25
+whips	0.1875
+flog	0.1875
+whipped	0.15625
+thrash	0.0625
+Spank	0.0625
+SPANK	0.0625
+spanks	0.03125

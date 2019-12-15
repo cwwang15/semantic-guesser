@@ -1,0 +1,2 @@
+demolition	0.8
+wipeout	0.2

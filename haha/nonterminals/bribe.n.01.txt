@@ -1,0 +1,4 @@
+brib	0.9
+BRIB	0.2
+kickback	0.1
+bribe	-0.2

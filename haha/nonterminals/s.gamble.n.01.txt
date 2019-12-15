@@ -1,0 +1,2 @@
+Gamble	1.0
+gamble	0.0

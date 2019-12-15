@@ -1,0 +1,2 @@
+nighthawk	0.6
+loner	0.4

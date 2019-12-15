@@ -1,0 +1,2 @@
+wobbles	0.5
+wobbling	0.5

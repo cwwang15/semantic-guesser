@@ -1,0 +1,2 @@
+rabbi	0.5
+Rabbi	0.5

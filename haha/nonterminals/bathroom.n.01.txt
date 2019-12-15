@@ -1,0 +1,2 @@
+bathroom	0.6
+Bathroom	0.4

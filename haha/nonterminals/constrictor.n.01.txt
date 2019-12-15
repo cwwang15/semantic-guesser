@@ -1,0 +1,3 @@
+python	0.5
+constrictor	0.375
+pythons	0.125

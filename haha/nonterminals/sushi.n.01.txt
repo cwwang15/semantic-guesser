@@ -1,0 +1,2 @@
+sushi	0.8
+SUSHI	0.2

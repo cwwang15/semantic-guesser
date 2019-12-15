@@ -1,0 +1,3 @@
+roll	0.675
+rolling	0.3
+Roll	0.025

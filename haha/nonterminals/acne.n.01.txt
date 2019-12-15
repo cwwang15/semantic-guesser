@@ -1,0 +1,7 @@
+pimple	0.36
+PIMPLE	0.24
+pock	0.12
+acne	0.12
+hickeys	0.06
+pimples	0.06
+pocks	0.039999999999999994

@@ -1,0 +1,4 @@
+animation	0.6
+SURVIVAL	0.4
+Survival	0.4
+survival	-0.4

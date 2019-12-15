@@ -1,0 +1,5 @@
+tenia	0.35
+bracelet	0.25
+headband	0.2
+wristbands	0.1
+collar	0.1

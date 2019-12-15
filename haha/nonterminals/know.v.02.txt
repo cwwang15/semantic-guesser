@@ -1,0 +1,4 @@
+Master	32.0
+MASTER	15.0
+MaStEr	3.0
+master	-49.0

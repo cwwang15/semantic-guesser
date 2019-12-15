@@ -1,0 +1,2 @@
+arcing	0.5
+arced	0.5

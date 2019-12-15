@@ -1,0 +1,3 @@
+tack	0.9
+tacks	0.05
+TACK	0.05

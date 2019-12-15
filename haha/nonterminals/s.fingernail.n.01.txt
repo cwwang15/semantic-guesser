@@ -1,0 +1,2 @@
+fingernails	0.6
+fingernail	0.4

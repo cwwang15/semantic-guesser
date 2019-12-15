@@ -1,0 +1,8 @@
+shut	0.63
+close	0.27
+closing	0.02
+SHUT	0.02
+Shut	0.02
+Close	0.02
+closed	0.01
+closes	0.01

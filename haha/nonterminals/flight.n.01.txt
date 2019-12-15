@@ -1,0 +1,2 @@
+flight	0.8125
+Flight	0.1875

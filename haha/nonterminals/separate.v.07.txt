@@ -1,0 +1,2 @@
+scattered	0.5
+scatter	0.5

@@ -1,0 +1,5 @@
+Veggie	0.375
+VEGGIE	0.375
+veggies	0.125
+vegetables	0.125
+veggie	0.0

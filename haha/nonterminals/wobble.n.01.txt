@@ -1,0 +1,3 @@
+wobble	0.5
+shimmy	0.4
+shimmies	0.1

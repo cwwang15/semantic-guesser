@@ -1,0 +1,2 @@
+blurted	0.5
+blurt	0.5

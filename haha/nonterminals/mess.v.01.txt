@@ -1,0 +1,5 @@
+MESS	1.0
+Mess	1.0
+messed	0.5
+messing	0.25
+mess	-1.75

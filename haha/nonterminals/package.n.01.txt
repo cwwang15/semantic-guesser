@@ -1,0 +1,7 @@
+bundles	0.25
+pACKET	0.25
+Packet	0.25
+Package	0.25
+bundle	0.125
+packet	0.0
+package	-0.125

@@ -1,0 +1,15 @@
+footballer	0.225
+kicker	0.175
+footballers	0.125
+kickers	0.075
+tackle	0.075
+snapper	0.05
+tailback	0.05
+blocker	0.05
+flanker	0.05
+LineBacker	0.05
+Linebacker	0.05
+fullback	0.025
+rusher	0.025
+lineman	0.025
+linebacker	-0.05

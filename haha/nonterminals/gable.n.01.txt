@@ -1,0 +1,2 @@
+gables	0.5
+gable	0.5

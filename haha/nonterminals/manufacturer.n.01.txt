@@ -1,0 +1,1 @@
+manufacturer	1.0

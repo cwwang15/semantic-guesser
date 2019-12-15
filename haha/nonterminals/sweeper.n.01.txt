@@ -1,0 +1,2 @@
+sweepers	0.5
+sweeper	0.5

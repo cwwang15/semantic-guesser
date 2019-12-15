@@ -1,0 +1,2 @@
+seraphim	0.5
+seraph	0.5

@@ -1,0 +1,2 @@
+standstill	0.5
+impasse	0.5

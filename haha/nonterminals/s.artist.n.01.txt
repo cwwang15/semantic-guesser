@@ -1,0 +1,3 @@
+artist	0.75
+ARTIST	0.125
+Artist	0.125

@@ -1,0 +1,2 @@
+barley	0.6
+Barley	0.4

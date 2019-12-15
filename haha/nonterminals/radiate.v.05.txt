@@ -1,0 +1,8 @@
+Glow	0.5
+twinkles	0.3
+glows	0.2
+flashing	0.1
+glimmering	0.1
+twinkling	0.1
+flicks	0.1
+glow	-0.4

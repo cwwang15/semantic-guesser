@@ -1,0 +1,2 @@
+dinner	0.75
+Dinner	0.25

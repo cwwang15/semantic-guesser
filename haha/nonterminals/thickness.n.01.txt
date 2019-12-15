@@ -1,0 +1,2 @@
+thickness	0.5
+THICKNESS	0.5

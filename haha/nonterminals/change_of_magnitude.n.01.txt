@@ -1,0 +1,4 @@
+discount	0.5
+detente	0.25
+expansion	0.125
+discounts	0.125

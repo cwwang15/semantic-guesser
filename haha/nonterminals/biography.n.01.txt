@@ -1,0 +1,2 @@
+memoirs	0.5
+memoir	0.5

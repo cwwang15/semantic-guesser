@@ -1,0 +1,3 @@
+ting	0.96
+tings	0.032
+tinkle	0.008

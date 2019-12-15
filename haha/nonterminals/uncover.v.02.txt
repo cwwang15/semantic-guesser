@@ -1,0 +1,3 @@
+bares	0.5
+unveiled	0.25
+bared	0.25

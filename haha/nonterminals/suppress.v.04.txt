@@ -1,0 +1,11 @@
+quell	0.25
+conquer	0.2
+conquers	0.15
+stifle	0.1
+QUELL	0.1
+LIMITED	0.1
+Limited	0.1
+muffles	0.05
+muffle	0.05
+hamper	0.05
+limited	-0.15

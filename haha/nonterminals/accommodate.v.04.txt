@@ -1,0 +1,3 @@
+House	3.5
+HoUSe	1.0
+house	-3.5

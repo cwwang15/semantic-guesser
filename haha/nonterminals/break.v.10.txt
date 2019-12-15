@@ -1,0 +1,2 @@
+interrupted	0.5
+interrupt	0.5

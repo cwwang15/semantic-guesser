@@ -1,0 +1,2 @@
+cayenne	0.5
+paprika	0.5

@@ -1,0 +1,4 @@
+conditioner	0.375
+exercise	0.25
+workout	0.25
+bodybuilding	0.125

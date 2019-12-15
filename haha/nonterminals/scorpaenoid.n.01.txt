@@ -1,0 +1,2 @@
+rasher	0.6
+rashers	0.4

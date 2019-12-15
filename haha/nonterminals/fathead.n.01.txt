@@ -1,0 +1,4 @@
+jackass	0.84
+fathead	0.08
+cuckoos	0.04
+fatheads	0.04

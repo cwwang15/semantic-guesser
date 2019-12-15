@@ -1,0 +1,2 @@
+emancipation	0.75
+liberation	0.25

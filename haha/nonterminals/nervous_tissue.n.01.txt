@@ -1,0 +1,3 @@
+NERVE	0.5
+nerve	0.25
+pathway	0.25

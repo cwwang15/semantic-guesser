@@ -1,0 +1,2 @@
+tumbleweed	0.5
+tumbleweeds	0.5

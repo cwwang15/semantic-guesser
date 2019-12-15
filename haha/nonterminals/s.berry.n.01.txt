@@ -1,0 +1,4 @@
+berries	0.9375
+BERRY	0.5
+Berry	0.375
+berry	-0.8125

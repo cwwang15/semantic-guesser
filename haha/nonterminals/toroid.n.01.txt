@@ -1,0 +1,2 @@
+doughnuts	0.5
+doughnut	0.5

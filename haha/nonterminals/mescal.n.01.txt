@@ -1,0 +1,2 @@
+mescal	0.5
+peyote	0.5

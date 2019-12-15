@@ -1,0 +1,9 @@
+tuning	0.65625
+Zero	0.125
+TUNING	0.09375
+tuned	0.0625
+TuNiNg	0.0625
+ZeRo	0.0625
+adjust	0.03125
+offset	0.03125
+zero	-0.125

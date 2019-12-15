@@ -1,0 +1,2 @@
+tripe	0.5
+organs	0.5

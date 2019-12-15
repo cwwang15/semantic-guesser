@@ -1,0 +1,9 @@
+Bow	1.25
+nod	0.375
+bovv	0.25
+boW	0.25
+BoW	0.25
+nods	0.125
+shrugged	0.125
+bowed	0.125
+bow	-1.75

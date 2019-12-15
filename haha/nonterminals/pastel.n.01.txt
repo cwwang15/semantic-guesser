@@ -1,0 +1,3 @@
+Pastel	3.0
+PASTEL	3.0
+pastel	-5.0

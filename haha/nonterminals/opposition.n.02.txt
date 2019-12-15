@@ -1,0 +1,2 @@
+contradiction	0.75
+polarity	0.25

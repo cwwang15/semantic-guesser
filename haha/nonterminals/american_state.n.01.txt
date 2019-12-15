@@ -1,0 +1,2 @@
+Jersey	1.0
+jersey	0.0

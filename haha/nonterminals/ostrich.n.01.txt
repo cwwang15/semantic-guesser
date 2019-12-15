@@ -1,0 +1,2 @@
+ostriches	0.5
+ostrich	0.5

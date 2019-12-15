@@ -1,0 +1,15 @@
+rookie	0.296875
+cadet	0.203125
+cadets	0.140625
+tyro	0.0625
+cubs	0.046875
+newcomer	0.046875
+Cadet	0.046875
+apprentice	0.03125
+CADET	0.03125
+tyros	0.015625
+trainee	0.015625
+greenhorn	0.015625
+beginners	0.015625
+newbie	0.015625
+rookies	0.015625

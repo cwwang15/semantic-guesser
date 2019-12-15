@@ -1,0 +1,2 @@
+executioner	0.5
+hangman	0.5

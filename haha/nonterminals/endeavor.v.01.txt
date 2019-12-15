@@ -1,0 +1,4 @@
+strove	0.4
+striving	0.2
+strives	0.2
+bucked	0.2

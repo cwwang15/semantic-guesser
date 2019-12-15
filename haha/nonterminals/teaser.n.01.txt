@@ -1,0 +1,2 @@
+teasers	0.5
+teaser	0.5

@@ -1,0 +1,3 @@
+hotdog	0.68
+poser	0.2
+megalomaniac	0.12

@@ -1,0 +1,2 @@
+oatmeal	0.75
+porridge	0.25

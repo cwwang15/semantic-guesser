@@ -1,0 +1,3 @@
+spend	0.625
+spending	0.25
+spent	0.125

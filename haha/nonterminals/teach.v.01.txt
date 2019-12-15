@@ -1,0 +1,10 @@
+train	0.35
+teach	0.2
+Train	0.15
+Trained	0.1
+coach	0.05
+preach	0.05
+trains	0.05
+enlighten	0.05
+taught	0.05
+trained	-0.05

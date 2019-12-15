@@ -1,0 +1,2 @@
+operated	0.5
+operate	0.5

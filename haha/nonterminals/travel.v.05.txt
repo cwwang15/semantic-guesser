@@ -1,0 +1,6 @@
+biking	0.5
+scull	0.2
+Row	0.2
+kayaking	0.1
+rowed	0.1
+row	-0.1

@@ -1,0 +1,3 @@
+verse	0.625
+poetry	0.1875
+verses	0.1875

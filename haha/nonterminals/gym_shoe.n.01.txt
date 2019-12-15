@@ -1,0 +1,2 @@
+sneakers	0.875
+sneaker	0.125

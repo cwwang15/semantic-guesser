@@ -1,0 +1,3 @@
+gentleman	0.5
+Gentleman	0.3333333333333333
+gentlemen	0.16666666666666666

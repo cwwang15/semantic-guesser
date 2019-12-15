@@ -1,0 +1,11 @@
+HIT	1.0
+Triple	0.375
+TRIPLE	0.3125
+double	0.1875
+Hit	0.1875
+triples	0.125
+Double	0.125
+hIt	0.125
+homers	0.0625
+triple	-0.625
+hit	-0.875

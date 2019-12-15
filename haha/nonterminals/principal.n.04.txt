@@ -1,0 +1,2 @@
+corpora	0.75
+corpus	0.25

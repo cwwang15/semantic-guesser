@@ -1,0 +1,2 @@
+SPECK	1.0
+speck	0.0

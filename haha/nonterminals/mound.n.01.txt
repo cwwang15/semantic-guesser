@@ -1,0 +1,2 @@
+mound	0.75
+mounds	0.25

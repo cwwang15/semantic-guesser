@@ -1,0 +1,5 @@
+therapist	0.4
+physiotherapist	0.2
+HEALER	0.2
+healer	0.1
+chiropractor	0.1

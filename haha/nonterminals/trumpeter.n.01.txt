@@ -1,0 +1,2 @@
+bugler	0.5
+trumpeter	0.5

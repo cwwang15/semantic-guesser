@@ -1,0 +1,4 @@
+satellite	0.7
+starship	0.15
+spaceship	0.1
+spaceships	0.05

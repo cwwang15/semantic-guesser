@@ -1,0 +1,4 @@
+Butt	1.5
+abut	0.75
+BUTT	0.75
+butt	-2.0

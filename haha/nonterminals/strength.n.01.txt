@@ -1,0 +1,9 @@
+strength	0.45
+legs	0.35
+Strength	0.075
+Might	0.05
+stamina	0.025
+endurance	0.025
+brawn	0.025
+toughness	0.025
+might	-0.025

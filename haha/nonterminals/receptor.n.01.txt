@@ -1,0 +1,2 @@
+receptors	0.5
+receptor	0.5

@@ -1,0 +1,3 @@
+decoration	0.5
+ornament	0.25
+decorations	0.25

@@ -1,0 +1,2 @@
+hanger	0.8
+hangers	0.2

@@ -1,0 +1,2 @@
+bade	0.96
+bidden	0.04

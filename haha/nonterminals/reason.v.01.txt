@@ -1,0 +1,2 @@
+infer	0.8
+derived	0.2

@@ -1,0 +1,2 @@
+personae	0.5
+heroine	0.5

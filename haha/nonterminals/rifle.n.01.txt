@@ -1,0 +1,2 @@
+rifle	0.75
+rifles	0.25

@@ -1,0 +1,2 @@
+folder	0.75
+booklet	0.25

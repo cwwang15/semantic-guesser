@@ -1,0 +1,7 @@
+umbrella	0.5625
+sconce	0.171875
+birdhouse	0.09375
+UMBRELLA	0.0625
+kennels	0.046875
+kennel	0.03125
+awning	0.03125

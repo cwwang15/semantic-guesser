@@ -1,0 +1,2 @@
+puffer	0.75
+blowfish	0.25

@@ -1,0 +1,2 @@
+rouse	0.8
+rouses	0.2

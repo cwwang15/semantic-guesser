@@ -1,0 +1,2 @@
+graduated	0.75
+graduating	0.25

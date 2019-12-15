@@ -1,0 +1,5 @@
+judge	0.68
+JUDGE	0.16
+Judge	0.08
+judged	0.04
+judges	0.04

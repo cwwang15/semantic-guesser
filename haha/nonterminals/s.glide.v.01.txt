@@ -1,0 +1,2 @@
+Glide	1.0
+glide	0.0

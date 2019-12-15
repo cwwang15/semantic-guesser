@@ -1,0 +1,4 @@
+calibr	0.625
+CALIBR	0.25
+calibers	0.125
+caliber	0.0

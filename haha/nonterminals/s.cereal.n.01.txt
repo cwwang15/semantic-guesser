@@ -1,0 +1,2 @@
+cereal	0.8
+CEREAL	0.2

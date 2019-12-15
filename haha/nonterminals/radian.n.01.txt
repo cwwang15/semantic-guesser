@@ -1,0 +1,2 @@
+radians	0.5
+radian	0.5

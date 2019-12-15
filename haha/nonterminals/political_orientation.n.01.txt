@@ -1,0 +1,2 @@
+ideology	0.5
+socialism	0.5

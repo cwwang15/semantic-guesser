@@ -1,0 +1,2 @@
+ringer	0.875
+ringers	0.125

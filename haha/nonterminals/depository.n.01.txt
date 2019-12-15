@@ -1,0 +1,3 @@
+museum	0.5
+warehouse	0.25
+archive	0.25

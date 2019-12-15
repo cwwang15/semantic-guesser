@@ -1,0 +1,3 @@
+impact	0.6
+IMPACT	0.2
+Impact	0.2

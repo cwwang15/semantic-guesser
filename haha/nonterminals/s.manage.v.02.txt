@@ -1,0 +1,4 @@
+handle	0.85
+HANDLE	0.075
+handles	0.05
+handling	0.025

@@ -1,0 +1,2 @@
+harming	0.5
+harmed	0.5

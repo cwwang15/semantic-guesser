@@ -1,0 +1,3 @@
+reunited	0.5
+raving	0.375
+partying	0.125

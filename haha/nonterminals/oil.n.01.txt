@@ -1,0 +1,8 @@
+oil	0.768
+grease	0.096
+attar	0.072
+oils	0.032
+oIL	0.016
+lemongrass	0.008
+blubber	0.004
+petroleum	0.004

@@ -1,0 +1,2 @@
+specials	0.75
+prospectus	0.25

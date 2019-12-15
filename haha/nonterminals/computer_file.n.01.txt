@@ -1,0 +1,2 @@
+homepage	0.75
+webpage	0.25

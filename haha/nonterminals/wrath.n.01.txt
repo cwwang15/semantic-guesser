@@ -1,0 +1,2 @@
+wrath	0.6
+Wrath	0.4

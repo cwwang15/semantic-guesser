@@ -1,0 +1,3 @@
+perk	0.5
+Benefit	0.5
+benefit	0.0

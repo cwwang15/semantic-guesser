@@ -1,0 +1,2 @@
+traction	0.5
+ultrasound	0.5

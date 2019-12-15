@@ -1,0 +1,7 @@
+collide	0.3125
+jarred	0.25
+belie	0.125
+blie	0.125
+conflicted	0.0625
+negate	0.0625
+differ	0.0625

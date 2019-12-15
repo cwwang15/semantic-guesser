@@ -1,0 +1,5 @@
+pared	0.5125
+pare	0.3125
+pares	0.1
+PARE	0.0625
+paring	0.0125

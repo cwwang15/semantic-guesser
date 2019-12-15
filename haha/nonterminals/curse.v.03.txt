@@ -1,0 +1,3 @@
+damns	0.5
+DAMN	0.5
+damn	0.0

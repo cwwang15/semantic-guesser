@@ -1,0 +1,2 @@
+flavor	0.6
+flavour	0.4

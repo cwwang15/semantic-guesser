@@ -1,0 +1,4 @@
+favor	0.5
+Pardon	0.25
+pardon	0.125
+favors	0.125

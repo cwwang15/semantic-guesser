@@ -1,0 +1,2 @@
+knuckle	0.5
+KNUCKLE	0.5

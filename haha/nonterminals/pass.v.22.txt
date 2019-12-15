@@ -1,0 +1,2 @@
+Recycle	1.0
+recycle	0.0

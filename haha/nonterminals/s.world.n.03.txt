@@ -1,0 +1,3 @@
+reality	0.6875
+Reality	0.1875
+REALITY	0.125

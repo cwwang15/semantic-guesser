@@ -1,0 +1,2 @@
+terms	0.75
+TERMS	0.25

@@ -1,0 +1,2 @@
+crackerjack	0.75
+crackerjacks	0.25

@@ -1,0 +1,2 @@
+Armament	1.0
+armament	0.0

@@ -1,0 +1,2 @@
+roads	0.75
+moorings	0.25

@@ -1,0 +1,2 @@
+starter	0.75
+starters	0.25

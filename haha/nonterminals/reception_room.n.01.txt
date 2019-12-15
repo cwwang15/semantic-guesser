@@ -1,0 +1,2 @@
+parlour	0.5
+parlor	0.5

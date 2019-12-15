@@ -1,0 +1,6 @@
+zigzag	0.4
+pucker	0.2
+zigzags	0.1
+fold	0.1
+crease	0.1
+folds	0.1

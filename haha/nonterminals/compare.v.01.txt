@@ -1,0 +1,2 @@
+collate	0.5
+compares	0.5

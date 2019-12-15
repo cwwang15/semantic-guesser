@@ -1,0 +1,3 @@
+sprocket	0.6
+Cylinder	0.4
+cylinder	0.0

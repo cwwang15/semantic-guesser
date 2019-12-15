@@ -1,0 +1,3 @@
+dinky	0.875
+Locomotive	0.25
+locomotive	-0.125

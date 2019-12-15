@@ -1,0 +1,2 @@
+dependency	0.75
+dependence	0.25

@@ -1,0 +1,4 @@
+border	0.6875
+borders	0.125
+Border	0.125
+borderline	0.0625

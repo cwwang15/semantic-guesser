@@ -1,0 +1,2 @@
+prophecy	0.5
+perestroika	0.5

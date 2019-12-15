@@ -1,0 +1,2 @@
+doorknob	0.5
+doorknobs	0.5

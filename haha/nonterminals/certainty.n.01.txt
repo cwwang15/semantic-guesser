@@ -1,0 +1,2 @@
+confidence	0.75
+certainty	0.25

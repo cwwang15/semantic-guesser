@@ -1,0 +1,3 @@
+undies	0.5
+underwear	0.4
+lingerie	0.1

@@ -1,0 +1,2 @@
+estate	0.75
+estates	0.25

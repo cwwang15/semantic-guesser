@@ -1,0 +1,2 @@
+scouting	0.8
+snooping	0.2

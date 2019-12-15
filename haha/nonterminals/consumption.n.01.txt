@@ -1,0 +1,7 @@
+SUCK	0.75
+gulp	0.25
+dining	0.25
+Chomp	0.25
+Suck	0.25
+chomp	0.0
+suck	-0.75

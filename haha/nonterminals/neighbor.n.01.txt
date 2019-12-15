@@ -1,0 +1,4 @@
+neighbours	0.5
+neighbors	0.25
+neighbour	0.125
+neighbor	0.125

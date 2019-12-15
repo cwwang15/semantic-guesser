@@ -1,0 +1,4 @@
+FEAR	3.0
+FeAr	1.0
+feared	0.5
+fear	-3.5

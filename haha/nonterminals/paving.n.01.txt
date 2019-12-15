@@ -1,0 +1,4 @@
+cement	0.5
+asphalt	0.2
+CeMeNt	0.2
+macadam	0.1

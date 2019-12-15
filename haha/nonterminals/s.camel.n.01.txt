@@ -1,0 +1,3 @@
+camel	0.84
+CAMEL	0.12
+camels	0.04

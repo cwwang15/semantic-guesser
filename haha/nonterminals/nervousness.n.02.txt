@@ -1,0 +1,3 @@
+tension	0.5
+yips	0.375
+nerves	0.125

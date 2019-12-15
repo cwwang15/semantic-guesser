@@ -1,0 +1,4 @@
+request	0.6
+Ultimatum	0.4
+demand	0.2
+ultimatum	-0.2

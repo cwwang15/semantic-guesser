@@ -1,0 +1,2 @@
+coordinator	0.75
+solver	0.25

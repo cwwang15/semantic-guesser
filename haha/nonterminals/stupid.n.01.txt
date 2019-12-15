@@ -1,0 +1,8 @@
+dolt	0.4
+berk	0.36
+hammerhead	0.14
+hammerheads	0.02
+blockhead	0.02
+numskull	0.02
+bonehead	0.02
+knucklehead	0.02

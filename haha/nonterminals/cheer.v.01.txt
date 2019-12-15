@@ -1,0 +1,2 @@
+cheering	0.8
+heartened	0.2

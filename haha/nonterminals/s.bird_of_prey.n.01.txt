@@ -1,0 +1,3 @@
+raptor	0.625
+Raptor	0.25
+raptors	0.125

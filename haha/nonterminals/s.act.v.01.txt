@@ -1,0 +1,6 @@
+ACT	0.875
+acting	0.5
+Act	0.25
+acts	0.125
+acted	0.125
+act	-0.875

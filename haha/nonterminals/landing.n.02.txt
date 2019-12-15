@@ -1,0 +1,5 @@
+MARINA	1.125
+Marina	0.5
+marinas	0.25
+MArina	0.25
+marina	-1.125

@@ -1,0 +1,2 @@
+pheasant	0.5
+pheasants	0.5

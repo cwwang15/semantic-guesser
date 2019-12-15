@@ -1,0 +1,5 @@
+MUST	1.25
+Must	0.75
+desiderata	0.25
+essentials	0.25
+must	-1.5

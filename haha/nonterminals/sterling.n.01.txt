@@ -1,0 +1,2 @@
+sterling	0.875
+STERLING	0.125

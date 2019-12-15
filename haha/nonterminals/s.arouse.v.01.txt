@@ -1,0 +1,3 @@
+elicit	0.6
+provokes	0.2
+arouse	0.2

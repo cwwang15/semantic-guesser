@@ -1,0 +1,7 @@
+criminology	0.3
+civics	0.2
+economics	0.1
+microeconomics	0.1
+macroeconomics	0.1
+egyptology	0.1
+anthropology	0.1

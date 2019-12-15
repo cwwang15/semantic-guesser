@@ -1,0 +1,2 @@
+immortality	0.75
+durability	0.25

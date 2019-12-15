@@ -1,0 +1,2 @@
+ruling	0.75
+fatwa	0.25

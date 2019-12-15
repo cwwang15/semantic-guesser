@@ -1,0 +1,5 @@
+catchphrase	0.25
+sentence	0.1875
+clause	0.1875
+phrase	0.1875
+complement	0.1875

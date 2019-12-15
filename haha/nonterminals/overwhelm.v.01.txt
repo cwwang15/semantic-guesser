@@ -1,0 +1,2 @@
+overwhelm	0.75
+overwhelmed	0.25

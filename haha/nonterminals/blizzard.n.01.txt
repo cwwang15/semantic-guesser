@@ -1,0 +1,2 @@
+blizzard	0.6
+snowstorm	0.4

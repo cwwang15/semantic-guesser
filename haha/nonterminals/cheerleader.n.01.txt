@@ -1,0 +1,4 @@
+cheerleader	0.90625
+cheerleaders	0.04375
+CHEERLEADER	0.03125
+Cheerleader	0.01875

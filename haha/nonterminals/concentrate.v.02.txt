@@ -1,0 +1,3 @@
+pored	0.5
+poring	0.25
+engulfing	0.25

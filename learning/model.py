@@ -672,6 +672,23 @@ class Grammar(object):
 
     # def __setstate__(self, state):
     #
+    def apply_variants(self, changes):
+        tags_dicts = self.tag_dicts
+        tags, strings = list(tags_dicts.keys()), list(tags_dicts.values())
+        for tag, strings in zip(tags, strings):
+            strs, num = list(strings.keys()), list(strings.values())
+            for string in strs:
+                if string in changes:
+                    for variant, cnt in changes.get(string).items():
+                        tags_dicts[tag][string] -= cnt
+                        if tags_dicts[tag][string] < 0:
+                            tags_dicts[tag][string] += cnt
+                            break
+                            # print(f"tag: {tag}, string: {string}, cnt: {tags_dicts[tag][string]}")
+                            # print(f"changes: {changes.get(string)}")
+                            # sys.exit(2)
+                        tags_dicts[tag][variant] = cnt
+        pass
 
     def write_to_disk(self, path):
         # remove previous grammar

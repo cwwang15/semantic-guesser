@@ -1,0 +1,6 @@
+bing	9.0
+BING	0.375
+Bing	0.25
+BEING	0.25
+existences	0.125
+being	-9.0

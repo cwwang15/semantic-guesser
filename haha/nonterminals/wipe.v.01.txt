@@ -1,0 +1,3 @@
+wipe	0.625
+WIPE	0.25
+sponged	0.125

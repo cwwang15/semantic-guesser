@@ -1,0 +1,2 @@
+chats	0.5
+chatting	0.5

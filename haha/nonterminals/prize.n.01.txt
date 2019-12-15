@@ -1,0 +1,2 @@
+prizes	0.75
+prize	0.25

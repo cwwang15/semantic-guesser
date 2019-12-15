@@ -1,0 +1,2 @@
+sweater	0.75
+sweaters	0.25

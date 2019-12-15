@@ -1,0 +1,2 @@
+enchiladas	0.5
+enchilada	0.5

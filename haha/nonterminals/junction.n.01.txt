@@ -1,0 +1,4 @@
+interchange	0.375
+crossroad	0.375
+crossways	0.125
+junction	0.125

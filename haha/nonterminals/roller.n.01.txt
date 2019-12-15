@@ -1,0 +1,2 @@
+roller	0.92
+rollers	0.08

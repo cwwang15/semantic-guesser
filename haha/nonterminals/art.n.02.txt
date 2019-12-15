@@ -1,0 +1,4 @@
+ceramics	0.6
+origami	0.2
+stitching	0.1
+sewing	0.1

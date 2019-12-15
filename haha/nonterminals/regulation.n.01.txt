@@ -1,0 +1,2 @@
+ordinance	0.5
+regulation	0.5

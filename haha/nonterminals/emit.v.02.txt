@@ -1,0 +1,2 @@
+shone	0.5
+shines	0.5

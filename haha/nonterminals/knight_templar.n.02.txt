@@ -1,0 +1,2 @@
+templar	0.9
+templars	0.1

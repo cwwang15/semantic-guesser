@@ -1,0 +1,7 @@
+allay	0.3
+soothe	0.3
+Comfort	0.2
+reassure	0.1
+stilling	0.1
+allays	0.1
+comfort	-0.1

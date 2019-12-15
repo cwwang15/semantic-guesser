@@ -1,0 +1,2 @@
+scone	0.8
+scones	0.2

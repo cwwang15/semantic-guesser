@@ -1,0 +1,2 @@
+snail	0.5
+snails	0.5

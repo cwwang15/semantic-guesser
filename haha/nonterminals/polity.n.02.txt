@@ -1,0 +1,2 @@
+government	0.8
+regime	0.2

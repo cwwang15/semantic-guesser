@@ -1,0 +1,2 @@
+airways	0.8
+airway	0.2

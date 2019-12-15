@@ -1,0 +1,2 @@
+suspect	0.75
+suspects	0.25

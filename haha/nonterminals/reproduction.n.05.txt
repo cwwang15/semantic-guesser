@@ -1,0 +1,2 @@
+multiplication	0.75
+MulTipliCation	0.25

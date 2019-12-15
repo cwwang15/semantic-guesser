@@ -1,0 +1,2 @@
+knuckled	0.5
+knuckles	0.5

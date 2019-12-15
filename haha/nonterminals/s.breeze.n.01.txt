@@ -1,0 +1,4 @@
+breeze	0.71875
+BREEZE	0.15625
+Breeze	0.0625
+bReEzE	0.0625

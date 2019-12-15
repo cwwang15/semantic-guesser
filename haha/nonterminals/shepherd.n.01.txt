@@ -1,0 +1,4 @@
+shepherd	0.7333333333333333
+Shepherd	0.1
+SHEPHERD	0.1
+shepherds	0.06666666666666667

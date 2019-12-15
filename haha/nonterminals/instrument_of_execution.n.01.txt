@@ -1,0 +1,3 @@
+gibbet	0.6
+garrote	0.2
+gibbets	0.2

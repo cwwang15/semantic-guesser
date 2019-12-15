@@ -1,0 +1,7 @@
+BEND	0.8
+turn	0.6
+Bend	0.3
+TURN	0.2
+bnd	0.2
+bNd	0.2
+bend	-1.3

@@ -1,0 +1,3 @@
+tickles	0.6
+titillating	0.2
+tickled	0.2

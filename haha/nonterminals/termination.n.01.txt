@@ -1,0 +1,2 @@
+expiration	0.5
+termination	0.5

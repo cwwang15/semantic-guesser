@@ -1,0 +1,4 @@
+touchstone	0.5
+Standard	0.5
+standards	0.25
+standard	-0.25

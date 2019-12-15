@@ -1,0 +1,2 @@
+moneybag	0.5
+moneybags	0.5

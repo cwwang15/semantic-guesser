@@ -1,0 +1,4 @@
+flea	0.9
+Parasite	0.1
+mistletoe	0.05
+parasite	-0.05

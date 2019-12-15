@@ -1,0 +1,2 @@
+anxieties	0.5
+anxiety	0.5

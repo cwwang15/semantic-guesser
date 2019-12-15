@@ -1,0 +1,4 @@
+elder	0.7
+Elder	0.15
+elders	0.1
+doyen	0.05

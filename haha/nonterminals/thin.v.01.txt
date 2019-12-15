@@ -1,0 +1,2 @@
+thins	0.5
+thinning	0.5

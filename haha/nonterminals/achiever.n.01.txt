@@ -1,0 +1,2 @@
+naturals	0.75
+achievers	0.25

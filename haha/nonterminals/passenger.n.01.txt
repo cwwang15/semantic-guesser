@@ -1,0 +1,2 @@
+passenger	0.5
+hitchhikers	0.5

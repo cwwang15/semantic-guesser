@@ -1,0 +1,5 @@
+WEAR	1.0
+blights	0.25
+blight	0.25
+ruins	0.25
+wear	-0.75

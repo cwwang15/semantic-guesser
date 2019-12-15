@@ -1,0 +1,5 @@
+TRY	0.875
+Try	0.375
+attempts	0.125
+efforts	0.125
+try	-0.5

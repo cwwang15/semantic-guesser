@@ -1,0 +1,2 @@
+sender	0.6
+spammers	0.4

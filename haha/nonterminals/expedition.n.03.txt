@@ -1,0 +1,2 @@
+safari	0.8
+exploration	0.2

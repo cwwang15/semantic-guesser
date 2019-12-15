@@ -1,0 +1,5 @@
+matter	0.484375
+matters	0.421875
+affair	0.03125
+Matter	0.03125
+AFFAIR	0.03125

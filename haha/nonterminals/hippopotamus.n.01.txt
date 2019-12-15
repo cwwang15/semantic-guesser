@@ -1,0 +1,2 @@
+hippopotamus	0.5
+hippopotamuses	0.5

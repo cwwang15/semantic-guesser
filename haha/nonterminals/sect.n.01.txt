@@ -1,0 +1,2 @@
+sect	0.75
+shakers	0.25

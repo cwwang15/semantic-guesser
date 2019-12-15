@@ -1,0 +1,3 @@
+Dumplings	0.5
+dumpling	0.25
+dumplings	0.25

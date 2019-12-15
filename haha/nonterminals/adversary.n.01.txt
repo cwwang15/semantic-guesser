@@ -1,0 +1,4 @@
+foe	0.375
+antichrist	0.25
+foes	0.25
+antagonist	0.125

@@ -1,0 +1,2 @@
+stares	0.5
+stare	0.5

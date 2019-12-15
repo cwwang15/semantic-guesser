@@ -1,0 +1,3 @@
+heal	0.7
+heals	0.2
+HEAL	0.1

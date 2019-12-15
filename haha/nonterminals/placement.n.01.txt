@@ -1,0 +1,6 @@
+distance	0.3
+tandem	0.2
+raster	0.2
+Distance	0.2
+Altitude	0.2
+altitude	-0.1

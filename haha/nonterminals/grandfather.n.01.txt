@@ -1,0 +1,3 @@
+grandad	0.7
+grandpa	0.2875
+grandfather	0.0125

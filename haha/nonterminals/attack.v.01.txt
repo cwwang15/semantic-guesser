@@ -1,0 +1,7 @@
+infested	0.2
+strafe	0.2
+ATTACK	0.2
+attack	0.1
+bombed	0.1
+blitzing	0.1
+shelled	0.1

@@ -1,0 +1,2 @@
+birdie	0.875
+birdies	0.125

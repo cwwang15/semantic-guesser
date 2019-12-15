@@ -1,0 +1,12 @@
+kid	0.3536
+child	0.2288
+kids	0.2208
+children	0.1344
+KID	0.016
+Kid	0.0128
+CHILD	0.0112
+Child	0.008
+keyed	0.0048
+youngster	0.0032
+KId	0.0032
+cHILD	0.0032

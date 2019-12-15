@@ -1,0 +1,4 @@
+sables	0.5
+hairbrush	0.25
+sable	0.125
+toothbrush	0.125

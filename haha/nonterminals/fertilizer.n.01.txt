@@ -1,0 +1,2 @@
+guano	0.5
+manure	0.5

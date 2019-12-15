@@ -1,0 +1,2 @@
+adventurers	0.5
+adventurer	0.5

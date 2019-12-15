@@ -1,0 +1,2 @@
+colonel	0.6
+Colonel	0.4

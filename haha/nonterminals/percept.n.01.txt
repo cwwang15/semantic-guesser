@@ -1,0 +1,8 @@
+sight	0.6
+Vista	0.24
+panorama	0.16
+VISTA	0.12
+SIGHT	0.08
+vistas	0.04
+perception	0.04
+vista	-0.28

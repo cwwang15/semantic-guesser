@@ -1,0 +1,4 @@
+ratio	0.5
+percent	0.25
+ratios	0.125
+albedo	0.125

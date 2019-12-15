@@ -1,0 +1,6 @@
+Bride	0.375
+BRIDE	0.25
+bride	0.1875
+brides	0.0625
+newlyweds	0.0625
+honeymooners	0.0625

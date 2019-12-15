@@ -1,0 +1,4 @@
+tabs	0.5
+tickets	0.25
+Ticket	0.25
+ticket	0.0

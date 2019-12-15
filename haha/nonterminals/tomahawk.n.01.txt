@@ -1,0 +1,2 @@
+hatchet	0.5
+tomahawk	0.5

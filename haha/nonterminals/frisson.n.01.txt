@@ -1,0 +1,3 @@
+tingle	0.75
+quiver	0.125
+tingles	0.125

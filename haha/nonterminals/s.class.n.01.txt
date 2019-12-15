@@ -1,0 +1,4 @@
+class	0.928
+Class	0.04
+CLass	0.016
+CLASS	0.016

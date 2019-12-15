@@ -1,0 +1,6 @@
+bust	0.7
+BUST	0.1
+Bust	0.1
+whitewash	0.05
+defeat	0.025
+defeats	0.025

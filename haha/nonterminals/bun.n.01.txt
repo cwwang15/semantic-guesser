@@ -1,0 +1,3 @@
+bagels	0.375
+bagel	0.375
+croissant	0.25

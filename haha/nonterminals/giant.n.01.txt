@@ -1,0 +1,4 @@
+giant	0.4
+giants	0.2
+Giant	0.2
+GIANT	0.2

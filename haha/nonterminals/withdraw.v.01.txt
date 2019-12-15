@@ -1,0 +1,3 @@
+recede	0.625
+ebbing	0.25
+retreating	0.125

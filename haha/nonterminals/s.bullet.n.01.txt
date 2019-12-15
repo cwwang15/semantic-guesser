@@ -1,0 +1,6 @@
+bullet	0.71875
+slug	0.09375
+bullets	0.0625
+Bullet	0.0625
+BULLET	0.046875
+slugs	0.015625

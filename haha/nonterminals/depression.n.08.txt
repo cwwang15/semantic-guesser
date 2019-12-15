@@ -1,0 +1,7 @@
+groove	0.55
+DIP	0.25
+wrinkle	0.15
+scotch	0.15
+Dip	0.1
+lifelines	0.05
+dip	-0.25

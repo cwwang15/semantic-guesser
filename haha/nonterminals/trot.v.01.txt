@@ -1,0 +1,2 @@
+trots	0.5
+trotting	0.5

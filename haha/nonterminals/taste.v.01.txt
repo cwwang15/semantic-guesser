@@ -1,0 +1,5 @@
+tasted	0.75
+Taste	0.75
+tAste	0.5
+TASTE	0.5
+taste	-1.5

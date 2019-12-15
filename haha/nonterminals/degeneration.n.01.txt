@@ -1,0 +1,2 @@
+degeneration	0.875
+devolution	0.125

@@ -1,0 +1,5 @@
+frustrated	0.25
+prevent	0.25
+averting	0.25
+disappoint	0.125
+avert	0.125

@@ -1,0 +1,2 @@
+strip	0.8
+STRIP	0.2

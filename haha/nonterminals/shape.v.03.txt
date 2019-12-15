@@ -1,0 +1,2 @@
+squared	0.5
+cups	0.5

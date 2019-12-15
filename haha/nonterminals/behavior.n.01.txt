@@ -1,0 +1,3 @@
+aggro	0.5
+conduct	0.25
+behavior	0.25

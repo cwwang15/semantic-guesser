@@ -1,0 +1,2 @@
+foghorn	0.8
+foghorns	0.2

@@ -1,0 +1,2 @@
+curia	0.6
+organisation	0.4

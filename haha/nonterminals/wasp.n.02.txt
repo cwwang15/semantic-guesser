@@ -1,0 +1,2 @@
+hornets	0.75
+hornet	0.25

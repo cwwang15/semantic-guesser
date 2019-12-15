@@ -1,0 +1,2 @@
+memberSHIP	1.0
+membership	0.0

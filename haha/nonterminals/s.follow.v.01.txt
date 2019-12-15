@@ -1,0 +1,4 @@
+follow	0.875
+following	0.05
+Follow	0.05
+follows	0.025

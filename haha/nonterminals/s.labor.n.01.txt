@@ -1,0 +1,2 @@
+labor	0.875
+labour	0.125

@@ -1,0 +1,3 @@
+grunt	0.5
+grunts	0.25
+oinks	0.25

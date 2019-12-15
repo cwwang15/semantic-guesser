@@ -1,0 +1,3 @@
+junk	0.9
+rubble	0.06
+JUNK	0.04

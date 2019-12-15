@@ -1,0 +1,3 @@
+itching	0.5
+inflames	0.25
+chafe	0.25

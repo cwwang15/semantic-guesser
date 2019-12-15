@@ -1,0 +1,3 @@
+soldier	0.72
+soldiers	0.22
+Soldier	0.06

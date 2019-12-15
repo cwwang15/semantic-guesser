@@ -1,0 +1,2 @@
+gardenia	0.625
+gardenias	0.375

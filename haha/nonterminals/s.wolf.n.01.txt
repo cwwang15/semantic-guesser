@@ -1,0 +1,5 @@
+wolf	0.76
+wolves	0.185
+Wolf	0.03
+wolfs	0.015
+wolF	0.01

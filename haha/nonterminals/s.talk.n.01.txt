@@ -1,0 +1,4 @@
+talking	0.375
+Talk	0.375
+TALK	0.25
+talk	0.0

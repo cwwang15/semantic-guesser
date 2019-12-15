@@ -1,0 +1,2 @@
+amaze	0.8
+astound	0.2

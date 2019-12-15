@@ -1,0 +1,2 @@
+dropouts	0.5
+dropout	0.5

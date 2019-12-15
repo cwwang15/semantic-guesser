@@ -1,0 +1,2 @@
+total	0.5
+Total	0.5

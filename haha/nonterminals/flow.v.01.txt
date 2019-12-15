@@ -1,0 +1,2 @@
+undulate	0.5
+flows	0.5

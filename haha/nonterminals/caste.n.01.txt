@@ -1,0 +1,2 @@
+caste	0.75
+Caste	0.25

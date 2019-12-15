@@ -1,0 +1,3 @@
+EXAM	0.4
+Exam	0.4
+exam	0.2

@@ -1,0 +1,2 @@
+reindeer	0.8
+caribou	0.2

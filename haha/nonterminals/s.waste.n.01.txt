@@ -1,0 +1,2 @@
+waste	0.8
+WASTE	0.2

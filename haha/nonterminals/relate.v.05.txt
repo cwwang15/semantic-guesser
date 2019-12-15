@@ -1,0 +1,2 @@
+sinned	0.5
+befriends	0.5

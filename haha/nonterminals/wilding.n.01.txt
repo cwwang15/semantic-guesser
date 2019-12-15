@@ -1,0 +1,4 @@
+snowball	0.84375
+edelweiss	0.0625
+wildflower	0.0625
+wildflowers	0.03125

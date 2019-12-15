@@ -1,0 +1,2 @@
+ladyship	0.5
+lordship	0.5

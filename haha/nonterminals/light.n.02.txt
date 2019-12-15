@@ -1,0 +1,5 @@
+blinker	0.375
+torch	0.25
+headlight	0.125
+searchlight	0.125
+sidelight	0.125

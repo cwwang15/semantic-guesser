@@ -1,0 +1,5 @@
+pear	0.76
+pears	0.1
+Pear	0.06
+PEAR	0.04
+peaR	0.04

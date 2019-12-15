@@ -1,0 +1,2 @@
+arrival	0.8
+ARRIVAL	0.2

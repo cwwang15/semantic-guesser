@@ -1,0 +1,4 @@
+rooms	0.5
+apartment	0.3
+apartments	0.1
+penthouse	0.1

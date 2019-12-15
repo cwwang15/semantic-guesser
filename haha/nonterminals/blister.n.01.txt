@@ -1,0 +1,2 @@
+blister	0.5
+blisters	0.5

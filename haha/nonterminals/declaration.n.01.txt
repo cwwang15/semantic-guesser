@@ -1,0 +1,4 @@
+yeas	0.375
+dicta	0.375
+directive	0.125
+manifesto	0.125

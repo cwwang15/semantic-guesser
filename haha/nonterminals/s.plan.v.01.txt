@@ -1,0 +1,6 @@
+planned	0.875
+PLAN	0.5
+Plan	0.25
+PLANNING	0.125
+planning	-0.0625
+plan	-0.6875

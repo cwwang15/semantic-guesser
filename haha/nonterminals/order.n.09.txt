@@ -1,0 +1,2 @@
+cloture	0.5
+guillotine	0.5

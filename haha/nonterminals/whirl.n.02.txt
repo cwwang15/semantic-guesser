@@ -1,0 +1,2 @@
+vortex	0.5
+swirl	0.5

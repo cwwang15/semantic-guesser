@@ -1,0 +1,4 @@
+danger	0.86
+DANGER	0.08
+Danger	0.04
+dangers	0.02

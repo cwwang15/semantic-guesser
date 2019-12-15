@@ -1,0 +1,2 @@
+magnetism	0.75
+electromagnetism	0.25

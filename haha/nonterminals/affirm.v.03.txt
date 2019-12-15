@@ -1,0 +1,4 @@
+vindicated	0.4
+claims	0.3
+profess	0.2
+justified	0.1

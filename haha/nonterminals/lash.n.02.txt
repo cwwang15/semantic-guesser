@@ -1,0 +1,3 @@
+thong	0.85
+thongs	0.1
+Thong	0.05

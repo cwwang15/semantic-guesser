@@ -1,0 +1,2 @@
+brine	0.6
+BRINE	0.4

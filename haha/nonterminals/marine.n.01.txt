@@ -1,0 +1,4 @@
+Marine	1.0
+MARINE	1.0
+leatherneck	0.5
+marine	-1.5

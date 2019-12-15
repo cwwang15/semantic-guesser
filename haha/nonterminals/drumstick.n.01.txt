@@ -1,0 +1,2 @@
+drumstick	0.5
+drumsticks	0.5

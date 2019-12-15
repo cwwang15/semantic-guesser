@@ -1,0 +1,2 @@
+cavern	0.75
+caverns	0.25

@@ -1,0 +1,3 @@
+collector	0.4
+Collector	0.4
+collectors	0.2

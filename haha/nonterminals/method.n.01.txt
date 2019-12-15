@@ -1,0 +1,3 @@
+method	0.6
+technique	0.3
+methods	0.1

@@ -1,0 +1,2 @@
+helicopter	0.6
+Helicopter	0.4

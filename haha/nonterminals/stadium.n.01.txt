@@ -1,0 +1,2 @@
+stadium	0.875
+Stadium	0.125

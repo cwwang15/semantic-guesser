@@ -1,0 +1,2 @@
+Popularity	2.0
+popularity	-1.0

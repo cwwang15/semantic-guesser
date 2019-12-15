@@ -1,0 +1,4 @@
+wire	0.875
+WIRE	0.05
+Wire	0.05
+wires	0.025

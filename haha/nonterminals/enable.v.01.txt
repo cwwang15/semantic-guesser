@@ -1,0 +1,3 @@
+Enable	1.0
+endowed	0.5
+enable	-0.5

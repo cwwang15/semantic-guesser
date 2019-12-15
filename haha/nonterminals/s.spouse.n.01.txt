@@ -1,0 +1,4 @@
+partner	0.6
+PARTNER	0.2
+spouse	0.1
+partners	0.1

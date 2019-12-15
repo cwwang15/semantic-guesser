@@ -1,0 +1,2 @@
+crusade	0.875
+crusades	0.125

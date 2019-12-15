@@ -1,0 +1,2 @@
+commendation	0.5
+citation	0.5

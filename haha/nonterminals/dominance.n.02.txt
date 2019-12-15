@@ -1,0 +1,2 @@
+dominion	0.5
+sceptre	0.5

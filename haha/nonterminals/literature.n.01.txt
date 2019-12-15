@@ -1,0 +1,3 @@
+LiTeRaTuRe	1.0
+sutras	0.5
+literature	-0.5

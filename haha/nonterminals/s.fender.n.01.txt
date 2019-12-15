@@ -1,0 +1,4 @@
+fender	0.68
+Fender	0.2
+FENDER	0.08
+fenders	0.04

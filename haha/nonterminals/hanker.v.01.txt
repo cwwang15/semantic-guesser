@@ -1,0 +1,3 @@
+pined	0.6
+pining	0.2
+longs	0.2

@@ -1,0 +1,4 @@
+damage	0.6
+distortion	0.2
+Distortion	0.13333333333333333
+detriment	0.06666666666666667

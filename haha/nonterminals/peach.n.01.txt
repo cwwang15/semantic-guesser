@@ -1,0 +1,3 @@
+peaches	0.49375
+peach	0.4875
+PEACH	0.01875

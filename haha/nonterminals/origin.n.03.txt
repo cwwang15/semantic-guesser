@@ -1,0 +1,4 @@
+cause	0.64
+factor	0.2
+prelude	0.12
+preludes	0.04

@@ -1,0 +1,2 @@
+corral	0.8
+paddock	0.2

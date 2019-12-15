@@ -1,0 +1,3 @@
+ebbs	0.4
+slump	0.4
+wanes	0.2

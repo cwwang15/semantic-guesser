@@ -1,0 +1,3 @@
+crabs	0.5
+schistosomiasis	0.25
+infestation	0.25

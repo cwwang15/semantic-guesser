@@ -1,0 +1,2 @@
+spiral	0.5
+spirals	0.5

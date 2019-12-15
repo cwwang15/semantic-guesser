@@ -1,0 +1,4 @@
+trainer	0.4
+coach	0.3
+handler	0.25
+trainers	0.05

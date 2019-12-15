@@ -1,0 +1,2 @@
+Ambush	1.0
+ambush	0.0

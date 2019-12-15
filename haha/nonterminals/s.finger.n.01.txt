@@ -1,0 +1,4 @@
+fingers	0.453125
+finger	0.453125
+FINGER	0.0625
+Finger	0.03125

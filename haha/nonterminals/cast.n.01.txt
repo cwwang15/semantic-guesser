@@ -1,0 +1,4 @@
+CAST	1.75
+cAst	0.5
+Cast	0.5
+cast	-1.75

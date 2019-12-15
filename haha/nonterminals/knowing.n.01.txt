@@ -1,0 +1,10 @@
+sense	0.4
+FEEL	0.3
+awareness	0.15
+senses	0.1
+breakthrough	0.1
+Feel	0.1
+brainstorm	0.05
+ken	0.05
+realization	0.05
+feel	-0.3

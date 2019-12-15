@@ -1,0 +1,6 @@
+annul	0.25
+admit	0.25
+convicted	0.125
+admitting	0.125
+rescind	0.125
+formalize	0.125

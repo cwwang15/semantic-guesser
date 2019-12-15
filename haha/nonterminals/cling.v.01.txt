@@ -1,0 +1,2 @@
+cling	0.75
+clung	0.25

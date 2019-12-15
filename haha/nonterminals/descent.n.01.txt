@@ -1,0 +1,3 @@
+lahar	0.5
+descent	0.25
+avalanche	0.25

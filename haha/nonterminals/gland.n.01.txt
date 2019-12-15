@@ -1,0 +1,10 @@
+tits	0.5
+gland	0.125
+udder	0.1
+bollocks	0.0875
+udders	0.05
+gonad	0.05
+testicles	0.0375
+gonads	0.025
+testicle	0.0125
+testes	0.0125

@@ -1,0 +1,2 @@
+shies	0.75
+shied	0.25

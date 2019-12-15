@@ -1,0 +1,3 @@
+catalyst	0.5
+enzyme	0.25
+renin	0.25

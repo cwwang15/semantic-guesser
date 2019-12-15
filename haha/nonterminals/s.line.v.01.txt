@@ -1,0 +1,6 @@
+LINE	0.7
+Line	0.3
+lined	0.2
+LINe	0.2
+lining	0.1
+line	-0.5

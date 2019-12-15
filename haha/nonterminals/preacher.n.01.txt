@@ -1,0 +1,3 @@
+preacher	0.5
+preachers	0.25
+evangelist	0.25

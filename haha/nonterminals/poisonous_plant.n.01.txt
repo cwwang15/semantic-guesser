@@ -1,0 +1,2 @@
+oleander	0.75
+lantana	0.25

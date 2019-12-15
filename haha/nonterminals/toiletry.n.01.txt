@@ -1,0 +1,16 @@
+nard	0.3
+makeup	0.12
+rouge	0.12
+mascara	0.09
+hairdressing	0.07
+lipstick	0.07
+eyeliner	0.05
+lotion	0.05
+highlighter	0.04
+MakeUp	0.03
+antiperspirant	0.01
+blackface	0.01
+rouges	0.01
+deodorant	0.01
+toothbrush	0.01
+eyeshadow	0.01

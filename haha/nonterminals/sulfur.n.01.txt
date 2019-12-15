@@ -1,0 +1,2 @@
+sulphur	0.6
+sulfur	0.4

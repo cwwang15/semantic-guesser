@@ -1,0 +1,6 @@
+kayak	0.25
+canoe	0.25
+sampan	0.1875
+dories	0.125
+gigs	0.125
+rowboat	0.0625

@@ -1,0 +1,2 @@
+chaser	0.8
+CHASER	0.2

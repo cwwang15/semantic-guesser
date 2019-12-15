@@ -1,0 +1,2 @@
+traitors	0.6
+traitor	0.4

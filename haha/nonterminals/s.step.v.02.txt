@@ -1,0 +1,3 @@
+trod	0.88
+tread	0.08
+treading	0.04

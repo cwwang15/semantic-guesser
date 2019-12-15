@@ -1,0 +1,9 @@
+BLACK	0.96
+Black	0.72
+ebony	0.52
+blacks	0.34
+Ebony	0.06
+bLACK	0.04
+blacK	0.04
+BlAcK	0.04
+black	-1.72

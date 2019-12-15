@@ -1,0 +1,4 @@
+acres	0.625
+fief	0.1875
+HACIENDA	0.125
+hacienda	0.0625

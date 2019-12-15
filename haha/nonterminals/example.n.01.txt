@@ -1,0 +1,4 @@
+specimen	0.5
+samples	0.2
+sample	0.2
+precedent	0.1

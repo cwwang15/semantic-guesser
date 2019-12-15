@@ -1,0 +1,2 @@
+dapples	0.5
+branded	0.5

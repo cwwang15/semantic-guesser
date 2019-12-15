@@ -19,6 +19,7 @@ def generate_grammar(password_file, output_folder):
     """ may Out of Memory Error happen, so run this cmd in bash! """
     # _grammar = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     # _grammar.communicate()
+    return cmd
     pass
 
 
@@ -28,9 +29,11 @@ def exec_sample(grammar_dir, sample_file, sample_size=10000):
     result.communicate()
 
 
-def exec_score(path_to_grammar, sample_file, scored_sample_file):
-    cmd = "python -m guessing.score %s %s > %s --uppercase --camelcase --capitalized" \
-          % (path_to_grammar, sample_file, scored_sample_file)
+def exec_score(path_to_grammar, sample_file, scored_sample_file, mangle=True):
+    cmd = "python -m guessing.score %s %s > %s %s" \
+          % (
+              path_to_grammar, sample_file, scored_sample_file,
+              "--uppercase --camelcase --capitalized" if mangle else "")
     _score = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE)
     _score.communicate()
@@ -138,8 +141,9 @@ if __name__ == "__main__":
     _curve_filename = os.path.join(_path_to_grammar, "guess_crack")
     if not args.use_trained_grammar:
         logging.info("Generating grammar...")
-        generate_grammar(args.pwd_file, _path_to_grammar)
-        logging.info("Generating grammar done")
+        cmd = generate_grammar(args.pwd_file, _path_to_grammar)
+        logging.info(f"run this cmd in bash, \n\t{cmd} \nand rerun the cmd with flag -s")
+        sys.exit(0)
     logging.info("Generating samples...")
     exec_sample(_path_to_grammar, _sample_file, sample_size=100000)
     logging.info("Generating samples done")

@@ -1,0 +1,4 @@
+mags	0.3125
+Magazine	0.25
+MAGAZINE	0.25
+magazine	0.1875

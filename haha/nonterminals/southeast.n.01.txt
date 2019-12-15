@@ -1,0 +1,2 @@
+southeast	0.6
+SouthEast	0.4

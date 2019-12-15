@@ -1,0 +1,3 @@
+debilitates	0.5
+blunts	0.25
+crippled	0.25

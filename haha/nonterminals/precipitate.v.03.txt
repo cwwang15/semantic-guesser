@@ -1,0 +1,8 @@
+spat	0.56
+raining	0.32
+Rain	0.16
+RAIN	0.08
+RaIn	0.08
+snowing	0.04
+rains	0.04
+rain	-0.28

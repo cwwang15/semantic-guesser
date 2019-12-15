@@ -1,0 +1,2 @@
+kingfisher	0.8
+kookaburra	0.2

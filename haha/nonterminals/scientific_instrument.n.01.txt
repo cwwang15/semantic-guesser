@@ -1,0 +1,2 @@
+telescope	0.5
+microscope	0.5

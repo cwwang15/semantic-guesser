@@ -1,0 +1,3 @@
+flips	0.6
+FLIP	0.6
+flip	-0.2

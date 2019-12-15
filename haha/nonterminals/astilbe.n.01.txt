@@ -1,0 +1,2 @@
+spireas	0.5
+spirea	0.5

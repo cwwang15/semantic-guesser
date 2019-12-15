@@ -1,0 +1,4 @@
+virus	0.825
+VIRUS	0.1
+Virus	0.05
+viruses	0.025

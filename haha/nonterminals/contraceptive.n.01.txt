@@ -1,0 +1,2 @@
+condom	0.75
+condoms	0.25

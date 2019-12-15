@@ -1,0 +1,2 @@
+vinegar	0.5
+VINEGAR	0.5

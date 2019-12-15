@@ -1,0 +1,9 @@
+AIM	0.8
+aims	0.2
+Aim	0.2
+aimed	0.15
+aiM	0.15
+AIm	0.1
+aiming	0.05
+leveled	0.05
+aim	-0.7

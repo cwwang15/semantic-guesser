@@ -1,0 +1,4 @@
+Witchcraft	0.5
+satanism	0.25
+witchery	0.25
+witchcraft	0.0

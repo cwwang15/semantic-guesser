@@ -1,0 +1,2 @@
+biter	0.6
+nibbler	0.4

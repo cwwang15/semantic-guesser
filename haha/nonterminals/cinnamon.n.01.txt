@@ -1,0 +1,2 @@
+cinnamon	0.8
+Cinnamon	0.2

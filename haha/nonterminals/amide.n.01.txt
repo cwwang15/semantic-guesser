@@ -1,0 +1,3 @@
+amide	0.75
+amides	0.125
+endorphin	0.125

@@ -1,0 +1,2 @@
+participation	0.5
+intervention	0.5

@@ -1,0 +1,2 @@
+authenticating	0.5
+certify	0.5

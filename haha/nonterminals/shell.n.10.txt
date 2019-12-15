@@ -1,0 +1,2 @@
+seashells	0.75
+seashell	0.25

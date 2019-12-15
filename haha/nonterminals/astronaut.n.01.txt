@@ -1,0 +1,2 @@
+spaceman	0.5
+astronaut	0.5

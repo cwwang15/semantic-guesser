@@ -1,0 +1,7 @@
+audit	0.59375
+ledger	0.125
+leger	0.09375
+AUDIT	0.09375
+payroll	0.03125
+debit	0.03125
+ious	0.03125

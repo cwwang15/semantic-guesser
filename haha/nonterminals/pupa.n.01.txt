@@ -1,0 +1,3 @@
+pupa	0.625
+pupae	0.25
+chrysalis	0.125

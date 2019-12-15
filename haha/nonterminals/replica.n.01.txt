@@ -1,0 +1,2 @@
+replicas	0.5
+replica	0.5

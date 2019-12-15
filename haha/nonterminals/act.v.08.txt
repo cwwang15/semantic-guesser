@@ -1,0 +1,2 @@
+romped	0.9
+frisk	0.1

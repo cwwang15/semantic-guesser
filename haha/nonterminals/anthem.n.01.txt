@@ -1,0 +1,2 @@
+anthem	0.5
+ANTHEM	0.5

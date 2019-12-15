@@ -1,0 +1,4 @@
+hack	0.875
+HACK	0.0625
+hacks	0.0375
+HacK	0.025

@@ -1,0 +1,2 @@
+proclamation	0.5
+edict	0.5

@@ -1,0 +1,2 @@
+amerind	0.5
+salish	0.5

@@ -1,0 +1,2 @@
+redeemed	0.6
+redeem	0.4

@@ -1,0 +1,3 @@
+renaissance	0.5
+baroque	0.25
+restoration	0.25

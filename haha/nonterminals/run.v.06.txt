@@ -1,0 +1,6 @@
+SEEP	0.4
+drained	0.2
+dribbles	0.2
+seeping	0.2
+drain	0.2
+seep	-0.2

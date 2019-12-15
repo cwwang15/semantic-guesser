@@ -1,0 +1,3 @@
+herb	0.84
+HERB	0.12
+herbs	0.04

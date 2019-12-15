@@ -1,0 +1,3 @@
+stomach	0.4
+rumen	0.4
+craw	0.2

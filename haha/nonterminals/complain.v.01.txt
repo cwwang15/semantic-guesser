@@ -1,0 +1,4 @@
+grumbles	0.25
+complains	0.25
+nags	0.25
+bitching	0.25

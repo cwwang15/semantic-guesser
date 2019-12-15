@@ -1,0 +1,2 @@
+chloride	0.75
+dichloromethane	0.25

@@ -1,0 +1,16 @@
+BAR	0.71875
+SUE	0.375
+forbidden	0.3125
+barred	0.15625
+Bar	0.125
+Forbidden	0.09375
+Sue	0.09375
+sued	0.0625
+entice	0.0625
+tempt	0.0625
+sues	0.03125
+questioned	0.03125
+summon	0.03125
+summoned	0.03125
+sue	-0.4375
+bar	-0.75

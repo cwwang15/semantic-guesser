@@ -1,0 +1,2 @@
+sparklers	0.5
+sparkler	0.5

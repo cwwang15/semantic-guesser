@@ -1,0 +1,2 @@
+stamen	0.6
+stamens	0.4

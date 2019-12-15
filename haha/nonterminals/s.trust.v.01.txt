@@ -1,0 +1,8 @@
+trust	0.53125
+rely	0.203125
+TRUST	0.078125
+Trust	0.0625
+relies	0.046875
+trusting	0.03125
+RELY	0.03125
+trusted	0.015625

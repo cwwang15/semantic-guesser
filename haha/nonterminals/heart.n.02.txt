@@ -1,0 +1,2 @@
+TICKER	1.0
+ticker	0.0

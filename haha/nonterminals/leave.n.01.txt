@@ -1,0 +1,4 @@
+Leave	2.0
+LEAVE	2.0
+LeAvE	2.0
+leave	-5.0

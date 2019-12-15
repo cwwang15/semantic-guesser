@@ -1,0 +1,3 @@
+SEWER	0.5
+sewer	0.25
+tailpipe	0.25

@@ -1,0 +1,3 @@
+goose	0.8125
+Goose	0.125
+geese	0.0625

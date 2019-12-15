@@ -1,0 +1,2 @@
+fundamentalism	0.5
+catholicism	0.5

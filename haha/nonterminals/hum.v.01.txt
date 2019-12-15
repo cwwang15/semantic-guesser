@@ -1,0 +1,2 @@
+hums	0.5
+hummed	0.5

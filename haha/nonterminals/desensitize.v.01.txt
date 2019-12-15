@@ -1,0 +1,4 @@
+NUMB	1.5
+NuMb	1.0
+Numb	1.0
+numb	-2.5

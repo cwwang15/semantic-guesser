@@ -1,0 +1,3 @@
+diploma	0.5
+credential	0.25
+credentials	0.25

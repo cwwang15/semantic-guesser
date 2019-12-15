@@ -1,0 +1,2 @@
+bops	0.75
+boogies	0.25

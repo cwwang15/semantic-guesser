@@ -1,0 +1,2 @@
+wisdom	0.8125
+Wisdom	0.1875

@@ -1,0 +1,3 @@
+thriller	0.7
+Thriller	0.2
+thrillers	0.1

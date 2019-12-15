@@ -1,0 +1,5 @@
+grain	0.6
+motes	0.15
+particle	0.1
+GrAiN	0.1
+granule	0.05

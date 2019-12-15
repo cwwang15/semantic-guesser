@@ -1,0 +1,5 @@
+planner	0.6875
+PLANNER	0.125
+angler	0.0625
+anglers	0.0625
+planners	0.0625

@@ -1,0 +1,3 @@
+glamour	0.8
+glamor	0.125
+Glamour	0.075

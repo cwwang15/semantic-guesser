@@ -1,0 +1,2 @@
+altar	0.6
+ALTAR	0.4

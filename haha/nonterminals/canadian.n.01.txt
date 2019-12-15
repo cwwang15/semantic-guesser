@@ -1,0 +1,3 @@
+cajun	0.5
+bluenose	0.3
+canadians	0.2

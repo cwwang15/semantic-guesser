@@ -1,0 +1,6 @@
+supporters	0.2
+admirer	0.2
+protagonist	0.2
+Booster	0.2
+supporter	0.1
+booster	0.1

@@ -1,0 +1,2 @@
+shamrock	0.875
+shamrocks	0.125

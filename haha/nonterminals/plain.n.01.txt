@@ -1,0 +1,9 @@
+llanos	0.35
+tundra	0.1
+Flat	0.1
+FLAT	0.1
+TUNDRA	0.1
+Plain	0.1
+flat	0.05
+plain	0.05
+moorland	0.05

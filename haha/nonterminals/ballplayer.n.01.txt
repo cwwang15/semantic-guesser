@@ -1,0 +1,16 @@
+catcher	0.416
+ballplayer	0.112
+hitter	0.096
+pitcher	0.064
+batter	0.048
+fielder	0.032
+slugger	0.032
+batsman	0.032
+hitters	0.032
+shortstop	0.032
+Pitcher	0.032
+PITCHER	0.032
+catchers	0.016
+pitchers	0.008
+hurlers	0.008
+slammers	0.008

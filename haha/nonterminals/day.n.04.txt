@@ -1,0 +1,7 @@
+afternoon	0.4
+evening	0.2
+daylight	0.15
+Daylight	0.1
+evenings	0.05
+daylights	0.05
+daytime	0.05

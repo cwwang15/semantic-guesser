@@ -1,0 +1,2 @@
+paddle	0.5
+billies	0.5

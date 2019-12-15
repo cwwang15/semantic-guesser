@@ -1,0 +1,3 @@
+fidelity	0.5
+precision	0.25
+accuracy	0.25

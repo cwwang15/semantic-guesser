@@ -1,0 +1,3 @@
+caper	0.8125
+Caper	0.125
+capers	0.0625

@@ -1,0 +1,7 @@
+discovery	0.44
+determination	0.2
+Determination	0.16
+identification	0.08
+diagnosis	0.08
+Finding	0.08
+finding	-0.04

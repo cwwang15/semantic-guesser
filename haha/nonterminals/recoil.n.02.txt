@@ -1,0 +1,2 @@
+carom	0.8
+rebounds	0.2

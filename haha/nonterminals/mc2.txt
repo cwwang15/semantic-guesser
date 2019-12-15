@@ -1,0 +1,4 @@
+sevens	0.25
+eighties	0.25
+eights	0.25
+sixes	0.25

@@ -1,0 +1,2 @@
+stoke	0.875
+stoking	0.125

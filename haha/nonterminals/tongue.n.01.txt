@@ -1,0 +1,2 @@
+tongue	0.625
+lingua	0.375

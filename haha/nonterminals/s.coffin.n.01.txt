@@ -1,0 +1,2 @@
+coffin	0.5
+coffins	0.5

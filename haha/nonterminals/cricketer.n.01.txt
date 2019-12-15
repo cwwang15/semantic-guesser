@@ -1,0 +1,2 @@
+bowler	0.8
+cricketer	0.2

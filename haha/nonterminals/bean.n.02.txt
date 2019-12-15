@@ -1,0 +1,3 @@
+soyban	1.0
+Soybean	1.0
+soybean	-1.0

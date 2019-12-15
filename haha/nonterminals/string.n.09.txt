@@ -1,0 +1,2 @@
+rosary	0.75
+beads	0.25

@@ -1,0 +1,2 @@
+centaur	0.8
+centaurs	0.2

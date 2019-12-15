@@ -1,0 +1,4 @@
+bother	0.6
+bothered	0.2
+struggling	0.1
+bothers	0.1

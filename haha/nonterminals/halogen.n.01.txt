@@ -1,0 +1,2 @@
+halogen	0.8
+chlorine	0.2

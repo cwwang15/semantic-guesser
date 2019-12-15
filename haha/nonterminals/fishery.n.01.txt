@@ -1,0 +1,2 @@
+fishery	0.5
+fisheries	0.5

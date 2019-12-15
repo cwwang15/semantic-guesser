@@ -1,0 +1,3 @@
+vib	0.625
+vibe	0.25
+mystique	0.125

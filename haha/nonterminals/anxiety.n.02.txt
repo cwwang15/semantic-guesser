@@ -1,0 +1,3 @@
+angst	0.5
+willies	0.25
+ANGST	0.25

@@ -1,0 +1,3 @@
+giraffe	0.6875
+giraffes	0.1875
+GIRAFFE	0.125

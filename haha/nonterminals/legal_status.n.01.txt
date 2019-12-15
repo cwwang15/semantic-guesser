@@ -1,0 +1,2 @@
+marriage	0.9
+wedlock	0.1

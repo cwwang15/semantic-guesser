@@ -1,0 +1,3 @@
+PICTURE	4.0
+Picture	3.0
+picture	-6.0

@@ -1,0 +1,2 @@
+duds	0.5
+threads	0.5

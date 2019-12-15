@@ -1,0 +1,1 @@
+resistance	1.0

@@ -1,0 +1,3 @@
+suit	0.90625
+SUIT	0.0625
+pinstripe	0.03125

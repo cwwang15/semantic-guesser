@@ -1,0 +1,10 @@
+REBEL	3.4
+rebl	1.0
+Rebel	0.6
+REbeL	0.4
+REbel	0.4
+unsay	0.2
+rebelling	0.2
+repudiate	0.2
+recant	0.2
+rebel	-5.6

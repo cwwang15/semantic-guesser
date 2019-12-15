@@ -1,0 +1,3 @@
+trib	0.45
+TRIB	0.3
+tribe	0.25

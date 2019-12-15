@@ -1,0 +1,2 @@
+plasma	0.8
+plasmas	0.2

@@ -1,0 +1,3 @@
+DISDAIN	1.0
+loathing	0.5
+disdain	-0.5

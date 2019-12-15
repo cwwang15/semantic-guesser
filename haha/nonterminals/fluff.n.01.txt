@@ -1,0 +1,3 @@
+fluff	0.84
+FLUFF	0.08
+FluFF	0.08

@@ -1,0 +1,2 @@
+traveller	0.625
+traveler	0.375

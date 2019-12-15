@@ -1,0 +1,5 @@
+SHAKE	0.625
+shaKe	0.25
+Shake	0.25
+shingle	0.125
+shake	-0.25

@@ -1,0 +1,3 @@
+luster	0.5
+splendour	0.25
+splendor	0.25

@@ -1,0 +1,2 @@
+salon	0.96
+salons	0.04

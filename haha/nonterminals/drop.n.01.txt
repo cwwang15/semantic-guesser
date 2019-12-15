@@ -1,0 +1,5 @@
+teardrops	0.5
+teardrop	0.3
+Drop	0.2
+drops	0.1
+drop	-0.1

@@ -1,0 +1,2 @@
+hooter	0.5
+hooters	0.5

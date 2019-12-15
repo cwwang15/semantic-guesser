@@ -1,0 +1,7 @@
+DAM	3.5
+dAm	1.0
+Dam	1.0
+daM	0.75
+weirs	0.5
+weir	0.25
+dam	-6.0

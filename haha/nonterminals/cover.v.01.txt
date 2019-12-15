@@ -1,0 +1,12 @@
+tared	0.4
+enfold	0.12
+pave	0.08
+plated	0.08
+dredge	0.04
+covers	0.04
+smothered	0.04
+wraps	0.04
+smother	0.04
+paves	0.04
+sized	0.04
+coated	0.04

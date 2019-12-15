@@ -1,0 +1,5 @@
+bury	0.875
+buried	0.046875
+BURY	0.03125
+Buried	0.03125
+buries	0.015625

@@ -1,0 +1,2 @@
+brawler	0.5
+brawlers	0.5

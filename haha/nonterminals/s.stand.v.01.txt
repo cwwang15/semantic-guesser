@@ -1,0 +1,6 @@
+stand	0.675
+standing	0.125
+stands	0.075
+STAND	0.05
+Stand	0.05
+stood	0.025

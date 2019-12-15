@@ -1,0 +1,2 @@
+psychology	0.75
+psychopathology	0.25

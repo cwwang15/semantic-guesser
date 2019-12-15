@@ -1,0 +1,1 @@
+horoscope	1.0

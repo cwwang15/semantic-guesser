@@ -1,0 +1,2 @@
+residence	0.5
+abode	0.5

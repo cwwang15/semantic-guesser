@@ -1,0 +1,2 @@
+gossip	0.875
+chitchat	0.125

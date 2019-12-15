@@ -1,0 +1,2 @@
+glade	0.5
+glades	0.5

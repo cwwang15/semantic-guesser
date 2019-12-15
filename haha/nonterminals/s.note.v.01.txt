@@ -1,0 +1,4 @@
+NoTe	0.5
+NoTE	0.5
+noTE	0.5
+note	-0.5

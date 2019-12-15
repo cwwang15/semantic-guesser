@@ -1,0 +1,2 @@
+supermarket	0.6
+grocery	0.4

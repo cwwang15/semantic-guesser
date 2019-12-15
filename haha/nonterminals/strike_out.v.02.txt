@@ -1,0 +1,5 @@
+FAN	4.0
+Fan	2.4
+fans	0.4
+FaN	0.4
+fan	-6.2

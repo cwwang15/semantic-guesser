@@ -1,0 +1,6 @@
+RAP	1.1
+Rap	0.7
+CENSURE	0.2
+condemnation	0.1
+censure	-0.1
+rap	-1.0

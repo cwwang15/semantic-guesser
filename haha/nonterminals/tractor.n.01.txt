@@ -1,0 +1,3 @@
+tractor	0.5
+tractors	0.375
+bulldozer	0.125

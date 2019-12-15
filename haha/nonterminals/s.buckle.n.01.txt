@@ -1,0 +1,2 @@
+buckle	0.8
+buckles	0.2

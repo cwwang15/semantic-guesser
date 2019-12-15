@@ -1,0 +1,5 @@
+believe	0.8
+BELIEVE	0.06666666666666667
+blieve	0.05
+Believe	0.05
+believing	0.03333333333333333

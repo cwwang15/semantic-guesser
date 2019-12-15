@@ -1,0 +1,3 @@
+posy	0.4
+bouquet	0.4
+corsage	0.2

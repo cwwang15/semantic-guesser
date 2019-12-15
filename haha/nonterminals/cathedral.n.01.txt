@@ -1,0 +1,2 @@
+cathedral	0.8
+minster	0.2

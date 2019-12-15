@@ -1,0 +1,2 @@
+manifestation	0.5
+manifestations	0.5

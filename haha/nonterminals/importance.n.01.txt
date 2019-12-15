@@ -1,0 +1,2 @@
+greatness	0.6
+importance	0.4

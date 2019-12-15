@@ -1,0 +1,3 @@
+marshmallow	0.65625
+marshmallows	0.28125
+Marshmallow	0.0625

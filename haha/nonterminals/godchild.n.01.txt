@@ -1,0 +1,2 @@
+godson	0.75
+goddaughter	0.25

@@ -1,0 +1,2 @@
+combat	0.88
+Combat	0.12

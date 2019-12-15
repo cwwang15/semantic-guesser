@@ -1,0 +1,2 @@
+amnesia	0.75
+forgetfulness	0.25

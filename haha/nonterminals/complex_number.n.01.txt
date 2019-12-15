@@ -1,0 +1,7 @@
+quarter	0.3125
+HALF	0.3125
+reals	0.1875
+Quarter	0.125
+Half	0.125
+reales	0.0625
+half	-0.125

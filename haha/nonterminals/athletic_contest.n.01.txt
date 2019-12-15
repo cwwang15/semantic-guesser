@@ -1,0 +1,5 @@
+olympics	0.8
+MeeT	0.6
+Meet	0.4
+MEET	0.4
+meet	-1.2

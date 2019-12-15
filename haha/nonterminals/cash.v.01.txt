@@ -1,0 +1,2 @@
+cashes	0.5
+cashed	0.5

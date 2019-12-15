@@ -1,0 +1,2 @@
+column	0.8
+queue	0.2

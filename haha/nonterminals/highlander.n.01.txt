@@ -1,0 +1,2 @@
+highlander	0.75
+highlanders	0.25

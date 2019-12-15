@@ -1,0 +1,3 @@
+monarchs	0.375
+monarch	0.375
+Monarch	0.25

@@ -1,0 +1,3 @@
+modify	0.6
+buffered	0.2
+updating	0.2

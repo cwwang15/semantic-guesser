@@ -1,0 +1,10 @@
+gelatin	0.25
+globin	0.125
+gluten	0.125
+hemoglobin	0.125
+GELATIN	0.125
+collagen	0.0625
+protein	0.0625
+haemoglobin	0.0625
+enzyme	0.03125
+renin	0.03125

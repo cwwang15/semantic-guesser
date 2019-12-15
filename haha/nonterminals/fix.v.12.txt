@@ -1,0 +1,4 @@
+Prepare	0.4
+prepare	0.2
+bracing	0.2
+priming	0.2

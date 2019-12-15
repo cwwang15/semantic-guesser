@@ -1,0 +1,4 @@
+MASS	1.0
+masS	0.4
+Mass	0.4
+mass	-0.8

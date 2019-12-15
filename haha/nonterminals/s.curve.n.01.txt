@@ -1,0 +1,2 @@
+curve	0.6
+curves	0.4

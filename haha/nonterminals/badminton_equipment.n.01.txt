@@ -1,0 +1,2 @@
+shuttle	0.75
+shuttlecock	0.25

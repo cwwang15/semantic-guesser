@@ -1,0 +1,2 @@
+volcano	0.5
+volcanos	0.5

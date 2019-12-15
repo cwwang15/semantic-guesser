@@ -1,0 +1,2 @@
+scored	0.5
+homered	0.5

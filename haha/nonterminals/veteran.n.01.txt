@@ -1,0 +1,3 @@
+VETERAN	1.0
+veterans	0.5
+veteran	-0.5

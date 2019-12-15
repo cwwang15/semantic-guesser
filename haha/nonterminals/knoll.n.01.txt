@@ -1,0 +1,2 @@
+knoll	0.5
+hillock	0.5

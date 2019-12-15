@@ -1,0 +1,3 @@
+greyhound	0.6875
+greyhounds	0.25
+whippet	0.0625

@@ -1,0 +1,3 @@
+greenhouse	0.5
+glasshouse	0.25
+hothouse	0.25

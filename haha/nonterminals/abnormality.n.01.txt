@@ -1,0 +1,6 @@
+walleye	0.375
+humpback	0.125
+scoliosis	0.125
+deviance	0.125
+warp	0.125
+fixation	0.125

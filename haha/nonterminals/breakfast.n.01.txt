@@ -1,0 +1,2 @@
+breakfast	0.7
+Breakfast	0.3

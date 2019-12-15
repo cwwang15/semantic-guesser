@@ -1,0 +1,6 @@
+boarding	0.4
+fallback	0.32
+takeoff	0.12
+retreat	0.08
+departure	0.04
+parting	0.04

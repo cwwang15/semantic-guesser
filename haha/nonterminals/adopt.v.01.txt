@@ -1,0 +1,2 @@
+adopt	0.6
+adopted	0.4

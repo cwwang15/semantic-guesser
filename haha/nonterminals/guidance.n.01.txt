@@ -1,0 +1,2 @@
+guidance	0.5
+counselling	0.5

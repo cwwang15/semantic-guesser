@@ -1,0 +1,2 @@
+assume	0.5
+presumed	0.5

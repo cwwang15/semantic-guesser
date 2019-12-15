@@ -1,0 +1,2 @@
+defenestration	0.5
+blackball	0.5

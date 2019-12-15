@@ -1,0 +1,4 @@
+learn	0.75
+learned	0.09375
+Learn	0.09375
+learning	0.0625

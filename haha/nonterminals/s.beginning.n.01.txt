@@ -1,0 +1,3 @@
+beginnings	0.375
+beginning	0.375
+BEGINNING	0.25

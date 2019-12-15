@@ -1,0 +1,2 @@
+supernova	0.8
+Supernova	0.2

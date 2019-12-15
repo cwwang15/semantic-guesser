@@ -1,0 +1,6 @@
+procedure	0.375
+sterilization	0.125
+subtraction	0.125
+process	0.125
+castration	0.125
+algorithm	0.125

@@ -1,0 +1,5 @@
+prep	0.6
+homework	0.225
+preps	0.075
+Homework	0.05
+Prep	0.05

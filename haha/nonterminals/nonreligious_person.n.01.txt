@@ -1,0 +1,4 @@
+heathens	0.4
+atheist	0.2
+gentiles	0.2
+deist	0.2

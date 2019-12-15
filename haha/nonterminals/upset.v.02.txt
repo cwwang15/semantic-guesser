@@ -1,0 +1,8 @@
+discombobulated	0.5
+discombobulate	0.15
+distract	0.1
+faze	0.05
+unman	0.05
+fazes	0.05
+tormented	0.05
+afflicted	0.05

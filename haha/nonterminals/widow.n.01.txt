@@ -1,0 +1,2 @@
+widow	0.6
+Widow	0.4

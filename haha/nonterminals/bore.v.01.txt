@@ -1,0 +1,3 @@
+bore	0.85
+bores	0.1
+Bore	0.05

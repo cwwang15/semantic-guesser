@@ -1,0 +1,3 @@
+womanizer	0.4
+masher	0.4
+philanderer	0.2

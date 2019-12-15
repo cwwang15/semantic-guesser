@@ -1,0 +1,2 @@
+amoeba	0.5
+paramecium	0.5

@@ -1,0 +1,2 @@
+sharpener	0.8
+strop	0.2

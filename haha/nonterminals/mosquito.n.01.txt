@@ -1,0 +1,2 @@
+mosquito	0.75
+mosquitos	0.25

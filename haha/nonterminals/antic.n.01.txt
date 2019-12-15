@@ -1,0 +1,2 @@
+antics	0.5
+anticS	0.5

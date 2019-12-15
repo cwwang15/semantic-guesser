@@ -1,0 +1,2 @@
+Funnel	1.0
+funnel	0.0

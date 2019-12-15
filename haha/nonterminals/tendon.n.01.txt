@@ -1,0 +1,2 @@
+hamstring	0.5
+tendon	0.5

@@ -1,0 +1,5 @@
+TEST	1.5
+Test	1.5
+teSt	1.0
+tested	0.5
+test	-3.5

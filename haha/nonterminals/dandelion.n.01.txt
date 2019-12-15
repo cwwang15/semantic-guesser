@@ -1,0 +1,2 @@
+dandelion	0.75
+dandelions	0.25

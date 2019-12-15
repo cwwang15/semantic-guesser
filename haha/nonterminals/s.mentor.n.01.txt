@@ -1,0 +1,2 @@
+mentor	0.75
+mentors	0.25

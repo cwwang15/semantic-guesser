@@ -1,0 +1,2 @@
+wherever	0.75
+whenever	0.25

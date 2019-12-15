@@ -1,0 +1,2 @@
+hassle	0.5
+disturbance	0.5
