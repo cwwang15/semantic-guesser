@@ -39,6 +39,7 @@ pswd_list.txt
 random
 result.txt
 *.sh
+!init.sh
 test.txt
 train.txt
 models
