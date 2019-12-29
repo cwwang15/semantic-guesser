@@ -1,6 +1,6 @@
 include guessing/makefile
 
-all: venv_init requirements_init ntlk_data
+all: venv_init requirements_init nltk_data
 
 venv_init:
 	python3 -m venv venv
@@ -8,8 +8,8 @@ venv_init:
 requirements_init:
 	./venv/bin/pip install -r ./requirements.txt
 
-ntlk_data:
-	./venv/bin/python -m ntlk.downloader wordnet wordnet_ic sentiwordnet
+nltk_data:
+	echo -e "n\n" | ./venv/bin/python -m nltk.downloader wordnet wordnet_ic sentiwordnet
 
 .PHONY: clean
 clean:
