@@ -17,8 +17,8 @@ def generate_grammar(password_file, output_folder):
     cmd = "python semantic-train.py %s %s -vv" % (password_file, output_folder)
     logger.info(cmd)
     """ may Out of Memory Error happen, so run this cmd in bash! """
-    # _grammar = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-    # _grammar.communicate()
+    _grammar = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+    _grammar.communicate()
     pass
 
 
