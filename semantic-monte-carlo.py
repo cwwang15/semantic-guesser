@@ -1,11 +1,11 @@
+import argparse
 import bisect
-import itertools
 import logging
 import math
 import os
 import subprocess
 import sys
-import argparse
+from collections import defaultdict
 
 import numpy
 
@@ -13,8 +13,8 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 logger = logging.getLogger(__name__)
 
 
-def generate_grammar(password_file, output_folder):
-    cmd = "python semantic-train.py %s %s -vv" % (password_file, output_folder)
+def generate_grammar(password_file, output_folder, python_env):
+    cmd = "%s semantic-train.py %s %s -vv" % (python_env, password_file, output_folder)
     logger.info(cmd)
     """ may Out of Memory Error happen, so run this cmd in bash! """
     _grammar = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
@@ -22,136 +22,94 @@ def generate_grammar(password_file, output_folder):
     pass
 
 
-def exec_sample(grammar_dir, sample_file, sample_size=10000):
-    cmd = "python -m guessing.sample %d %s > %s" % (sample_size, grammar_dir, sample_file)
+def exec_sample(grammar_dir, sample_file, sample_size, python_env):
+    cmd = "%s -m guessing.sample %d %s > %s" % (python_env, sample_size, grammar_dir, sample_file)
     result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     result.communicate()
 
 
-def exec_score(path_to_grammar, sample_file, scored_sample_file):
-    cmd = "python -m guessing.score %s %s > %s --uppercase --camelcase --capitalized" \
-          % (path_to_grammar, sample_file, scored_sample_file)
+def exec_score(path_to_grammar, sample_file, scored_sample_file, python_env):
+    cmd = "%s -m guessing.score %s %s > %s --uppercase --camelcase --capitalized" \
+          % (python_env, path_to_grammar, sample_file, scored_sample_file)
     _score = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE)
     _score.communicate()
 
 
-spliter = chr(3)
-
-
-def exec_strength(sample_file, scored_password_file, monte_carlo_result_file):
-    cmd = "python -m guessing.strength %s %s > %s" \
-          % (sample_file, scored_password_file, monte_carlo_result_file)
-    print(cmd)
-    result = subprocess.Popen(
-        cmd, shell=True, stdout=subprocess.PIPE
-    )
-    result.communicate()
-    pass
-
-
-def draw_guess_crack_curve(monte_carlo_result_file, curve_name, dataset, test_set):
-    abs_dir = sys.path[0]
-    fin = open(test_set, "r")
-    test_set_size = len(fin.readlines())
-    fin.close()
-    picture_program_path = os.path.join(abs_dir, "..", "picture.py")
-    cmd = "%s --guess-crack-file %s " \
-          "--img %s.png --pdf %s.pdf " \
-          "--dataset %s --password-model SemanticGuesser " \
-          "--test-set-size %d" % (
-              picture_program_path, monte_carlo_result_file, curve_name, curve_name, dataset, test_set_size)
-    draw = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-    draw.communicate()
-    pass
-
-
-def __exec_strength(scored_sample_file, scored_test_file, monte_carlo_result_file):
+def exec_strength(scored_sample_file, scored_test_file, monte_carlo_result_file):
     fin_scored_sample = open(scored_sample_file, "r")
-    sample = []
+    log_probs = []
     for line in fin_scored_sample:
         line = line.strip("\r\n")
         pwd, prob = line.split("\t")
-        sample.append((-math.log2(float(prob)), pwd))
+        logprob = -math.log2(max(float(prob), sys.float_info.min))
+        log_probs.append(logprob)
+
     fin_scored_sample.close()
-    log_probs = numpy.fromiter((lp for lp, _ in sample), float)
+    log_probs = numpy.fromiter(log_probs, float)
     log_probs.sort()
     log_n = math.log2(len(log_probs))
     positions = (2 ** (log_probs - log_n)).cumsum()
     fin_scored_test = open(scored_test_file, "r")
-    fout = open(monte_carlo_result_file, "w")
 
+    pwd_counter = defaultdict(lambda: [0, .0])
+    total = 0
     for line in fin_scored_test:
         line = line.strip("\r\n")
         try:
             pwd, struct, prob = line.split(" ")
         except ValueError:
             continue
-        # noinspection PyBroadException
-        try:
-            log_prob = -math.log2(float(prob))
-        except Exception:
-            log_prob = float("inf")
-        idx = bisect.bisect_right(log_probs, log_prob)
-        fout.write("%s%s%f\n" % (pwd, "\t", positions[idx - 1] if idx > 0 else 0))
+        pwd_counter[pwd][0] += 1
+        pwd_counter[pwd][1] = -math.log2(max(float(prob), sys.float_info.min))
+        total += 1
     fin_scored_test.close()
+    pwd_counter = dict(sorted(pwd_counter.items(), key=lambda x: x[1][1]))
+    prev_rank = 0
+    addon = 1
+    cracked = 0
+    fout = open(monte_carlo_result_file, "w")
+    for pwd, (cnt, lp) in pwd_counter.items():
+        idx = bisect.bisect_right(log_probs, lp)
+        rank = math.ceil(max(positions[idx - 1] if idx > 0 else 1, prev_rank + addon))
+        cracked += cnt
+        prev_rank = rank
+        fout.write(f"{pwd}\t{lp}\t{cnt}\t{rank}\t{cracked}\t{cracked / total * 100:5.2f}\n")
     fout.flush()
     fout.close()
-    pass
 
 
-def generate_guess_crack(monte_carlo_result_filename, guess_crack_filename):
-    fin = open(monte_carlo_result_filename, "r")
-
-    prob_col = []
-    for row in fin:
-        try:
-            row = row.strip("\r\n")
-            prob_col.append(int(float(row.split("\t")[-1])))
-        except ValueError:
-            print("row: ", row, ", row[1]: ", row[1])
-            pass
-    guesses, cracked = [0], [0]
-    prob_col.sort()
-    fout = open(guess_crack_filename, "w")
-    for m, n in itertools.groupby(prob_col):
-        guesses.append(m)
-        cracked.append(cracked[-1] + len(list(n)))
-        fout.write("%d : %d\n" % (guesses[-1], cracked[-1]))
-
-    pass
-
-
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(description="Semantic Guesser: Monte Carlo Simulation")
-    parser.add_argument("--pwd-file", "-p", type=str)
-    parser.add_argument("--test-file", "-t", type=str)
-    parser.add_argument("--grammar-dir", "-d", type=str)
-    parser.add_argument("--use-trained-grammar", "-s", action="store_true")
+    parser.add_argument("-p", "--pwd-file", type=str)
+    parser.add_argument("-t", "--test-file", type=str, required=True)
+    parser.add_argument("-d", "--grammar-dir", type=str)
+    parser.add_argument("-s", "--use-trained-grammar", action="store_true")
+    parser.add_argument("--scored", dest="scored_test_file", type=str, required=False, default="use_default")
+    parser.add_argument("--result", dest="guess_crack_file", type=str, required=True)
+    parser.add_argument("--sample-size", dest="sample_size", type=int, required=False, default=100000)
+    parser.add_argument("--env", dest="python_env", type=str, required=True)
     args = parser.parse_args()
-    print(args.grammar_dir)
     _path_to_grammar = args.grammar_dir
+    _python_env = args.python_env
     _sample_file = os.path.join(_path_to_grammar, "sample.txt")
-    _scored_test_file = os.path.join(_path_to_grammar, "scored_test.txt")
+    _scored_test_file = args.scored_test_file
     _strength_file = os.path.join(_path_to_grammar, "pwd_strength.txt")
-    _guess_crack_file = os.path.join(_path_to_grammar, "guess_crack.txt")
-    _curve_filename = os.path.join(_path_to_grammar, "guess_crack")
+    _guess_crack_file = args.guess_crack_file
     if not args.use_trained_grammar:
         logging.info("Generating grammar...")
-        generate_grammar(args.pwd_file, _path_to_grammar)
+        generate_grammar(args.pwd_file, _path_to_grammar, _python_env)
         logging.info("Generating grammar done")
     logging.info("Generating samples...")
-    exec_sample(_path_to_grammar, _sample_file, sample_size=100000)
+    exec_sample(_path_to_grammar, _sample_file, sample_size=args.sample_size, python_env=_python_env)
     logging.info("Generating samples done")
     logging.info("Scoring test set...")
-    exec_score(_path_to_grammar, args.test_file, _scored_test_file)
+    exec_score(_path_to_grammar, args.test_file, _scored_test_file, _python_env)
     logging.info("Scoring test done")
     logging.info("Evaluating strength...")
-    __exec_strength(_sample_file, _scored_test_file, _strength_file)
+    exec_strength(_sample_file, _scored_test_file, _strength_file)
     logging.info("Evaluating strength done")
-    logging.info("Generating guess crack pair...")
-    generate_guess_crack(_strength_file, _guess_crack_file)
-    logger.info("Generating guess crack pair done")
-    # logger.info("Drawing guess crack curve...")
-    # draw_guess_crack_curve(_guess_crack_file, _curve_filename, _tag, _test_file)
-    # logger.info("Drawing guess crack curve done")
+
+
+if __name__ == '__main__':
+    main()
