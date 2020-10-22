@@ -94,7 +94,6 @@ def main():
     _python_env = args.python_env
     _sample_file = os.path.join(_path_to_grammar, "sample.txt")
     _scored_test_file = args.scored_test_file
-    _strength_file = os.path.join(_path_to_grammar, "pwd_strength.txt")
     _guess_crack_file = args.guess_crack_file
     if not args.use_trained_grammar:
         logging.info("Generating grammar...")
@@ -107,7 +106,7 @@ def main():
     exec_score(_path_to_grammar, args.test_file, _scored_test_file, _python_env)
     logging.info("Scoring test done")
     logging.info("Evaluating strength...")
-    exec_strength(_sample_file, _scored_test_file, _strength_file)
+    exec_strength(_sample_file, _scored_test_file, _guess_crack_file)
     logging.info("Evaluating strength done")
 
 
