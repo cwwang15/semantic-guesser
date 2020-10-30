@@ -301,6 +301,7 @@ def score(passwords, grammar, tc_nouns,
         if password.isdigit():
             base_struct = 'number' + str(len(password))
             try:
+                print(password, base_struct_dist[base_struct], file=sys.stderr)
                 yield (password, base_struct, base_struct_dist[base_struct])
                 continue
             except:
@@ -431,7 +432,6 @@ if __name__ == '__main__':
             skip = int(progress['n_processed'])
 
     passwords = (line.rstrip() for i, line in enumerate(passwords_file) if i >= skip)
-
     n_processed = skip
     completed = False
 
@@ -445,17 +445,20 @@ if __name__ == '__main__':
                 continue
 
             if password.islower() or \
-                    accept_upper and password.isupper() or \
-                    accept_camel and ''.join(map(str.capitalize, split)) == password or \
-                    accept_capital and password[0].isupper() and password[1:].islower():
+                    (accept_upper and password.isupper()) or \
+                    (accept_camel and ''.join(map(str.capitalize, split)) == password) or \
+                    (accept_capital and password[0].isupper() and password[1:].islower()):
 
                 if opts.print_split:
-                    print(password, struct, " ".join(split), prob)
+                    print(password, struct, "\x03".join(split), prob)
                 else:
                     print(password, struct, prob)
 
             else:
-                print(password, None, 0)
+                if opts.print_split:
+                    print(password, struct, "\x03".join(split), prob)
+                else:
+                    print(password, None, 0)
 
             n_processed += 1
 
@@ -463,8 +466,9 @@ if __name__ == '__main__':
                 save_progress(session_name, n_processed)
 
         completed = True
-    except BaseException:
-        pass
+    except BaseException as e:
+        print(e, file=sys.stderr)
+        sys.exit(-1)
     finally:
         if session_name:
             save_progress(session_name, n_processed, completed)

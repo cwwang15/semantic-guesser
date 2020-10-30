@@ -28,9 +28,14 @@ def exec_sample(grammar_dir, sample_file, sample_size, python_env):
     result.communicate()
 
 
-def exec_score(path_to_grammar, sample_file, scored_sample_file, python_env):
-    cmd = "%s -m guessing.score %s %s > %s --uppercase --camelcase --capitalized" \
-          % (python_env, path_to_grammar, sample_file, scored_sample_file)
+def exec_score(path_to_grammar, sample_file, scored_sample_file, python_env, print_split=False):
+    if print_split:
+        cmd = "%s -m guessing.score %s %s > %s --uppercase --camelcase --capitalized --print_split" \
+              % (python_env, path_to_grammar, sample_file, scored_sample_file)
+    else:
+        cmd = "%s -m guessing.score %s %s > %s --uppercase --camelcase --capitalized" \
+              % (python_env, path_to_grammar, sample_file, scored_sample_file)
+
     _score = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE)
     _score.communicate()
@@ -59,7 +64,10 @@ def exec_strength(scored_sample_file, scored_test_file, monte_carlo_result_file)
         try:
             pwd, struct, prob = line.split(" ")
         except ValueError:
-            continue
+            pwd, struct, split, prob = line.split(" ")
+        except Exception as e:
+            print(e)
+            sys.exit(-1)
         pwd_counter[pwd][0] += 1
         pwd_counter[pwd][1] = -math.log2(max(float(prob), sys.float_info.min))
         total += 1
@@ -81,10 +89,10 @@ def exec_strength(scored_sample_file, scored_test_file, monte_carlo_result_file)
 
 def main():
     parser = argparse.ArgumentParser(description="Semantic Guesser: Monte Carlo Simulation")
-    parser.add_argument("-p", "--pwd-file", type=str)
     parser.add_argument("-t", "--test-file", type=str, required=True)
-    parser.add_argument("-d", "--grammar-dir", type=str)
-    parser.add_argument("-s", "--use-trained-grammar", action="store_true")
+    parser.add_argument("-d", "--grammar-dir", required=True, type=str)
+    parser.add_argument("--use-samples", dest="use_samples", type=str, required=False, default="no_default",
+                        help="do not generate samples, use given samples")
     parser.add_argument("--scored", dest="scored_test_file", type=str, required=False, default="use_default")
     parser.add_argument("--result", dest="guess_crack_file", type=str, required=True)
     parser.add_argument("--sample-size", dest="sample_size", type=int, required=False, default=100000)
@@ -95,13 +103,16 @@ def main():
     _sample_file = os.path.join(_path_to_grammar, "sample.txt")
     _scored_test_file = args.scored_test_file
     _guess_crack_file = args.guess_crack_file
-    if not args.use_trained_grammar:
-        logging.info("Generating grammar...")
-        generate_grammar(args.pwd_file, _path_to_grammar, _python_env)
-        logging.info("Generating grammar done")
-    logging.info("Generating samples...")
-    exec_sample(_path_to_grammar, _sample_file, sample_size=args.sample_size, python_env=_python_env)
-    logging.info("Generating samples done")
+    # if not args.use_grammar:
+    #     logging.info("Generating grammar...")
+    #     generate_grammar(args.pwd_file, _path_to_grammar, _python_env)
+    #     logging.info("Generating grammar done")
+    if args.use_samples == "no_default":
+        logging.info("Generating samples...")
+        exec_sample(_path_to_grammar, _sample_file, sample_size=args.sample_size, python_env=_python_env)
+        logging.info("Generating samples done")
+    else:
+        _sample_file = args.use_samples
     logging.info("Scoring test set...")
     exec_score(_path_to_grammar, args.test_file, _scored_test_file, _python_env)
     logging.info("Scoring test done")
