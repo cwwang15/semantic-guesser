@@ -62,9 +62,9 @@ def exec_strength(scored_sample_file, scored_test_file, monte_carlo_result_file)
     for line in fin_scored_test:
         line = line.strip("\r\n")
         try:
-            pwd, struct, prob = line.split(" ")
-        except ValueError:
-            pwd, struct, split, prob = line.split(" ")
+            lst = line.split(" ")
+            pwd = lst[0]
+            prob = lst[-1]
         except Exception as e:
             print(e)
             sys.exit(-1)
@@ -97,6 +97,7 @@ def main():
     parser.add_argument("--result", dest="guess_crack_file", type=str, required=True)
     parser.add_argument("--sample-size", dest="sample_size", type=int, required=False, default=100000)
     parser.add_argument("--env", dest="python_env", type=str, required=True)
+    parser.add_argument('--print_split', dest="print_split", action="store_true")
     args = parser.parse_args()
     _path_to_grammar = args.grammar_dir
     _python_env = args.python_env
@@ -114,7 +115,7 @@ def main():
     else:
         _sample_file = args.use_samples
     logging.info("Scoring test set...")
-    exec_score(_path_to_grammar, args.test_file, _scored_test_file, _python_env)
+    exec_score(_path_to_grammar, args.test_file, _scored_test_file, _python_env, print_split=args.print_split)
     logging.info("Scoring test done")
     logging.info("Evaluating strength...")
     exec_strength(_sample_file, _scored_test_file, _guess_crack_file)
